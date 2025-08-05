@@ -78,57 +78,39 @@
             transform: scale(1.05);
         }
 
+        /* Logo placeholder - add your logo as an img tag inside .logo-icon */
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            position: relative;
-            animation: float 3s ease-in-out infinite;
+            width: 45px;
+            height: 45px;
+            background: rgba(59, 163, 168, 0.1);
+            border: 1px solid rgba(127, 212, 216, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .wave {
-            position: absolute;
-            bottom: 0;
+        .logo-icon:hover {
+            border-color: var(--accent);
+            background: rgba(59, 163, 168, 0.2);
+        }
+
+        .logo-icon img {
             width: 100%;
-            height: 60%;
-            background: var(--gradient);
-            border-radius: 50% 50% 0 0;
-            transform: rotate(180deg);
-            animation: wave 3s ease-in-out infinite;
+            height: 100%;
+            object-fit: contain;
         }
-
-        .pixels {
-            position: absolute;
-            top: 0;
-            right: 0;
-            display: grid;
-            grid-template-columns: repeat(2, 8px);
-            gap: 3px;
-        }
-
-        .pixel {
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            animation: pixelFade 2s ease-in-out infinite;
-        }
-
-        .pixel:nth-child(2) { animation-delay: 0.5s; }
-        .pixel:nth-child(3) { animation-delay: 1s; }
-        .pixel:nth-child(4) { animation-delay: 1.5s; }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
         }
 
-        @keyframes wave {
-            0%, 100% { transform: rotate(180deg) scaleX(1); }
-            50% { transform: rotate(180deg) scaleX(1.1); }
-        }
-
         @keyframes pixelFade {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1); }
         }
 
         .nav-links {
@@ -761,13 +743,8 @@
         <div class="nav-container">
             <a href="#home" class="logo">
                 <div class="logo-icon">
-                    <div class="wave"></div>
-                    <div class="pixels">
-                        <div class="pixel"></div>
-                        <div class="pixel"></div>
-                        <div class="pixel"></div>
-                        <div class="pixel"></div>
-                    </div>
+                    <img src="logo.jpg" alt="Bytecove Logo">
+                    <span style="color: var(--accent); font-size: 24px; font-weight: bold;">B</span>
                 </div>
                 Bytecove
             </a>
