@@ -819,24 +819,24 @@
         <div class="about-content">
             <div class="about-text">
                 <h2>Building Tomorrow's Digital Landscape</h2>
-                <p>At Bytecove, we're passionate about transforming ideas into powerful digital realities. Our team of experts combines technical excellence with creative innovation to deliver solutions that drive real business value.</p>
-                <p>We believe in pushing boundaries and embracing new technologies to stay ahead of the curve. Every project is an opportunity to create something extraordinary.</p>
+                <p>At Bytecove, I'm passionate about transforming ideas into powerful digital realities. As a dedicated software expert, I combine technical excellence with creative innovation to deliver solutions that drive real business value.</p>
+                <p>I believe in pushing boundaries and embracing new technologies to stay ahead of the curve. With personalized attention to every project and direct communication throughout the development process, your vision gets the focus it deserves.</p>
                 <div class="stats">
                     <div class="stat">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Projects Delivered</div>
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Years Experience</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">98%</div>
-                        <div class="stat-label">Client Satisfaction</div>
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Project Completion</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Team Members</div>
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Technologies</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Support Available</div>
+                        <div class="stat-number">48hr</div>
+                        <div class="stat-label">Response Time</div>
                     </div>
                 </div>
             </div>
@@ -1038,7 +1038,12 @@
 
         // Add hover effect to stats
         document.querySelectorAll('.stat-number').forEach(stat => {
-            const finalValue = parseInt(stat.textContent);
+            const originalText = stat.textContent;
+            const isHours = originalText.includes('hr');
+            const finalValue = parseInt(originalText);
+            
+            if (isNaN(finalValue)) return; // Skip non-numeric stats like "48hr"
+            
             let currentValue = 0;
             const increment = finalValue / 50;
             let hasAnimated = false;
@@ -1046,22 +1051,24 @@
             const animateValue = () => {
                 if (currentValue < finalValue) {
                     currentValue += increment;
-                    stat.textContent = Math.ceil(currentValue) + (stat.textContent.includes('+') ? '+' : stat.textContent.includes('%') ? '%' : '');
+                    stat.textContent = Math.ceil(currentValue) + (originalText.includes('+') ? '+' : originalText.includes('%') ? '%' : '');
                     requestAnimationFrame(animateValue);
                 } else {
-                    stat.textContent = stat.getAttribute('data-final') || stat.textContent;
+                    stat.textContent = stat.getAttribute('data-final') || originalText;
                 }
             };
 
             // Store original value
-            stat.setAttribute('data-final', stat.textContent);
+            stat.setAttribute('data-final', originalText);
 
             // Intersection observer for stats animation
             const statsObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !hasAnimated) {
                         hasAnimated = true;
-                        setTimeout(animateValue, 200);
+                        if (!isHours) {
+                            setTimeout(animateValue, 200);
+                        }
                     }
                 });
             }, { threshold: 0.5 });
