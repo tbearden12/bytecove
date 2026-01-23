@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Operations Platform | Bytecove Software</title>
+    <meta name="description" content="Internal operations software for project-driven service teams. Track projects, work orders, and labor in one system—without ERP overhead or rigid software constraints.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3ba3a8;
+            --primary-dark: #2a7a7e;
+            --secondary: #5eb8bc;
+            --accent: #7fd4d8;
+            --dark: #0a1628;
+            --darker: #060d1a;
+            --light: #e8f4f5;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #3ba3a8 0%, #5eb8bc 50%, #7fd4d8 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(127, 212, 216, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(59, 163, 168, 0.1);
+            border: 1px solid rgba(127, 212, 216, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 5% 5rem;
+            background: radial-gradient(ellipse at center, rgba(59, 163, 168, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(59, 163, 168, 0.2);
+            border: 1px solid rgba(127, 212, 216, 0.3);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero .subhead {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: var(--light);
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(59, 163, 168, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(59, 163, 168, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Pain Section */
+        .pain {
+            background: var(--dark);
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .pain-list {
+            list-style: none;
+        }
+
+        .pain-list li {
+            padding: 0.8rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.05rem;
+            border-bottom: 1px solid rgba(127, 212, 216, 0.1);
+        }
+
+        .pain-list li:last-child {
+            border-bottom: none;
+        }
+
+        .pain-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .pain-results {
+            background: rgba(59, 163, 168, 0.1);
+            border: 1px solid rgba(127, 212, 216, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .pain-results h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .pain-results ul {
+            list-style: none;
+        }
+
+        .pain-results li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pain-results li::before {
+            content: '!';
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+            font-weight: 700;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .solution-column h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .solution-list {
+            list-style: none;
+        }
+
+        .solution-list li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .solution-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .solution-note {
+            margin-top: 2rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        /* Features Section */
+        .features {
+            background: var(--darker);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(59, 163, 168, 0.05);
+            border: 1px solid rgba(127, 212, 216, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .features-note {
+            margin-top: 2rem;
+            text-align: center;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        /* Audience Section */
+        .audience {
+            background: var(--dark);
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .audience-item {
+            padding: 1rem 1.5rem;
+            background: rgba(59, 163, 168, 0.05);
+            border: 1px solid rgba(127, 212, 216, 0.15);
+            border-radius: 10px;
+        }
+
+        /* Differentiation Section */
+        .diff {
+            background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .diff-column h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .diff-list {
+            list-style: none;
+        }
+
+        .diff-list li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .diff-list.positive li::before {
+            content: '+';
+            position: absolute;
+            left: 0;
+            color: #50fa7b;
+            font-weight: 700;
+        }
+
+        .diff-list.negative li::before {
+            content: '-';
+            position: absolute;
+            left: 0;
+            color: #6272a4;
+            font-weight: 700;
+        }
+
+        .diff-note {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(59, 163, 168, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+        }
+
+        /* Deployment Section */
+        .deployment {
+            background: var(--darker);
+        }
+
+        .deployment-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .deployment-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(127, 212, 216, 0.1);
+        }
+
+        .deployment-list li:last-child {
+            border-bottom: none;
+        }
+
+        .deployment-list li::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .deployment-note {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Process Section */
+        .process {
+            background: var(--dark);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            right: -0.75rem;
+            width: calc(100% - 50px);
+            height: 2px;
+            background: rgba(127, 212, 216, 0.3);
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+            color: var(--white);
+        }
+
+        .process-step h4 {
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+
+        .process-note {
+            text-align: center;
+            margin-top: 2rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+            text-align: center;
+            padding: 5rem 5%;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-content .section-body {
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5% 2rem;
+            background: var(--darker);
+            border-top: 1px solid rgba(127, 212, 216, 0.1);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        .copyright {
+            color: var(--light);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--light);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .process-steps {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .process-step::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--darker);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .mobile-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .pain-grid,
+            .solution-grid,
+            .diff-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../" class="logo">
+                <div class="logo-icon">
+                    <img src="../logo.png" alt="Bytecove Logo">
+                </div>
+                Bytecove
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../">Home</a></li>
+                <li><a href="../#solutions">Solutions</a></li>
+                <li><a href="../#audience">Industries</a></li>
+                <li><a href="../#process">How It Works</a></li>
+                <li><a href="../#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Internal Operations Platform</span>
+            <h1>Internal operations software for project-driven service teams.</h1>
+            <p class="subhead">Track projects, work orders, and labor in one system—without ERP overhead or rigid software constraints.</p>
+            <div class="cta-buttons">
+                <a href="../#contact" class="btn btn-primary">See If This Fits Your Operation</a>
+                <a href="#features" class="btn btn-secondary">View Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Section -->
+    <section class="pain">
+        <div class="container">
+            <h2 class="section-title">Most teams outgrow spreadsheets long before they replace them.</h2>
+            <p class="section-body">We see the same issues across service and project-based organizations:</p>
+            <div class="pain-grid">
+                <ul class="pain-list">
+                    <li>Work orders tracked in email and Excel</li>
+                    <li>Time entered in separate systems</li>
+                    <li>No easy way to tie labor to job numbers</li>
+                    <li>Limited visibility into work in progress</li>
+                    <li>Reporting that requires manual cleanup</li>
+                </ul>
+                <div class="pain-results">
+                    <h4>These gaps create:</h4>
+                    <ul>
+                        <li>Lost work</li>
+                        <li>Poor accountability</li>
+                        <li>Labor cost blind spots</li>
+                        <li>Delayed decisions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container">
+            <h2 class="section-title">One system for work, time, and accountability.</h2>
+            <p class="section-body">Our operations platform centralizes:</p>
+            <div class="solution-grid">
+                <div class="solution-column">
+                    <h4>The platform handles:</h4>
+                    <ul class="solution-list">
+                        <li>Project tracking</li>
+                        <li>Work order management</li>
+                        <li>Time and labor entry</li>
+                        <li>Operational reporting</li>
+                    </ul>
+                </div>
+                <div class="solution-column">
+                    <h4>So you can see:</h4>
+                    <ul class="solution-list">
+                        <li>What work is open</li>
+                        <li>Who is working on what</li>
+                        <li>Where time is being spent</li>
+                        <li>How jobs are actually performing</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="solution-note">All in one place.</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Built around how your team actually works.</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Job and work order creation</h3>
+                </div>
+                <div class="feature-card">
+                    <h3>Time entry tied directly to job numbers</h3>
+                </div>
+                <div class="feature-card">
+                    <h3>Project and service workflows</h3>
+                </div>
+                <div class="feature-card">
+                    <h3>Role-based access (admin, manager, technician)</h3>
+                </div>
+                <div class="feature-card">
+                    <h3>Operational dashboards and reports</h3>
+                </div>
+                <div class="feature-card">
+                    <h3>Configurable terminology and categories</h3>
+                </div>
+                <div class="feature-card">
+                    <h3>Private deployment per organization</h3>
+                </div>
+            </div>
+            <p class="features-note">No forced templates. No generic workflows.</p>
+        </div>
+    </section>
+
+    <!-- Who It's For -->
+    <section class="audience">
+        <div class="container">
+            <h2 class="section-title">Designed for teams that manage real work.</h2>
+            <p class="section-body">This platform is ideal for:</p>
+            <div class="audience-grid">
+                <div class="audience-item">Systems integrators and automation firms</div>
+                <div class="audience-item">Electrical and specialty contractors</div>
+                <div class="audience-item">Technical service teams</div>
+                <div class="audience-item">IT service providers</div>
+                <div class="audience-item">Maintenance and facilities groups</div>
+                <div class="audience-item">Engineering and consulting firms</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentiation -->
+    <section class="diff">
+        <div class="container">
+            <h2 class="section-title">Not a ticketing system. Not accounting software. Not ERP.</h2>
+            <div class="diff-grid">
+                <div class="diff-column">
+                    <h4>This platform focuses on:</h4>
+                    <ul class="diff-list positive">
+                        <li>Internal operations</li>
+                        <li>Labor and work visibility</li>
+                        <li>Accountability</li>
+                        <li>Workflow clarity</li>
+                    </ul>
+                </div>
+                <div class="diff-column">
+                    <h4>It is not designed for:</h4>
+                    <ul class="diff-list negative">
+                        <li>Client-facing project portals</li>
+                        <li>Invoicing or payroll</li>
+                        <li>Compliance-heavy ERP workflows</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="diff-note">
+                <p>It fills the operational gap between spreadsheets and enterprise systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deployment Section -->
+    <section class="deployment">
+        <div class="container">
+            <h2 class="section-title">Deployed privately for your organization.</h2>
+            <p class="section-body">Each system is deployed and configured specifically for your team, including:</p>
+            <ul class="deployment-list">
+                <li>Your terminology and job structure</li>
+                <li>Your workflow stages</li>
+                <li>Your reporting needs</li>
+                <li>Your security requirements</li>
+            </ul>
+            <p class="deployment-note">You get a dedicated environment, not a shared generic SaaS account.</p>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">How we implement it.</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Workflow review</h4>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>System configuration</h4>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Deployment and setup</h4>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Team onboarding</h4>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h4>Ongoing support</h4>
+                </div>
+            </div>
+            <p class="process-note">This ensures the platform fits your operation instead of disrupting it.</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="section-title">Let's talk about how you track work today.</h2>
+            <p class="section-body">If your team relies on spreadsheets, email, or disconnected tools to manage jobs and labor, we can help centralize that into one system.</p>
+            <a href="../#contact" class="btn btn-primary">Book a Short Operations Review</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="../">Home</a>
+            <a href="../#solutions">Solutions</a>
+            <a href="../#audience">Industries</a>
+            <a href="../#process">How It Works</a>
+            <a href="../#contact">Contact</a>
+        </div>
+        <p class="copyright">&copy; 2025 Bytecove Software. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .process-step, .audience-item').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `all 0.6s ease ${index * 0.05}s`;
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
