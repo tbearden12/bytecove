@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FieldCalc Pro - Professional Trade Calculators | Bytecove Software</title>
+    <meta name="description" content="FieldCalc Pro provides 28 code-compliant calculators for electricians, HVAC technicians, and contractors. NEC, ASHRAE, and IRC references built in. Available on the App Store.">
+    <meta property="og:title" content="FieldCalc Pro - Professional Trade Calculators">
+    <meta property="og:description" content="28 code-compliant calculators for electricians, HVAC techs, and contractors. Built for the job site.">
+    <meta property="og:image" content="https://www.bytecovesoftware.com/fieldcalc/app-icon.jpeg">
+    <meta property="og:url" content="https://www.bytecovesoftware.com/fieldcalc/">
+    <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3ba3a8;
+            --primary-dark: #2a7a7e;
+            --secondary: #5eb8bc;
+            --accent: #7fd4d8;
+            --dark: #0a1628;
+            --darker: #060d1a;
+            --light: #e8f4f5;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #3ba3a8 0%, #5eb8bc 50%, #7fd4d8 100%);
+            --gold: #d4a843;
+            --gold-light: #e8c86e;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(127, 212, 216, 0.1);
+        }
+
+        nav.scrolled {
+            padding: 0.7rem 5%;
+            background: rgba(6, 13, 26, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(59, 163, 168, 0.1);
+            border: 1px solid rgba(127, 212, 216, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--light);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 5% 5rem;
+            background: radial-gradient(ellipse at center, rgba(59, 163, 168, 0.08) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .app-icon {
+            width: 140px;
+            height: 140px;
+            border-radius: 28px;
+            margin: 0 auto 2rem;
+            box-shadow: 0 20px 60px rgba(59, 163, 168, 0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero .subhead {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--light);
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(59, 163, 168, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(59, 163, 168, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Trade Cards */
+        .trades {
+            background: var(--dark);
+        }
+
+        .trades-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .trade-card {
+            background: rgba(59, 163, 168, 0.05);
+            border: 1px solid rgba(127, 212, 216, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .trade-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .trade-card h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .trade-card .trade-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .trade-card .trade-color-electrical { color: #4A90D9; }
+        .trade-card .trade-color-hvac { color: #2BBCB3; }
+        .trade-card .trade-color-construction { color: #E8913A; }
+
+        .trade-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .trade-card ul li {
+            padding: 0.4rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .trade-card ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .trade-card .free-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(127, 212, 216, 0.15);
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            margin-left: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .trade-card .pro-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--gold);
+            background: rgba(212, 168, 67, 0.15);
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            margin-left: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Features */
+        .features {
+            background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            padding: 1.5rem;
+            background: rgba(59, 163, 168, 0.05);
+            border: 1px solid rgba(127, 212, 216, 0.15);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+        }
+
+        .feature-card h4 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        /* Pricing */
+        .pricing {
+            background: var(--darker);
+            text-align: center;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card {
+            padding: 2.5rem 2rem;
+            background: rgba(59, 163, 168, 0.05);
+            border: 1px solid rgba(127, 212, 216, 0.2);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--gold);
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: 'Best Value';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--dark);
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .pricing-card h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .period {
+            font-size: 0.95rem;
+            opacity: 0.7;
+        }
+
+        .pricing-card .savings {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .pricing-note {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5% 2rem;
+            background: var(--darker);
+            border-top: 1px solid rgba(127, 212, 216, 0.1);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        .copyright {
+            color: var(--light);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--darker);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .mobile-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .trades-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <img src="../logo.png" alt="Bytecove Logo">
+                </div>
+                Bytecove
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Home</a></li>
+                <li><a href="#calculators">Calculators</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="privacy/">Privacy Policy</a></li>
+                <li><a href="terms/">Terms of Service</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <img src="app-icon.jpeg" alt="FieldCalc Pro App Icon" class="app-icon">
+            <h1>FieldCalc Pro</h1>
+            <p class="subhead">28 code-compliant calculators for electricians, HVAC technicians, and contractors. NEC, ASHRAE, and IRC references built in. Designed for the job site.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Download on the App Store</a>
+                <a href="#calculators" class="btn btn-secondary">See All Calculators</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculators Section -->
+    <section class="trades" id="calculators">
+        <div class="container">
+            <h2 class="section-title">28 professional calculators across three trades.</h2>
+            <p class="section-body">Every calculator references the applicable code standard. Results you can trust on the job site, offline, with no account required.</p>
+            <div class="trades-grid">
+                <!-- Electrical -->
+                <div class="trade-card">
+                    <div class="trade-icon trade-color-electrical">&#9889;</div>
+                    <h3>Electrical</h3>
+                    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 0.5rem;">NEC code references</p>
+                    <ul>
+                        <li>Ohm's Law <span class="free-label">Free</span></li>
+                        <li>Voltage Drop <span class="free-label">Free</span></li>
+                        <li>Wire Sizing <span class="free-label">Free</span></li>
+                        <li>Load Calculator <span class="pro-label">Pro</span></li>
+                        <li>Conduit Fill <span class="pro-label">Pro</span></li>
+                        <li>Motor FLA <span class="pro-label">Pro</span></li>
+                        <li>Transformer Sizing <span class="pro-label">Pro</span></li>
+                        <li>Breaker &amp; Fuse Sizing <span class="pro-label">Pro</span></li>
+                        <li>Power Factor Correction <span class="pro-label">Pro</span></li>
+                    </ul>
+                </div>
+
+                <!-- HVAC -->
+                <div class="trade-card">
+                    <div class="trade-icon trade-color-hvac">&#10052;</div>
+                    <h3>HVAC</h3>
+                    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 0.5rem;">ASHRAE code references</p>
+                    <ul>
+                        <li>BTU Heat Load <span class="free-label">Free</span></li>
+                        <li>Duct Sizing <span class="free-label">Free</span></li>
+                        <li>CFM Airflow <span class="free-label">Free</span></li>
+                        <li>Equipment Sizing <span class="pro-label">Pro</span></li>
+                        <li>Refrigerant Charge <span class="pro-label">Pro</span></li>
+                        <li>Ventilation Rate <span class="pro-label">Pro</span></li>
+                        <li>Psychrometric <span class="pro-label">Pro</span></li>
+                        <li>Heat Exchanger <span class="pro-label">Pro</span></li>
+                        <li>Cooling Tower <span class="pro-label">Pro</span></li>
+                    </ul>
+                </div>
+
+                <!-- Construction -->
+                <div class="trade-card">
+                    <div class="trade-icon trade-color-construction">&#9881;</div>
+                    <h3>Construction</h3>
+                    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 0.5rem;">IRC &amp; ACI code references</p>
+                    <ul>
+                        <li>Concrete Volume <span class="free-label">Free</span></li>
+                        <li>Lumber Framing <span class="free-label">Free</span></li>
+                        <li>Drywall Estimator <span class="free-label">Free</span></li>
+                        <li>Roof Pitch &amp; Area <span class="pro-label">Pro</span></li>
+                        <li>Gravel &amp; Aggregate <span class="pro-label">Pro</span></li>
+                        <li>Brick &amp; Block <span class="pro-label">Pro</span></li>
+                        <li>Rebar Spacing <span class="pro-label">Pro</span></li>
+                        <li>Staircase Calculator <span class="pro-label">Pro</span></li>
+                        <li>Tile Estimator <span class="pro-label">Pro</span></li>
+                        <li>Paint Coverage <span class="pro-label">Pro</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Built for the field, not the office.</h2>
+            <p class="section-body">FieldCalc Pro is designed for tradespeople who need accurate answers on site, fast.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>100% Offline</h4>
+                    <p>All calculations run locally on your device. No internet connection required, no account needed.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Project Organization</h4>
+                    <p>Save calculations to projects organized by job. Track every result by client, job number, and address.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>PDF Reports</h4>
+                    <p>Generate professional reports with your company name and license number. Share or print from the job site.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Code References</h4>
+                    <p>Every calculator cites the applicable standard: NEC for electrical, ASHRAE for HVAC, IRC and ACI for construction.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Imperial &amp; Metric</h4>
+                    <p>Switch between unit systems with one tap. All inputs and outputs convert automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Job Site Ready</h4>
+                    <p>Large touch targets, haptic feedback, and dark mode. Designed for gloves and sunlight.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple pricing. No hidden fees.</h2>
+            <p class="section-body">Start free with 9 calculators. Upgrade to Pro for full access.</p>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Monthly</h3>
+                    <div class="price">$9.99</div>
+                    <div class="period">per month</div>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Yearly</h3>
+                    <div class="price">$99.99</div>
+                    <div class="period">per year</div>
+                    <div class="savings">Save 17%</div>
+                </div>
+            </div>
+            <p class="pricing-note">Subscriptions auto-renew. Cancel anytime in your Apple ID settings.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/">Bytecove Home</a>
+                <a href="#calculators">Calculators</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="privacy/">Privacy Policy</a>
+                <a href="terms/">Terms of Service</a>
+            </div>
+            <p class="copyright">&copy; 2025 Bytecove Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.trade-card, .feature-card, .pricing-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
