@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a0a0a 0%, #2d1515 50%, #1a0a0a 100%);
+            font-family: 'Lato', sans-serif;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        /* Floating Hearts Background */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            opacity: 0.6;
+            animation: float-up linear infinite;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-110vh) rotate(360deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Start Screen */
+        .start-screen {
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .start-screen h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: #ff6b8a;
+            text-shadow: 0 0 30px rgba(255, 107, 138, 0.5);
+            margin-bottom: 30px;
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #ff6b8a 0%, #ff8a9b 100%);
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-family: 'Lato', sans-serif;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(255, 107, 138, 0.4);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(255, 107, 138, 0.6);
+        }
+
+        /* Slideshow Container */
+        .slideshow-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Photo Frame */
+        .photo-frame {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #2a1a1a 0%, #1a0a0a 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.5),
+                0 0 60px rgba(255, 107, 138, 0.2),
+                inset 0 0 100px rgba(255, 107, 138, 0.05);
+            border: 3px solid rgba(255, 107, 138, 0.3);
+        }
+
+        .photo-frame img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .photo-frame img.active {
+            opacity: 1;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            max-width: 600px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b8a, #ff8a9b);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* Navigation Dots */
+        .nav-dots {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #ff6b8a;
+            transform: scale(1.2);
+            box-shadow: 0 0 15px rgba(255, 107, 138, 0.6);
+        }
+
+        .dot:hover {
+            background: rgba(255, 107, 138, 0.7);
+        }
+
+        /* Final Message */
+        .final-message {
+            display: none;
+            text-align: center;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .final-message h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            color: #ff6b8a;
+            text-shadow: 0 0 40px rgba(255, 107, 138, 0.6);
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .heart-big {
+            font-size: 5rem;
+            animation: heartbeat 1s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+        }
+
+        /* Audio Control */
+        .audio-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 107, 138, 0.2);
+            border: 2px solid rgba(255, 107, 138, 0.4);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .audio-control:hover {
+            background: rgba(255, 107, 138, 0.4);
+            transform: scale(1.1);
+        }
+
+        .audio-control svg {
+            width: 24px;
+            height: 24px;
+            fill: #ff6b8a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .start-screen h1, .final-message h1 {
+                font-size: 2.8rem;
+            }
+
+            .photo-frame {
+                max-width: 95%;
+            }
+
+            .heart-big {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="hearts"></div>
+
+    <!-- Hidden YouTube Player for Audio -->
+    <div id="youtubePlayer" style="position: fixed; top: -1000px; left: -1000px; pointer-events: none;">
+        <iframe id="ytPlayer" width="1" height="1"
+            src="https://www.youtube.com/embed/4aeETEoNfOg?enablejsapi=1&autoplay=0&loop=1&playlist=4aeETEoNfOg"
+            frameborder="0"
+            allow="autoplay; encrypted-media">
+        </iframe>
+    </div>
+
+    <!-- Audio Toggle Button -->
+    <div class="audio-control" id="audioToggle" title="Toggle Music">
+        <svg id="audioIcon" viewBox="0 0 24 24">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <!-- Start Screen -->
+        <div class="start-screen" id="startScreen">
+            <h1>A Little Something For You...</h1>
+            <button class="start-btn" id="startBtn">Click to Begin</button>
+        </div>
+
+        <!-- Valentine Question Screen -->
+        <div class="valentine-question" id="valentineQuestion" style="display: none; text-align: center; animation: fadeIn 1.5s ease-out;">
+            <h1 style="font-family: 'Great Vibes', cursive; font-size: 4rem; color: #ff6b8a; text-shadow: 0 0 30px rgba(255, 107, 138, 0.5); margin-bottom: 40px;">Will You Be My Valentine?</h1>
+            <div class="heart-big" style="font-size: 4rem; margin-bottom: 40px; animation: heartbeat 1s ease-in-out infinite;">❤️</div>
+            <button class="start-btn" id="yesBtn" style="font-size: 1.5rem; padding: 20px 60px;">Yes!</button>
+        </div>
+
+        <!-- Slideshow -->
+        <div class="slideshow-container" id="slideshow">
+            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: #ff6b8a; text-shadow: 0 0 30px rgba(255, 107, 138, 0.5); margin-bottom: 30px; animation: pulse 2s ease-in-out infinite;">Happy Valentine's Day!</h2>
+            <div class="photo-frame" id="photoFrame">
+                <!-- Images will be inserted here by JavaScript -->
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="nav-dots" id="navDots">
+                <!-- Dots will be inserted here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Final Message -->
+        <div class="final-message" id="finalMessage">
+            <h1>I Love You</h1>
+            <div class="heart-big">❤️</div>
+            <h2 style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: #ff8a9b; margin-top: 30px; text-shadow: 0 0 20px rgba(255, 138, 155, 0.5);">Happy Valentine's Day</h2>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CONFIGURATION - Add your image filenames here
+        // ============================================
+        const images = [
+            'images/A855D19F-E3DF-44B3-BF61-BBEAD4399E40.JPG',
+            'images/D17E2AD9-15E8-4011-9BF8-8A98C65C7545.JPEG',
+            'images/emilyhigdonphotography.JPEG',
+            'images/IMG_1914.jpeg',
+            'images/IMG_1915.jpeg',
+            'images/IMG_1916.jpeg',
+            'images/IMG_4104.jpeg',
+            'images/IMG_5878.JPG',
+            'images/IMG_8243.jpeg',
+            'images/IMG_8347.jpeg',
+            'images/IMG_8550.jpeg',
+            'images/IMG_8823.jpeg',
+            'images/IMG_8845.jpeg',
+            'images/IMG_9106.jpeg',
+            'images/IMG_9253.JPG',
+            'images/IMG_9254.JPEG',
+            'images/IMG_9485.jpeg',
+            'images/IMG_9638.jpeg',
+            'images/Tezza-2404.JPEG',
+            'images/Tezza-4289.jpeg'
+        ];
+
+        const SLIDE_DURATION = 5000; // Time per slide in milliseconds (5 seconds)
+
+        // ============================================
+        // Floating Hearts
+        // ============================================
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = ['❤️', '💕', '💗', '💖', '💘'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            document.getElementById('hearts').appendChild(heart);
+
+            setTimeout(() => heart.remove(), 15000);
+        }
+
+        setInterval(createHeart, 500);
+
+        // ============================================
+        // YouTube Player API
+        // ============================================
+        let player;
+        let isPlaying = false;
+        const audioToggle = document.getElementById('audioToggle');
+        const audioIcon = document.getElementById('audioIcon');
+
+        // Load YouTube API
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('ytPlayer', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            player.setVolume(50);
+        }
+
+        // ============================================
+        // Slideshow Logic
+        // ============================================
+        let currentSlide = 0;
+        let slideInterval;
+        let progressInterval;
+
+        // Start Button - Shows Valentine Question
+        document.getElementById('startBtn').addEventListener('click', () => {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('valentineQuestion').style.display = 'block';
+        });
+
+        // Yes Button - Starts Slideshow with Music
+        document.getElementById('yesBtn').addEventListener('click', () => {
+            document.getElementById('valentineQuestion').style.display = 'none';
+            document.getElementById('slideshow').style.display = 'flex';
+
+            // Start playing music
+            if (player && player.playVideo) {
+                player.playVideo();
+                isPlaying = true;
+            }
+
+            initSlideshow();
+        });
+
+        // Audio Toggle
+        audioToggle.addEventListener('click', () => {
+            if (!player) return;
+
+            if (isPlaying) {
+                player.pauseVideo();
+                isPlaying = false;
+                audioIcon.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+            } else {
+                player.playVideo();
+                isPlaying = true;
+                audioIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+            }
+        });
+
+        function initSlideshow() {
+            const photoFrame = document.getElementById('photoFrame');
+            const navDots = document.getElementById('navDots');
+
+            // Create image elements
+            images.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Memory ${index + 1}`;
+                if (index === 0) img.classList.add('active');
+                photoFrame.appendChild(img);
+
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                navDots.appendChild(dot);
+            });
+
+            startSlideshow();
+        }
+
+        function startSlideshow() {
+            resetProgress();
+            slideInterval = setInterval(nextSlide, SLIDE_DURATION);
+        }
+
+        function resetProgress() {
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = '0%';
+
+            let progress = 0;
+            clearInterval(progressInterval);
+            progressInterval = setInterval(() => {
+                progress += 100 / (SLIDE_DURATION / 100);
+                progressBar.style.width = progress + '%';
+            }, 100);
+        }
+
+        function nextSlide() {
+            const allImages = document.querySelectorAll('.photo-frame img');
+            const allDots = document.querySelectorAll('.dot');
+
+            allImages[currentSlide].classList.remove('active');
+            allDots[currentSlide].classList.remove('active');
+
+            currentSlide++;
+
+            if (currentSlide >= images.length) {
+                // Show final message
+                clearInterval(slideInterval);
+                clearInterval(progressInterval);
+                document.getElementById('slideshow').style.display = 'none';
+                document.getElementById('finalMessage').style.display = 'block';
+                return;
+            }
+
+            allImages[currentSlide].classList.add('active');
+            allDots[currentSlide].classList.add('active');
+            resetProgress();
+        }
+
+        function goToSlide(index) {
+            const allImages = document.querySelectorAll('.photo-frame img');
+            const allDots = document.querySelectorAll('.dot');
+
+            allImages[currentSlide].classList.remove('active');
+            allDots[currentSlide].classList.remove('active');
+
+            currentSlide = index;
+
+            allImages[currentSlide].classList.add('active');
+            allDots[currentSlide].classList.add('active');
+
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, SLIDE_DURATION);
+            resetProgress();
+        }
+    </script>
+</body>
+</html>
