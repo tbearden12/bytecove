@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /for-you/
+
+Sitemap: https://www.bytecovesoftware.com/sitemap.xml
