@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Bytecove Software</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Return to Bytecove Software's homepage or explore our solutions.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://www.bytecovesoftware.com/">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3ba3a8;
+            --accent: #7fd4d8;
+            --dark: #0a1628;
+            --darker: #060d1a;
+            --light: #e8f4f5;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #3ba3a8 0%, #5eb8bc 50%, #7fd4d8 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            padding: 1rem 5%;
+            background: rgba(6, 13, 26, 0.95);
+            border-bottom: 1px solid rgba(127, 212, 216, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(59, 163, 168, 0.1);
+            border: 1px solid rgba(127, 212, 216, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .error-content {
+            max-width: 600px;
+        }
+
+        .error-code {
+            font-size: clamp(5rem, 15vw, 8rem);
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .error-content h1 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .error-content p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .error-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .error-links a {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(59, 163, 168, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(59, 163, 168, 0.4);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(127, 212, 216, 0.3);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background: rgba(59, 163, 168, 0.1);
+            border-color: var(--accent);
+        }
+
+        footer {
+            padding: 2rem 5%;
+            background: var(--darker);
+            border-top: 1px solid rgba(127, 212, 216, 0.1);
+            text-align: center;
+        }
+
+        .copyright {
+            color: var(--light);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 480px) {
+            .error-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .error-links a {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <img src="/logo.png" alt="Bytecove Logo" width="45" height="45">
+                </div>
+                Bytecove
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="error-content">
+            <div class="error-code">404</div>
+            <h1>Page not found</h1>
+            <p>The page you're looking for doesn't exist or has been moved. Here are some helpful links to get you back on track.</p>
+            <div class="error-links">
+                <a href="/" class="btn-primary">Back to Homepage</a>
+                <a href="/operations/" class="btn-outline">Operations Platform</a>
+                <a href="/fieldcalc/" class="btn-outline">FieldCalc Pro</a>
+                <a href="/plateflow/" class="btn-outline">PlateFlow</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="copyright">&copy; 2025 Bytecove Software. All rights reserved.</p>
+    </footer>
+</body>
+</html>

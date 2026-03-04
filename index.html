@@ -7,6 +7,8 @@
     <meta name="description" content="Bytecove Software designs and deploys purpose-built internal systems that streamline operations, automate workflows, and improve decision-making for service-based organizations.">
     <meta name="keywords" content="Bytecove Software, custom software development, internal systems, workflow automation, operations software, work order tracking, project management software, service business software">
     <link rel="canonical" href="https://www.bytecovesoftware.com/">
+    <meta name="geo.region" content="US">
+    <link rel="preconnect" href="https://formspree.io">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -81,6 +83,72 @@
       "@type": "WebSite",
       "name": "Bytecove Software",
       "url": "https://www.bytecovesoftware.com"
+    }
+    </script>
+
+    <!-- Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.bytecovesoftware.com/"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does Bytecove Software do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bytecove Software designs and deploys purpose-built internal systems that streamline operations, automate workflows, and improve decision-making for service-based organizations. We also build mobile apps for professionals in the field."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What industries does Bytecove serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bytecove serves engineering and technical service firms, contractors and specialty trades, IT and managed service providers, operations and maintenance teams, and consulting and professional service firms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Bytecove different from off-the-shelf software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unlike generic SaaS or ERP platforms, Bytecove builds lightweight, purpose-built systems configured to your terminology and workflows. Each system is deployed privately for your organization and designed for long-term use."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What apps does Bytecove offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bytecove offers FieldCalc Pro, a professional trade calculator app with 28 code-compliant calculators for electricians, HVAC technicians, and contractors, and PlateFlow, an AI-powered meal planning app with personalized plans and nutrition tracking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get started with Bytecove?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Contact us through our website to schedule a workflow review. We'll review how you currently track work, design a system around your actual process, deploy and configure your platform, then train your team and support adoption."
+          }
+        }
+      ]
     }
     </script>
 
@@ -832,6 +900,115 @@
             }
         }
 
+        /* Accessibility */
+        .skip-to-content {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .skip-to-content:focus {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: auto;
+            height: auto;
+            padding: 1rem;
+            background: var(--dark);
+            color: var(--accent);
+            z-index: 9999;
+            border: 2px solid var(--accent);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--dark);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(127, 212, 216, 0.1);
+            padding: 1.5rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h3 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item p {
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        /* Cross-Links Section */
+        .cross-links {
+            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+            text-align: center;
+        }
+
+        .cross-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cross-link-card {
+            padding: 2rem;
+            background: rgba(59, 163, 168, 0.05);
+            border: 1px solid rgba(127, 212, 216, 0.2);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--light);
+            display: block;
+        }
+
+        .cross-link-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .cross-link-card h3 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .cross-link-card p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
         /* Loading Animation */
         .loader {
             position: fixed;
@@ -882,17 +1059,19 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
     <!-- Loader -->
     <div class="loader" id="loader">
         <div class="loader-wave"></div>
     </div>
 
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav id="navbar" aria-label="Main navigation">
         <div class="nav-container">
             <a href="#home" class="logo">
                 <div class="logo-icon">
-                    <img src="logo.png" alt="Bytecove Logo">
+                    <img src="logo.png" alt="Bytecove Logo" width="45" height="45">
                 </div>
                 Bytecove
             </a>
@@ -919,6 +1098,8 @@
             </div>
         </div>
     </nav>
+
+    <main id="main-content">
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -1081,21 +1262,78 @@
             <p class="section-body">Tell us about your current workflow and challenges.</p>
             <form class="contact-form" id="contactForm" action="https://formspree.io/f/xdkdwwnb" method="POST">
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="Your Name" required>
+                    <label for="contact-name" class="sr-only">Your Name</label>
+                    <input type="text" id="contact-name" name="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Your Email" required>
+                    <label for="contact-email" class="sr-only">Your Email</label>
+                    <input type="email" id="contact-email" name="email" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="company" placeholder="Company Name">
+                    <label for="contact-company" class="sr-only">Company Name</label>
+                    <input type="text" id="contact-company" name="company" placeholder="Company Name">
                 </div>
                 <div class="form-group">
-                    <textarea name="message" placeholder="Tell us about how you currently track work and what challenges you're facing..." required></textarea>
+                    <label for="contact-message" class="sr-only">Message</label>
+                    <textarea id="contact-message" name="message" placeholder="Tell us about how you currently track work and what challenges you're facing..." required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Send Message</button>
             </form>
         </div>
     </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>What does Bytecove Software do?</h3>
+                    <p>Bytecove Software designs and deploys purpose-built internal systems that streamline operations, automate workflows, and improve decision-making for service-based organizations. We also build mobile apps for professionals in the field.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What industries does Bytecove serve?</h3>
+                    <p>We work with engineering and technical service firms, contractors and specialty trades, IT and managed service providers, operations and maintenance teams, and consulting and professional service firms.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How is Bytecove different from off-the-shelf software?</h3>
+                    <p>Unlike generic SaaS or ERP platforms, Bytecove builds lightweight, purpose-built systems configured to your terminology and workflows. Each system is deployed privately for your organization and designed for long-term use.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What apps does Bytecove offer?</h3>
+                    <p>Bytecove offers FieldCalc Pro, a professional trade calculator app with 28 code-compliant calculators for electricians, HVAC technicians, and contractors, and PlateFlow, an AI-powered meal planning app with personalized plans and nutrition tracking.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I get started with Bytecove?</h3>
+                    <p>Contact us through our website to schedule a workflow review. We'll review how you currently track work, design a system around your actual process, deploy and configure your platform, then train your team and support adoption.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Apps Cross-Links -->
+    <section class="cross-links">
+        <div class="container">
+            <h2 class="section-title">Our Apps</h2>
+            <p class="section-body" style="text-align: center;">Purpose-built tools for professionals in the field and at home.</p>
+            <div class="cross-links-grid">
+                <a href="fieldcalc/" class="cross-link-card">
+                    <h3>FieldCalc Pro</h3>
+                    <p>28 code-compliant calculators for electricians, HVAC technicians, and contractors. NEC, ASHRAE, and IRC references built in.</p>
+                </a>
+                <a href="plateflow/" class="cross-link-card">
+                    <h3>PlateFlow</h3>
+                    <p>AI-powered meal planning with personalized meal plans, smart grocery lists, and nutrition tracking.</p>
+                </a>
+                <a href="operations/" class="cross-link-card">
+                    <h3>Operations Platform</h3>
+                    <p>Internal operations software for project-driven service teams. Track projects, work orders, and labor in one system.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    </main>
 
     <!-- Footer -->
     <footer>
