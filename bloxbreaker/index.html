@@ -33,30 +33,11 @@
       "applicationCategory": "GameApplication",
       "operatingSystem": "iOS",
       "offers": [
-        {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD",
-          "description": "Free to play"
-        },
-        {
-          "@type": "Offer",
-          "price": "0.99",
-          "priceCurrency": "USD",
-          "description": "Premium monthly subscription"
-        },
-        {
-          "@type": "Offer",
-          "price": "9.99",
-          "priceCurrency": "USD",
-          "description": "Premium yearly subscription"
-        }
+        { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free to play" },
+        { "@type": "Offer", "price": "0.99", "priceCurrency": "USD", "description": "Premium monthly subscription" },
+        { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Premium yearly subscription" }
       ],
-      "author": {
-        "@type": "Organization",
-        "name": "Bytecove Software",
-        "url": "https://www.bytecovesoftware.com"
-      }
+      "author": { "@type": "Organization", "name": "Bytecove Software", "url": "https://www.bytecovesoftware.com" }
     }
     </script>
 
@@ -66,24 +47,9 @@
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.bytecovesoftware.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Solutions",
-          "item": "https://www.bytecovesoftware.com/#solutions"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Blox Breaker",
-          "item": "https://www.bytecovesoftware.com/bloxbreaker/"
-        }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.bytecovesoftware.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://www.bytecovesoftware.com/#solutions" },
+        { "@type": "ListItem", "position": 3, "name": "Blox Breaker", "item": "https://www.bytecovesoftware.com/bloxbreaker/" }
       ]
     }
     </script>
@@ -94,44 +60,16 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is Blox Breaker?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Blox Breaker is a neon-fueled block-breaking arcade game for iOS. Smash through 400+ levels across 8 unique worlds, collect power-ups, customize your ball and effects, and compete in daily challenges and endless mode."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is Blox Breaker free to play?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! Blox Breaker is free to download and play. The first 5 worlds (250 levels) are available for free. Premium unlocks 3 additional worlds, exclusive power-ups, 2x coin and gem earnings, a free continue per game, and a starter power-up pack."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What do I get with Premium?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Premium includes 5 exclusive power-ups (Splash, Piercing, Lightning, Mega Bomb, and 2x Pickups), 3 premium worlds (Volcanic Core, Frozen Citadel, and Shadow Realm), 2x coins and gems earnings, a free continue per game, and a starter power-up pack. Monthly is $0.99/mo and Yearly is $9.99/yr."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Blox Breaker require an internet connection?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No! Blox Breaker works completely offline. All game data is stored locally on your device. An internet connection is only needed for purchasing subscriptions or restoring purchases through the App Store."
-          }
-        }
+        { "@type": "Question", "name": "What is Blox Breaker?", "acceptedAnswer": { "@type": "Answer", "text": "Blox Breaker is a neon-fueled block-breaking arcade game for iOS. Smash through 400+ levels across 8 unique worlds, collect power-ups, customize your ball and effects, and compete in daily challenges and endless mode." } },
+        { "@type": "Question", "name": "Is Blox Breaker free to play?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! Blox Breaker is free to download and play. The first 5 worlds (250 levels) are available for free. Premium unlocks 3 additional worlds, exclusive power-ups, 2x coin and gem earnings, a free continue per game, and a starter power-up pack." } },
+        { "@type": "Question", "name": "What do I get with Premium?", "acceptedAnswer": { "@type": "Answer", "text": "Premium includes 5 exclusive power-ups (Splash, Piercing, Lightning, Mega Bomb, and 2x Pickups), 3 premium worlds (Volcanic Core, Frozen Citadel, and Shadow Realm), 2x coins and gems earnings, a free continue per game, and a starter power-up pack. Monthly is $0.99/mo and Yearly is $9.99/yr." } },
+        { "@type": "Question", "name": "Does Blox Breaker require an internet connection?", "acceptedAnswer": { "@type": "Answer", "text": "No! Blox Breaker works completely offline. All game data is stored locally on your device. An internet connection is only needed for purchasing subscriptions or restoring purchases through the App Store." } }
       ]
     }
     </script>
 
     <style>
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -151,6 +89,8 @@
             --light: #e0f7fa;
             --white: #ffffff;
             --gradient: linear-gradient(135deg, #00e5ff 0%, #bf5af2 50%, #ff2d78 100%);
+            --container-wide: 1100px;
+            --container-narrow: 800px;
         }
 
         body {
@@ -161,6 +101,13 @@
             overflow-x: hidden;
         }
 
+        /* Reusable container */
+        .container {
+            max-width: var(--container-wide);
+            margin: 0 auto;
+            width: 100%;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -169,6 +116,7 @@
             padding: 1rem 5%;
             background: rgba(6, 8, 16, 0.95);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 229, 255, 0.2);
         }
@@ -195,6 +143,7 @@
             width: 36px;
             height: 36px;
             border-radius: 8px;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.6), 0 0 30px rgba(191, 90, 242, 0.3);
         }
 
         .nav-links {
@@ -214,39 +163,70 @@
             color: var(--primary);
         }
 
-        /* Hero Section */
+        /* ========== HERO ========== */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 6rem 5% 4rem;
-            background: radial-gradient(ellipse at 30% 50%, rgba(0, 229, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(ellipse at 70% 50%, rgba(191, 90, 242, 0.1) 0%, transparent 50%);
+            padding: 7rem 5% 4rem;
+            background: radial-gradient(ellipse at 50% 30%, rgba(0, 229, 255, 0.12) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 70%, rgba(191, 90, 242, 0.08) 0%, transparent 50%);
         }
 
         .hero-content {
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            max-width: var(--container-narrow);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .hero-app-icon {
+            width: 160px;
+            height: 160px;
+            border-radius: 36px;
+            box-shadow: 0 0 40px rgba(0, 229, 255, 0.35), 0 0 80px rgba(191, 90, 242, 0.2), 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .hero-app-icon:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
             align-items: center;
         }
 
         .hero-text h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 800;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1.1;
         }
 
-        .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .hero-tagline {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-text .hero-desc {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.85;
+            max-width: 600px;
+            line-height: 1.7;
         }
 
         .app-store-btn {
@@ -255,68 +235,23 @@
         }
 
         .app-store-btn:hover {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .app-store-btn img {
-            height: 50px;
+            height: 60px;
         }
 
-        .hero-image {
-            display: flex;
-            justify-content: center;
-        }
-
-        .phone-mockup {
-            width: 280px;
-            height: 560px;
-            background: linear-gradient(145deg, #1a1a2e, #0a0e1a);
-            border-radius: 40px;
-            padding: 10px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 80px rgba(0, 229, 255, 0.15), 0 0 80px rgba(191, 90, 242, 0.1);
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, #0a0e1a 0%, #101428 100%);
-            border-radius: 32px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .phone-screen .app-icon-display {
-            width: 120px;
-            height: 120px;
-            border-radius: 24px;
-            box-shadow: 0 0 40px rgba(0, 229, 255, 0.3);
-        }
-
-        .phone-screen .screen-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 6rem 5%;
-            background: var(--dark);
+        /* ========== SHARED SECTION STYLES ========== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
         .section-title {
-            text-align: center;
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -324,17 +259,19 @@
         }
 
         .section-subtitle {
-            text-align: center;
             font-size: 1.1rem;
-            margin-bottom: 4rem;
             opacity: 0.8;
         }
 
+        /* ========== FEATURES ========== */
+        .features {
+            padding: 6rem 5%;
+            background: var(--dark);
+        }
+
         .features-grid {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
@@ -366,19 +303,18 @@
 
         .feature-card p {
             opacity: 0.8;
+            font-size: 0.95rem;
         }
 
-        /* Worlds Section */
+        /* ========== WORLDS ========== */
         .worlds {
             padding: 6rem 5%;
             background: var(--darker);
         }
 
         .worlds-grid {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
         }
 
@@ -386,7 +322,7 @@
             background: rgba(0, 229, 255, 0.03);
             border: 1px solid rgba(0, 229, 255, 0.12);
             border-radius: 16px;
-            padding: 1.5rem;
+            padding: 1.5rem 1rem;
             text-align: center;
             transition: all 0.3s;
         }
@@ -408,17 +344,17 @@
 
         .world-icon {
             font-size: 2.5rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
         }
 
         .world-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
+            font-size: 1.05rem;
+            margin-bottom: 0.2rem;
             color: var(--white);
         }
 
         .world-card p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.7;
         }
 
@@ -426,33 +362,34 @@
             display: inline-block;
             background: var(--accent);
             color: var(--white);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 700;
             padding: 2px 8px;
             border-radius: 10px;
             margin-top: 0.5rem;
             letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
-        /* Pricing Section */
+        /* ========== PRICING ========== */
         .pricing {
             padding: 6rem 5%;
             background: var(--dark);
         }
 
         .pricing-cards {
-            max-width: 700px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
+            max-width: 680px;
+            margin: 0 auto;
         }
 
         .pricing-card {
             background: rgba(0, 229, 255, 0.04);
             border: 1px solid rgba(0, 229, 255, 0.15);
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 2.5rem 2rem;
             text-align: center;
             transition: all 0.3s;
         }
@@ -460,11 +397,11 @@
         .pricing-card.featured {
             border-color: var(--neon-green);
             background: rgba(57, 255, 20, 0.06);
-            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.1);
         }
 
         .pricing-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 0.5rem;
             color: var(--white);
         }
@@ -496,7 +433,7 @@
 
         .pricing-features {
             list-style: none;
-            margin: 1.5rem 0;
+            margin: 1.5rem 0 0;
             text-align: left;
         }
 
@@ -504,6 +441,7 @@
             padding: 0.5rem 0;
             padding-left: 1.5rem;
             position: relative;
+            font-size: 0.95rem;
         }
 
         .pricing-features li::before {
@@ -514,44 +452,19 @@
             font-weight: bold;
         }
 
-        /* Accessibility */
-        .skip-to-content {
-            position: absolute;
-            left: -9999px;
-            top: auto;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-        }
-
-        .skip-to-content:focus {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            width: auto;
-            height: auto;
-            padding: 1rem;
-            background: var(--dark);
-            color: var(--primary);
-            z-index: 9999;
-            border: 2px solid var(--primary);
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        /* FAQ Section */
+        /* ========== FAQ ========== */
         .faq {
             padding: 6rem 5%;
             background: var(--darker);
         }
 
-        .faq .section-title {
-            text-align: left;
+        .faq .section-header {
+            text-align: center;
         }
 
         .faq-list {
-            max-width: 800px;
-            margin: 2rem auto 0;
+            max-width: var(--container-narrow);
+            margin: 0 auto;
         }
 
         .faq-item {
@@ -574,7 +487,7 @@
             line-height: 1.7;
         }
 
-        /* Cross-Links Section */
+        /* ========== CROSS-LINKS ========== */
         .cross-links {
             padding: 6rem 5%;
             background: var(--dark);
@@ -583,12 +496,10 @@
 
         .cross-links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
-            margin-top: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 650px;
+            margin: 0 auto;
         }
 
         .cross-link-card {
@@ -617,7 +528,7 @@
             opacity: 0.8;
         }
 
-        /* Footer */
+        /* ========== FOOTER ========== */
         footer {
             padding: 3rem 5%;
             background: var(--darker);
@@ -638,6 +549,7 @@
             text-decoration: none;
             opacity: 0.8;
             transition: opacity 0.3s;
+            font-size: 0.95rem;
         }
 
         .footer-links a:hover {
@@ -650,33 +562,91 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive */
+        /* ========== ACCESSIBILITY ========== */
+        .skip-to-content {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .skip-to-content:focus {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: auto;
+            height: auto;
+            padding: 1rem;
+            background: var(--dark);
+            color: var(--primary);
+            z-index: 9999;
+            border: 2px solid var(--primary);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .worlds-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-image {
-                order: -1;
-            }
-
-            .phone-mockup {
-                width: 220px;
-                height: 440px;
-            }
-
-            .phone-screen .app-icon-display {
-                width: 90px;
-                height: 90px;
-            }
-
             .nav-links {
                 display: none;
             }
 
-            .pricing-card.featured {
-                transform: scale(1);
+            .hero-app-icon {
+                width: 120px;
+                height: 120px;
+                border-radius: 28px;
+            }
+
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+
+            .hero-text .hero-desc {
+                font-size: 1rem;
+            }
+
+            .app-store-btn img {
+                height: 52px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .worlds-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+                max-width: 380px;
+            }
+
+            .cross-links-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .worlds-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -705,146 +675,154 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
+            <img src="app-icon.png" alt="Blox Breaker App Icon" class="hero-app-icon">
             <div class="hero-text">
-                <h1>Neon Block-Breaking Adventure</h1>
-                <p>Smash through 400+ levels across 8 stunning worlds. Collect power-ups, customize your ball with glow effects and skins, conquer daily challenges, and dominate endless mode. All wrapped in a vibrant neon aesthetic.</p>
+                <h1>Blox Breaker</h1>
+                <p class="hero-tagline">Neon Block-Breaking Adventure</p>
+                <p class="hero-desc">Smash through 400+ levels across 8 stunning worlds. Collect power-ups, customize your ball with glow effects and skins, conquer daily challenges, and dominate endless mode.</p>
                 <a href="https://apps.apple.com/app/blox-breaker" class="app-store-btn">
                     <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" width="250" height="83" loading="lazy">
                 </a>
-            </div>
-            <div class="hero-image">
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                        <img src="app-icon.png" alt="Blox Breaker App Icon" class="app-icon-display">
-                        <span class="screen-title">BLOX BREAKER</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="features" id="features">
-        <h2 class="section-title">Packed with Features</h2>
-        <p class="section-subtitle">Everything you need for an addictive block-breaking experience</p>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🧱</div>
-                <h3>400+ Levels</h3>
-                <p>Battle through over 400 handcrafted levels with increasing difficulty, unique block layouts, and epic boss encounters at the end of every world.</p>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Packed with Features</h2>
+                <p class="section-subtitle">Everything you need for an addictive block-breaking experience</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Power-Ups</h3>
-                <p>Collect and deploy game-changing power-ups including Splash Damage, Piercing Shots, Lightning Chain, Mega Bomb, and 2x Pickup multipliers.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3>Customization Shop</h3>
-                <p>Personalize your gameplay with unique ball skins, glow effects in 15 colors, bullet trail effects, hit effects, and block break animations.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📅</div>
-                <h3>Daily Challenges</h3>
-                <p>Complete daily challenges to earn bonus coins and gems. Build a 7-day streak for increasing rewards and exclusive bonuses.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">♾️</div>
-                <h3>Endless Mode</h3>
-                <p>Test your skills in an endless survival mode with procedurally generated waves. How far can you go before the blocks overwhelm you?</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🌌</div>
-                <h3>8 Unique Worlds</h3>
-                <p>Journey from the Classic arena through Quantum Grid, Neon City, Deep Space, Ocean Depths, and three exclusive premium worlds.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧱</div>
+                    <h3>400+ Levels</h3>
+                    <p>Battle through over 400 handcrafted levels with increasing difficulty, unique block layouts, and epic boss encounters.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Power-Ups</h3>
+                    <p>Collect game-changing power-ups including Splash Damage, Piercing Shots, Lightning Chain, Mega Bomb, and 2x Pickups.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Customization Shop</h3>
+                    <p>Personalize your gameplay with ball skins, glow effects in 15 colors, bullet trails, hit effects, and break animations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Daily Challenges</h3>
+                    <p>Complete daily challenges to earn bonus coins and gems. Build a 7-day streak for increasing rewards.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♾️</div>
+                    <h3>Endless Mode</h3>
+                    <p>Test your skills in endless survival mode with procedurally generated waves. How far can you go?</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌌</div>
+                    <h3>8 Unique Worlds</h3>
+                    <p>Journey from Classic through Quantum Grid, Neon City, Deep Space, Ocean Depths, and three premium worlds.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Worlds Section -->
     <section class="worlds" id="worlds">
-        <h2 class="section-title">Explore 8 Worlds</h2>
-        <p class="section-subtitle">Each world features 50 levels with unique themes and challenges</p>
-        <div class="worlds-grid">
-            <div class="world-card">
-                <div class="world-icon">🔵</div>
-                <h3>Classic</h3>
-                <p>Where it all begins</p>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Explore 8 Worlds</h2>
+                <p class="section-subtitle">Each world features 50 levels with unique themes and challenges</p>
             </div>
-            <div class="world-card">
-                <div class="world-icon">🟢</div>
-                <h3>Quantum Grid</h3>
-                <p>Reality fragmented</p>
-            </div>
-            <div class="world-card">
-                <div class="world-icon">🩷</div>
-                <h3>Neon City</h3>
-                <p>Cyberpunk streets</p>
-            </div>
-            <div class="world-card">
-                <div class="world-icon">🟣</div>
-                <h3>Deep Space</h3>
-                <p>Among the stars</p>
-            </div>
-            <div class="world-card">
-                <div class="world-icon">🌊</div>
-                <h3>Ocean Depths</h3>
-                <p>Beneath the waves</p>
-            </div>
-            <div class="world-card premium">
-                <div class="world-icon">🌋</div>
-                <h3>Volcanic Core</h3>
-                <p>Heart of the volcano</p>
-                <span class="premium-badge">PREMIUM</span>
-            </div>
-            <div class="world-card premium">
-                <div class="world-icon">🧊</div>
-                <h3>Frozen Citadel</h3>
-                <p>Frozen beyond time</p>
-                <span class="premium-badge">PREMIUM</span>
-            </div>
-            <div class="world-card premium">
-                <div class="world-icon">👁️</div>
-                <h3>Shadow Realm</h3>
-                <p>Where light dies</p>
-                <span class="premium-badge">PREMIUM</span>
+            <div class="worlds-grid">
+                <div class="world-card">
+                    <div class="world-icon">🔵</div>
+                    <h3>Classic</h3>
+                    <p>Where it all begins</p>
+                </div>
+                <div class="world-card">
+                    <div class="world-icon">🟢</div>
+                    <h3>Quantum Grid</h3>
+                    <p>Reality fragmented</p>
+                </div>
+                <div class="world-card">
+                    <div class="world-icon">🩷</div>
+                    <h3>Neon City</h3>
+                    <p>Cyberpunk streets</p>
+                </div>
+                <div class="world-card">
+                    <div class="world-icon">🟣</div>
+                    <h3>Deep Space</h3>
+                    <p>Among the stars</p>
+                </div>
+                <div class="world-card">
+                    <div class="world-icon">🌊</div>
+                    <h3>Ocean Depths</h3>
+                    <p>Beneath the waves</p>
+                </div>
+                <div class="world-card premium">
+                    <div class="world-icon">🌋</div>
+                    <h3>Volcanic Core</h3>
+                    <p>Heart of the volcano</p>
+                    <span class="premium-badge">Premium</span>
+                </div>
+                <div class="world-card premium">
+                    <div class="world-icon">🧊</div>
+                    <h3>Frozen Citadel</h3>
+                    <p>Frozen beyond time</p>
+                    <span class="premium-badge">Premium</span>
+                </div>
+                <div class="world-card premium">
+                    <div class="world-icon">👁️</div>
+                    <h3>Shadow Realm</h3>
+                    <p>Where light dies</p>
+                    <span class="premium-badge">Premium</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
     <section class="pricing" id="pricing">
-        <h2 class="section-title">Go Premium</h2>
-        <p class="section-subtitle">Unlock the full Blox Breaker experience</p>
-        <div class="pricing-cards">
-            <div class="pricing-card">
-                <h3>Monthly</h3>
-                <div class="price">$0.99<span>/month</span></div>
-                <ul class="pricing-features">
-                    <li>5 Premium Power-Ups</li>
-                    <li>3 Premium Worlds (150 levels)</li>
-                    <li>2x Coins &amp; Gems earnings</li>
-                    <li>Free Continue per game</li>
-                    <li>1x Starter Power-Up Pack</li>
-                </ul>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Go Premium</h2>
+                <p class="section-subtitle">Unlock the full Blox Breaker experience</p>
             </div>
-            <div class="pricing-card featured">
-                <h3>Yearly</h3>
-                <div class="price">$9.99<span>/year</span></div>
-                <span class="savings-badge">BEST VALUE</span>
-                <ul class="pricing-features">
-                    <li>Everything in Monthly</li>
-                    <li>12x Starter Power-Up Pack</li>
-                    <li>Save 16% vs monthly</li>
-                </ul>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Monthly</h3>
+                    <div class="price">$0.99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>5 Premium Power-Ups</li>
+                        <li>3 Premium Worlds (150 levels)</li>
+                        <li>2x Coins &amp; Gems earnings</li>
+                        <li>Free Continue per game</li>
+                        <li>1x Starter Power-Up Pack</li>
+                    </ul>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Yearly</h3>
+                    <div class="price">$9.99<span>/year</span></div>
+                    <span class="savings-badge">BEST VALUE</span>
+                    <ul class="pricing-features">
+                        <li>Everything in Monthly</li>
+                        <li>12x Starter Power-Up Pack</li>
+                        <li>Save 16% vs monthly</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
     <section class="faq" id="faq">
-        <div class="container" style="max-width: 1100px; margin: 0 auto;">
-            <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
             <div class="faq-list">
                 <div class="faq-item">
                     <h3>What is Blox Breaker?</h3>
@@ -868,16 +846,20 @@
 
     <!-- Cross-Links -->
     <section class="cross-links">
-        <h2 class="section-title">More from Bytecove</h2>
-        <div class="cross-links-grid">
-            <a href="../plateflow/" class="cross-link-card">
-                <h3>PlateFlow</h3>
-                <p>AI-powered meal planning with personalized plans, smart grocery lists, and nutrition tracking.</p>
-            </a>
-            <a href="../fieldcalc/" class="cross-link-card">
-                <h3>FieldCalc Pro</h3>
-                <p>28 code-compliant calculators for electricians, HVAC technicians, and contractors.</p>
-            </a>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">More from Bytecove</h2>
+            </div>
+            <div class="cross-links-grid">
+                <a href="../plateflow/" class="cross-link-card">
+                    <h3>PlateFlow</h3>
+                    <p>AI-powered meal planning with personalized plans, smart grocery lists, and nutrition tracking.</p>
+                </a>
+                <a href="../fieldcalc/" class="cross-link-card">
+                    <h3>FieldCalc Pro</h3>
+                    <p>28 code-compliant calculators for electricians, HVAC technicians, and contractors.</p>
+                </a>
+            </div>
         </div>
     </section>
 
