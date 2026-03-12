@@ -985,8 +985,9 @@
         }
 
         .cross-links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             margin-top: 2rem;
             max-width: 900px;
@@ -995,6 +996,8 @@
         }
 
         .cross-link-card {
+            flex: 0 1 calc(33.333% - 1rem);
+            min-width: 250px;
             padding: 2rem;
             background: rgba(59, 163, 168, 0.05);
             border: 1px solid rgba(127, 212, 216, 0.2);
@@ -1002,7 +1005,6 @@
             transition: all 0.3s ease;
             text-decoration: none;
             color: var(--light);
-            display: block;
         }
 
         .cross-link-card:hover {
