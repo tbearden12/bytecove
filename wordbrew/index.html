@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordBrew - A Cozy Word Puzzle Journey</title>
+    <meta name="description" content="Brew words across 250 levels in this cozy tea-themed word puzzle game. Collect tea cups, customize your experience, and unwind with beautiful themes and ambient sounds. Available on iOS.">
+    <meta name="keywords" content="word game, word puzzle, crossword, iOS game, tea game, cozy game, mobile game, word brew">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <link rel="canonical" href="https://www.bytecovesoftware.com/wordbrew/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.bytecovesoftware.com/wordbrew/">
+    <meta property="og:title" content="WordBrew - A Cozy Word Puzzle Journey">
+    <meta property="og:description" content="Brew words across 250 levels. Collect tea cups, customize themes, and unwind with ambient sounds.">
+    <meta property="og:site_name" content="Bytecove Software">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="WordBrew - A Cozy Word Puzzle Journey">
+    <meta name="twitter:description" content="Brew words across 250 levels. Collect tea cups, customize themes, and unwind with ambient sounds.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "WordBrew",
+      "description": "A cozy tea-themed word puzzle game with 250 levels, collectible tea cups, customizable themes, and ambient sound packs.",
+      "url": "https://www.bytecovesoftware.com/wordbrew/",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "iOS",
+      "offers": [
+        { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free to play" },
+        { "@type": "Offer", "price": "2.99", "priceCurrency": "USD", "description": "Remove Ads" },
+        { "@type": "Offer", "price": "4.99", "priceCurrency": "USD", "description": "All Premium Chapters" }
+      ],
+      "author": { "@type": "Organization", "name": "Bytecove Software", "url": "https://www.bytecovesoftware.com" }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.bytecovesoftware.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://www.bytecovesoftware.com/#solutions" },
+        { "@type": "ListItem", "position": 3, "name": "WordBrew", "item": "https://www.bytecovesoftware.com/wordbrew/" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is WordBrew?", "acceptedAnswer": { "@type": "Answer", "text": "WordBrew is a cozy tea-themed word puzzle game for iOS. Brew words by connecting letters on a circular wheel, fill crossword grids, and collect tea cups from around the world. With 250 levels, 10 chapters, and a deep cosmetic shop, there's always something new to discover." } },
+        { "@type": "Question", "name": "Is WordBrew free to play?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! WordBrew is free to download and play. The first 5 chapters (125 levels) are completely free. Premium chapters 6-10 can be unlocked for $1.99 each or $4.99 for all five." } },
+        { "@type": "Question", "name": "What are tea leaves?", "acceptedAnswer": { "@type": "Answer", "text": "Tea leaves are WordBrew's in-game currency. Earn them by completing levels, finding bonus words, and claiming daily login rewards. Spend them on cosmetic items in the shop including tile themes, trail effects, wheel skins, tea cups, font styles, and sound packs." } },
+        { "@type": "Question", "name": "Can I sync progress across devices?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! Sign in with Apple in the Settings screen to sync your progress to iCloud. Your stars, tea leaves, unlocked items, and level completion data all sync automatically. The sync always favors the player — you never lose progress." } }
+      ]
+    }
+    </script>
+
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B6914;
+            --primary-dark: #6B4226;
+            --primary-light: #DAA520;
+            --accent: #7FB069;
+            --accent-light: #a4cc8f;
+            --warm-cream: #FFF8E7;
+            --warm-gold: #DAA520;
+            --dark: #1A140E;
+            --darker: #120E08;
+            --light: #F5EDE0;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #DAA520 0%, #8B6914 50%, #7FB069 100%);
+            --container-wide: 1100px;
+            --container-narrow: 800px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: var(--container-wide);
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(18, 14, 8, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(139, 105, 20, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(139, 105, 20, 0.6), 0 0 30px rgba(127, 176, 105, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7rem 5% 4rem;
+            background: radial-gradient(ellipse at 50% 30%, rgba(139, 105, 20, 0.12) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 70%, rgba(127, 176, 105, 0.08) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: var(--container-narrow);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .hero-app-icon {
+            width: 160px;
+            height: 160px;
+            border-radius: 36px;
+            box-shadow: 0 0 40px rgba(139, 105, 20, 0.35), 0 0 80px rgba(127, 176, 105, 0.2), 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .hero-app-icon:hover { transform: scale(1.05); }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-text .hero-desc {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.85;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .app-store-btn { display: inline-block; transition: transform 0.3s; }
+        .app-store-btn:hover { transform: scale(1.08); }
+        .app-store-btn img { height: 60px; }
+
+        /* Shared section styles */
+        .section-header { text-align: center; margin-bottom: 3rem; }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle { font-size: 1.1rem; opacity: 0.8; }
+
+        /* Features */
+        .features { padding: 6rem 5%; background: var(--dark); }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(139, 105, 20, 0.04);
+            border: 1px solid rgba(139, 105, 20, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-light);
+            box-shadow: 0 20px 40px rgba(139, 105, 20, 0.15);
+        }
+
+        .feature-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--white); }
+        .feature-card p { opacity: 0.8; font-size: 0.95rem; }
+
+        /* Chapters */
+        .chapters { padding: 6rem 5%; background: var(--darker); }
+
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+        }
+
+        .chapter-card {
+            background: rgba(139, 105, 20, 0.03);
+            border: 1px solid rgba(139, 105, 20, 0.12);
+            border-radius: 16px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-light);
+        }
+
+        .chapter-card.premium {
+            border-color: rgba(127, 176, 105, 0.3);
+            background: rgba(127, 176, 105, 0.05);
+        }
+
+        .chapter-card.premium:hover {
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px rgba(127, 176, 105, 0.15);
+        }
+
+        .chapter-icon { font-size: 2.5rem; margin-bottom: 0.6rem; }
+        .chapter-card h3 { font-size: 0.95rem; margin-bottom: 0.2rem; color: var(--white); }
+        .chapter-card p { font-size: 0.8rem; opacity: 0.7; }
+
+        .premium-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-top: 0.5rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Pricing */
+        .pricing { padding: 6rem 5%; background: var(--dark); }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: rgba(139, 105, 20, 0.04);
+            border: 1px solid rgba(139, 105, 20, 0.15);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent);
+            background: rgba(127, 176, 105, 0.06);
+            box-shadow: 0 0 30px rgba(127, 176, 105, 0.1);
+        }
+
+        .pricing-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--white); }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price span { font-size: 1rem; opacity: 0.7; }
+
+        .savings-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 10px;
+            margin-top: 0.5rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 1.5rem 0 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--primary-light);
+            font-weight: bold;
+        }
+
+        /* FAQ */
+        .faq { padding: 6rem 5%; background: var(--darker); }
+        .faq .section-header { text-align: center; }
+
+        .faq-list {
+            max-width: var(--container-narrow);
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(139, 105, 20, 0.12);
+            padding: 1.5rem 0;
+        }
+
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .faq-item p { opacity: 0.85; line-height: 1.7; }
+
+        /* Cross-links */
+        .cross-links { padding: 6rem 5%; background: var(--dark); text-align: center; }
+
+        .cross-links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cross-link-card {
+            padding: 2rem;
+            background: rgba(139, 105, 20, 0.04);
+            border: 1px solid rgba(139, 105, 20, 0.15);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--light);
+            display: block;
+        }
+
+        .cross-link-card:hover {
+            border-color: var(--primary-light);
+            transform: translateY(-5px);
+        }
+
+        .cross-link-card h3 { color: var(--white); margin-bottom: 0.5rem; }
+        .cross-link-card p { font-size: 0.95rem; opacity: 0.8; }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            background: var(--darker);
+            border-top: 1px solid rgba(139, 105, 20, 0.1);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover { opacity: 1; color: var(--primary-light); }
+        .copyright { opacity: 0.6; font-size: 0.9rem; }
+
+        .skip-to-content {
+            position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+        }
+
+        .skip-to-content:focus {
+            position: fixed; top: 10px; left: 10px; width: auto; height: auto; padding: 1rem;
+            background: var(--dark); color: var(--primary-light); z-index: 9999;
+            border: 2px solid var(--primary-light); border-radius: 5px; font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .chapters-grid { grid-template-columns: repeat(5, 1fr); }
+            .cross-links-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-app-icon { width: 120px; height: 120px; border-radius: 28px; }
+            .hero-tagline { font-size: 1.1rem; }
+            .hero-text .hero-desc { font-size: 1rem; }
+            .app-store-btn img { height: 52px; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .chapters-grid { grid-template-columns: repeat(2, 1fr); }
+            .pricing-cards { grid-template-columns: 1fr; max-width: 380px; }
+            .cross-links-grid { grid-template-columns: 1fr; max-width: 400px; }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .chapters-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    <nav aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="app-icon.png" alt="WordBrew" class="logo-icon">
+                WordBrew
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#chapters">Chapters</a></li>
+                <li><a href="#pricing">Shop</a></li>
+                <li><a href="https://www.bytecovesoftware.com">Bytecove</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+
+    <section class="hero">
+        <div class="hero-content">
+            <img src="app-icon.png" alt="WordBrew App Icon" class="hero-app-icon">
+            <div class="hero-text">
+                <h1>WordBrew</h1>
+                <p class="hero-tagline">A Cozy Word Puzzle Journey</p>
+                <p class="hero-desc">Brew words by connecting letters on a circular wheel and fill crossword grids across 250 handcrafted levels. Collect tea cups from around the world, customize your experience with beautiful themes and ambient soundscapes, and unwind with a cup of your favorite brew.</p>
+                <a href="https://apps.apple.com/app/wordbrew" class="app-store-btn">
+                    <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" width="250" height="83" loading="lazy">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Brewed with Care</h2>
+                <p class="section-subtitle">Everything you need for a relaxing word puzzle experience</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🍵</div>
+                    <h3>250 Levels</h3>
+                    <p>Journey through 10 themed chapters &mdash; from Morning Brew to Master's Collection. Each level features unique crossword grids with increasing complexity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Daily Brew</h3>
+                    <p>A fresh puzzle every day with login rewards and streak bonuses. Start your morning with a warm cup and a word challenge.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Cosmetic Shop</h3>
+                    <p>Personalize with 10 tile themes, 6 trail effects, 5 wheel skins, 5 celebrations, 6 font styles, 4 sound packs, and shop backgrounds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Power-Ups</h3>
+                    <p>Stuck on a word? Use Auto Solve to clear the shortest word, Time Freeze to pause the clock, or Letter Reveal to uncover hidden letters.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🫖</div>
+                    <h3>Tea Cup Collection</h3>
+                    <p>Collect 8 tea cups from cultures around the world &mdash; Japanese tetsubin, Chinese gaiwan, English bone china, and more. Each cup boosts your tea leaf earnings.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3>Cloud Sync</h3>
+                    <p>Sign in with Apple to sync your progress across all your devices. Never lose your stars, tea leaves, or unlocked cosmetics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="chapters" id="chapters">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">10 Chapters to Explore</h2>
+                <p class="section-subtitle">Each chapter features 25 levels with a unique tea theme</p>
+            </div>
+            <div class="chapters-grid">
+                <div class="chapter-card">
+                    <div class="chapter-icon">☀️</div>
+                    <h3>Morning Brew</h3>
+                    <p>Levels 1&ndash;25</p>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-icon">🌿</div>
+                    <h3>Herbal Garden</h3>
+                    <p>Levels 26&ndash;50</p>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-icon">🧂</div>
+                    <h3>Spice Market</h3>
+                    <p>Levels 51&ndash;75</p>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-icon">🏔️</div>
+                    <h3>Mountain Mist</h3>
+                    <p>Levels 76&ndash;100</p>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-icon">🏆</div>
+                    <h3>Grand Tasting</h3>
+                    <p>Levels 101&ndash;125</p>
+                </div>
+                <div class="chapter-card premium">
+                    <div class="chapter-icon">🌙</div>
+                    <h3>Moonlit Terrace</h3>
+                    <p>Levels 126&ndash;150</p>
+                    <span class="premium-badge">Premium</span>
+                </div>
+                <div class="chapter-card premium">
+                    <div class="chapter-icon">🍂</div>
+                    <h3>Autumn Harvest</h3>
+                    <p>Levels 151&ndash;175</p>
+                    <span class="premium-badge">Premium</span>
+                </div>
+                <div class="chapter-card premium">
+                    <div class="chapter-icon">❄️</div>
+                    <h3>Winter Lodge</h3>
+                    <p>Levels 176&ndash;200</p>
+                    <span class="premium-badge">Premium</span>
+                </div>
+                <div class="chapter-card premium">
+                    <div class="chapter-icon">🌸</div>
+                    <h3>Cherry Blossom</h3>
+                    <p>Levels 201&ndash;225</p>
+                    <span class="premium-badge">Premium</span>
+                </div>
+                <div class="chapter-card premium">
+                    <div class="chapter-icon">👑</div>
+                    <h3>Master's Collection</h3>
+                    <p>Levels 226&ndash;250</p>
+                    <span class="premium-badge">Premium</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">In-App Purchases</h2>
+                <p class="section-subtitle">No subscriptions &mdash; buy once, keep forever</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Remove Ads</h3>
+                    <div class="price">$2.99</div>
+                    <ul class="pricing-features">
+                        <li>No more interstitial ads</li>
+                        <li>Uninterrupted gameplay</li>
+                        <li>One-time purchase</li>
+                    </ul>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Chapter Bundle</h3>
+                    <div class="price">$4.99</div>
+                    <span class="savings-badge">SAVE 50%</span>
+                    <ul class="pricing-features">
+                        <li>All 5 premium chapters</li>
+                        <li>125 additional levels</li>
+                        <li>vs. $9.95 individually</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <h3>Tea Leaf Packs</h3>
+                    <div class="price">$0.99<span>+</span></div>
+                    <ul class="pricing-features">
+                        <li>200 or 500 tea leaves</li>
+                        <li>Spend on cosmetics</li>
+                        <li>Hints and power-ups</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>What is WordBrew?</h3>
+                    <p>WordBrew is a cozy tea-themed word puzzle game for iOS. Connect letters on a circular wheel to form words and fill crossword grids. With 250 levels across 10 chapters, a deep cosmetic shop, collectible tea cups, and ambient sound packs, it's designed to be the perfect relaxation companion.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is WordBrew free to play?</h3>
+                    <p>Yes! The first 5 chapters (125 levels), daily brew challenges, the cosmetic shop, and all customization features are completely free. Premium chapters 6&ndash;10 can be unlocked for $1.99 each or $4.99 for all five. You can also remove ads for $2.99.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What are tea leaves and how do I earn them?</h3>
+                    <p>Tea leaves are WordBrew's in-game currency. Earn them by completing levels, finding bonus words, claiming daily login rewards, and watching rewarded ads. Equipping a tea cup from the collection also gives you a percentage bonus on all earned tea leaves (5%&ndash;30% depending on the cup).</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I sync my progress across devices?</h3>
+                    <p>Yes! Go to Settings and sign in with Apple. Your stars, tea leaves, unlocked cosmetics, and level completion data sync automatically to iCloud. The sync always favors the player &mdash; you never lose progress when merging between devices.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does WordBrew require an internet connection?</h3>
+                    <p>No! WordBrew works completely offline. An internet connection is only needed for purchasing items through the App Store, syncing progress via iCloud, and loading ads (which can be removed with a one-time purchase).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cross-links">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">More from Bytecove</h2>
+            </div>
+            <div class="cross-links-grid">
+                <a href="../bloxbreaker/" class="cross-link-card">
+                    <h3>Blox Breaker</h3>
+                    <p>Neon block-breaking adventure with 400+ levels, power-ups, and endless mode.</p>
+                </a>
+                <a href="../plateflow/" class="cross-link-card">
+                    <h3>PlateFlow</h3>
+                    <p>AI-powered meal planning with personalized plans, smart grocery lists, and nutrition tracking.</p>
+                </a>
+                <a href="../fieldcalc/" class="cross-link-card">
+                    <h3>FieldCalc Pro</h3>
+                    <p>28 code-compliant calculators for electricians, HVAC technicians, and contractors.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="https://www.bytecovesoftware.com">Bytecove Home</a>
+            <a href="../bloxbreaker/">Blox Breaker</a>
+            <a href="../plateflow/">PlateFlow</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="support.html">Support</a>
+        </div>
+        <p class="copyright">&copy; 2026 Bytecove Software. All rights reserved.</p>
+    </footer>
+</body>
+</html>
