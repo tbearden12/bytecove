@@ -268,30 +268,59 @@
         .feature-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-1); margin-bottom: 0.5rem; }
         .feature-card p { font-size: 0.92rem; line-height: 1.65; color: var(--text-2); }
 
-        /* ========= SCREENSHOT GALLERY ========= */
-        .gallery { background: var(--surface-0); overflow: hidden; }
-        .gallery-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: 2rem; margin-top: 3rem;
+        /* ========= SCREENSHOT GALLERY — horizontal scroll carousel ========= */
+        .gallery { background: var(--surface-0); overflow: hidden; padding-bottom: 4rem; }
+        .gallery-track-wrap { position: relative; margin-top: 2.5rem; }
+        .gallery-track {
+            display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory;
+            padding: 1rem 5% 2rem; -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; cursor: grab;
         }
+        .gallery-track:active { cursor: grabbing; }
+        .gallery-track::-webkit-scrollbar { display: none; }
         .gallery-item {
-            border-radius: 14px; overflow: hidden; position: relative;
-            border: 1px solid var(--border); transition: all 0.4s;
+            flex: 0 0 min(80vw, 720px); scroll-snap-align: center;
+            border-radius: 14px; overflow: hidden;
+            border: 1px solid var(--border); transition: border-color 0.3s, box-shadow 0.3s;
             background: var(--surface-1);
         }
-        .gallery-item:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
-        .gallery-item img { width: 100%; display: block; }
+        .gallery-item:hover { border-color: rgba(59,130,246,0.3); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+        .gallery-item img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; object-position: top left; }
         .gallery-item .caption {
-            padding: 1rem 1.25rem; font-family: var(--font-display);
-            font-size: 0.82rem; color: var(--text-2); letter-spacing: 0.02em;
+            padding: 0.85rem 1.25rem; font-family: var(--font-display);
+            font-size: 0.8rem; color: var(--text-2); letter-spacing: 0.02em;
             background: var(--surface-2); border-top: 1px solid var(--border);
             display: flex; align-items: center; gap: 0.5rem;
         }
         .gallery-item .caption .dot {
             width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
         }
-        .gallery-item.highlight { grid-column: span 2; }
-        .gallery-item.highlight img { max-height: 500px; object-fit: cover; object-position: top; }
+        /* Nav arrows */
+        .gallery-nav {
+            position: absolute; top: 50%; transform: translateY(-70%); z-index: 10;
+            width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border);
+            background: rgba(10, 22, 40, 0.85); backdrop-filter: blur(8px);
+            color: var(--text-2); font-size: 1.1rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .gallery-nav:hover { border-color: var(--cobalt); color: var(--cobalt); background: rgba(10, 22, 40, 0.95); }
+        .gallery-nav.prev { left: max(1rem, calc(5% - 22px)); }
+        .gallery-nav.next { right: max(1rem, calc(5% - 22px)); }
+        /* Dots */
+        .gallery-dots {
+            display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.5rem;
+        }
+        .gallery-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--surface-3); border: none; cursor: pointer;
+            transition: all 0.3s; padding: 0;
+        }
+        .gallery-dot.active { background: var(--cobalt); transform: scale(1.25); }
+        @media (max-width: 768px) {
+            .gallery-item { flex: 0 0 85vw; }
+            .gallery-nav { display: none; }
+        }
 
         /* ========= PAIN / SOLUTION ========= */
         .pain { background: linear-gradient(180deg, var(--surface-1) 0%, var(--surface-0) 100%); }
@@ -553,42 +582,53 @@
         <div class="container">
             <span class="section-label reveal">See It In Action</span>
             <h2 class="section-title reveal">Every screen built for clarity.</h2>
-            <p class="section-body reveal">WOMBAT's dark interface keeps your team focused on the work, not the tool.</p>
+            <p class="section-body reveal">WOMBAT's dark interface keeps your team focused on the work, not the tool. Scroll through to explore.</p>
+        </div>
 
-            <div class="gallery-grid">
-                <div class="gallery-item highlight reveal">
+        <div class="gallery-track-wrap">
+            <button class="gallery-nav prev" aria-label="Previous" onclick="scrollGallery(-1)">&#8249;</button>
+            <button class="gallery-nav next" aria-label="Next" onclick="scrollGallery(1)">&#8250;</button>
+
+            <div class="gallery-track" id="galleryTrack">
+                <div class="gallery-item">
                     <img src="screenshots/10-admin-dashboard.png" alt="Admin Analytics Dashboard" loading="lazy">
                     <div class="caption"><span class="dot" style="background:var(--cobalt)"></span> Admin Analytics Dashboard</div>
                 </div>
-                <div class="gallery-item reveal">
-                    <img src="screenshots/08-gantt-chart.png" alt="Gantt Chart" loading="lazy">
-                    <div class="caption"><span class="dot" style="background:var(--emerald)"></span> Interactive Gantt Chart</div>
+                <div class="gallery-item">
+                    <img src="screenshots/02-open-work-orders.png" alt="Open Work Orders" loading="lazy">
+                    <div class="caption"><span class="dot" style="background:var(--emerald)"></span> Open Work Orders</div>
                 </div>
-                <div class="gallery-item reveal">
-                    <img src="screenshots/07-project-detail.png" alt="Project Detail" loading="lazy">
-                    <div class="caption"><span class="dot" style="background:var(--cyan)"></span> Project Detail &amp; Tasks</div>
+                <div class="gallery-item">
+                    <img src="screenshots/08-gantt-chart.png" alt="Interactive Gantt Chart" loading="lazy">
+                    <div class="caption"><span class="dot" style="background:var(--cyan)"></span> Interactive Gantt Chart</div>
                 </div>
-                <div class="gallery-item highlight reveal">
+                <div class="gallery-item">
+                    <img src="screenshots/07-project-detail.png" alt="Project Detail &amp; Tasks" loading="lazy">
+                    <div class="caption"><span class="dot" style="background:var(--amber)"></span> Project Detail &amp; Tasks</div>
+                </div>
+                <div class="gallery-item">
                     <img src="screenshots/05-work-order-detail.png" alt="Work Order Detail" loading="lazy">
-                    <div class="caption"><span class="dot" style="background:var(--amber)"></span> Work Order Detail View</div>
+                    <div class="caption"><span class="dot" style="background:var(--cobalt)"></span> Work Order Detail View</div>
                 </div>
-                <div class="gallery-item reveal">
-                    <img src="screenshots/06-projects-cards.png" alt="Open Projects" loading="lazy">
-                    <div class="caption"><span class="dot" style="background:var(--cobalt)"></span> Open Projects</div>
+                <div class="gallery-item">
+                    <img src="screenshots/09-notes-board.png" alt="Status Board" loading="lazy">
+                    <div class="caption"><span class="dot" style="background:var(--emerald)"></span> Team Status Board</div>
                 </div>
-                <div class="gallery-item reveal">
-                    <img src="screenshots/09-notes-board.png" alt="Notes Board" loading="lazy">
-                    <div class="caption"><span class="dot" style="background:var(--emerald)"></span> Team Notes Board</div>
+                <div class="gallery-item">
+                    <img src="screenshots/04-my-dashboard.png" alt="Personal Dashboard" loading="lazy">
+                    <div class="caption"><span class="dot" style="background:var(--cyan)"></span> Personal Dashboard</div>
                 </div>
-                <div class="gallery-item reveal">
+                <div class="gallery-item">
+                    <img src="screenshots/12-api-keys.png" alt="API Key Management" loading="lazy">
+                    <div class="caption"><span class="dot" style="background:var(--amber)"></span> API Key Management &amp; Docs</div>
+                </div>
+                <div class="gallery-item">
                     <img src="screenshots/01-login.png" alt="Login" loading="lazy">
-                    <div class="caption"><span class="dot" style="background:var(--text-3)"></span> Tenant Login</div>
-                </div>
-                <div class="gallery-item reveal">
-                    <img src="screenshots/12-api-keys.png" alt="API Keys" loading="lazy">
-                    <div class="caption"><span class="dot" style="background:var(--amber)"></span> API Key Management</div>
+                    <div class="caption"><span class="dot" style="background:var(--text-3)"></span> Multi-Tenant Login</div>
                 </div>
             </div>
+
+            <div class="gallery-dots" id="galleryDots"></div>
         </div>
     </section>
 
@@ -749,6 +789,57 @@
         }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+        // Gallery carousel
+        (function() {
+            const track = document.getElementById('galleryTrack');
+            const dotsContainer = document.getElementById('galleryDots');
+            const items = track.querySelectorAll('.gallery-item');
+            if (!items.length) return;
+
+            // Build dots
+            items.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                dot.onclick = () => {
+                    items[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                };
+                dotsContainer.appendChild(dot);
+            });
+
+            // Update dots on scroll
+            const dots = dotsContainer.querySelectorAll('.gallery-dot');
+            const ioOpts = { root: track, threshold: 0.6 };
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const idx = Array.from(items).indexOf(entry.target);
+                        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+                    }
+                });
+            }, ioOpts);
+            items.forEach(item => io.observe(item));
+
+            // Drag to scroll
+            let isDown = false, startX, scrollLeft;
+            track.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+            track.addEventListener('mouseleave', () => isDown = false);
+            track.addEventListener('mouseup', () => isDown = false);
+            track.addEventListener('mousemove', e => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - track.offsetLeft;
+                track.scrollLeft = scrollLeft - (x - startX) * 1.5;
+            });
+        })();
+
+        function scrollGallery(dir) {
+            const track = document.getElementById('galleryTrack');
+            const item = track.querySelector('.gallery-item');
+            const scrollAmount = item.offsetWidth + 24; // width + gap
+            track.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
