@@ -11,14 +11,11 @@
     <meta property="og:url" content="https://www.bytecovesoftware.com/fieldcalc/">
     <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID">
     <link rel="canonical" href="https://www.bytecovesoftware.com/fieldcalc/">
-
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="FieldCalc Pro - Professional Trade Calculators">
     <meta name="twitter:description" content="28 code-compliant calculators for electricians, HVAC techs, and contractors. Built for the job site.">
     <meta name="twitter:image" content="https://www.bytecovesoftware.com/fieldcalc/app-icon.jpeg">
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -29,1016 +26,570 @@
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "iOS",
       "offers": [
-        {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD",
-          "description": "Free tier with 9 calculators"
-        },
-        {
-          "@type": "Offer",
-          "price": "9.99",
-          "priceCurrency": "USD",
-          "description": "Pro monthly subscription"
-        }
+        { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free tier with 6 calculators" },
+        { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Pro monthly subscription" },
+        { "@type": "Offer", "price": "79.99", "priceCurrency": "USD", "description": "Pro yearly subscription — save 33%" }
       ],
-      "author": {
-        "@type": "Organization",
-        "name": "Bytecove Software",
-        "url": "https://www.bytecovesoftware.com"
-      }
+      "author": { "@type": "Organization", "name": "Bytecove Software", "url": "https://www.bytecovesoftware.com" }
     }
     </script>
-
-    <!-- Structured Data - BreadcrumbList -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.bytecovesoftware.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Solutions",
-          "item": "https://www.bytecovesoftware.com/#solutions"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "FieldCalc Pro",
-          "item": "https://www.bytecovesoftware.com/fieldcalc/"
-        }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.bytecovesoftware.com/" },
+        { "@type": "ListItem", "position": 2, "name": "FieldCalc Pro", "item": "https://www.bytecovesoftware.com/fieldcalc/" }
       ]
     }
     </script>
-
-    <!-- Structured Data - FAQPage -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is FieldCalc Pro?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "FieldCalc Pro is a professional trade calculator app with 28 code-compliant calculators for electricians, HVAC technicians, and contractors. It references NEC, ASHRAE, and IRC standards and is designed for use on the job site."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does FieldCalc Pro work offline?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. All calculations run locally on your device with no internet connection required and no account needed. FieldCalc Pro is designed to work reliably in the field without connectivity."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How many calculators are included?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "FieldCalc Pro includes 28 calculators across three trades: 9 electrical calculators (NEC references), 9 HVAC calculators (ASHRAE references), and 10 construction calculators (IRC and ACI references). 9 calculators are available free, with full access through a Pro subscription."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What code standards does FieldCalc Pro reference?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "FieldCalc Pro references the National Electrical Code (NEC) for electrical calculations, ASHRAE standards for HVAC calculations, and the International Residential Code (IRC) and ACI standards for construction calculations."
-          }
-        }
+        { "@type": "Question", "name": "What is FieldCalc Pro?", "acceptedAnswer": { "@type": "Answer", "text": "FieldCalc Pro is a professional trade calculator app with 28 code-compliant calculators for electricians, HVAC technicians, and contractors. It references NEC 2023, ASHRAE, IRC 2021, and ACI 318-19 standards." } },
+        { "@type": "Question", "name": "Does FieldCalc Pro work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All calculations run locally on your device. No internet connection or account required." } },
+        { "@type": "Question", "name": "How many calculators are free?", "acceptedAnswer": { "@type": "Answer", "text": "6 calculators are free (2 per trade). Pro unlocks all 28 calculators plus unlimited projects, PDF reports, batch calculations, and more." } },
+        { "@type": "Question", "name": "How do I cancel my subscription?", "acceptedAnswer": { "@type": "Answer", "text": "Go to Settings > Apple ID > Subscriptions on your device. You can cancel anytime and keep access until the end of your billing period." } }
       ]
     }
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary: #3ba3a8;
-            --primary-dark: #2a7a7e;
-            --secondary: #5eb8bc;
-            --accent: #7fd4d8;
-            --dark: #0a1628;
-            --darker: #060d1a;
-            --light: #e8f4f5;
-            --white: #ffffff;
-            --gradient: linear-gradient(135deg, #3ba3a8 0%, #5eb8bc 50%, #7fd4d8 100%);
-            --gold: #d4a843;
-            --gold-light: #e8c86e;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --blue: #3b82f6;
+            --blue-dim: rgba(59, 130, 246, 0.1);
+            --blue-glow: rgba(59, 130, 246, 0.25);
+            --cyan: #06b6d4;
+            --amber: #f59e0b;
+            --purple: #a855f7;
+            --purple-dark: #7c3aed;
+            --green: #22c55e;
+            --red: #ef4444;
+            --text-1: #e2e8f0;
+            --text-2: #94a3b8;
+            --text-3: #64748b;
+            --border: rgba(59, 130, 246, 0.1);
+            --font-display: 'JetBrains Mono', monospace;
+            --font-body: 'DM Sans', sans-serif;
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: var(--darker);
-            color: var(--light);
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-1);
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Navigation */
-        nav {
+        /* Blueprint grid background */
+        body::before {
+            content: '';
             position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1rem 5%;
-            background: rgba(6, 13, 26, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(127, 212, 216, 0.1);
+            inset: 0;
+            background-image:
+                linear-gradient(var(--blue-dim) 1px, transparent 1px),
+                linear-gradient(90deg, var(--blue-dim) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        nav.scrolled {
-            padding: 0.7rem 5%;
-            background: rgba(6, 13, 26, 0.98);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        .skip-to-content {
+            position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+        }
+        .skip-to-content:focus {
+            position: fixed; top: 10px; left: 10px; width: auto; height: auto; padding: 1rem;
+            background: var(--bg-secondary); color: var(--blue); z-index: 9999; border: 2px solid var(--blue); border-radius: 8px;
         }
 
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Nav */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 1rem 5%;
+            background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            z-index: 1000; transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border);
         }
+        nav.scrolled { padding: 0.7rem 5%; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-1); font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; }
+        .logo-icon { width: 40px; height: 40px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-2); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--blue); }
+        .nav-cta { background: var(--blue); color: #fff !important; padding: 0.5rem 1.25rem; border-radius: 8px; font-weight: 600; transition: all 0.2s; }
+        .nav-cta:hover { background: #2563eb; transform: translateY(-1px); }
+        .mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+        .mobile-toggle span { width: 24px; height: 2px; background: var(--text-1); transition: all 0.3s; }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            background: rgba(59, 163, 168, 0.1);
-            border: 1px solid rgba(127, 212, 216, 0.3);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--light);
-            transition: all 0.3s ease;
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 8rem 5% 5rem;
-            background: radial-gradient(ellipse at center, rgba(59, 163, 168, 0.08) 0%, transparent 70%);
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            padding: 7rem 5% 5rem; position: relative; z-index: 1;
+            background: radial-gradient(ellipse at 50% 30%, rgba(59,130,246,0.06) 0%, transparent 60%);
         }
-
-        .hero-content {
-            max-width: 1000px;
-            text-align: center;
-            z-index: 2;
+        .hero-inner { max-width: 860px; text-align: center; }
+        .hero-icon {
+            width: 130px; height: 130px; border-radius: 28px; margin: 0 auto 2rem;
+            box-shadow: 0 0 60px var(--blue-glow), 0 20px 40px rgba(0,0,0,0.3);
+            opacity: 0; animation: fadeUp 0.8s ease forwards;
         }
-
-        .app-icon {
-            width: 140px;
-            height: 140px;
-            border-radius: 28px;
-            margin: 0 auto 2rem;
-            box-shadow: 0 20px 60px rgba(59, 163, 168, 0.3);
-        }
-
         .hero h1 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
+            font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800;
+            line-height: 1.15; margin-bottom: 1.25rem; color: var(--text-1);
+            opacity: 0; animation: fadeUp 0.8s ease 0.15s forwards;
         }
-
-        .hero .subhead {
-            font-size: clamp(1.05rem, 2vw, 1.25rem);
-            color: var(--light);
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            line-height: 1.7;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+        .hero h1 span { color: var(--blue); }
+        .hero .sub {
+            font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-2); max-width: 640px;
+            margin: 0 auto 2rem; line-height: 1.7;
+            opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
         }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .hero-btns {
+            display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+            opacity: 0; animation: fadeUp 0.8s ease 0.45s forwards;
         }
-
         .btn {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
+            padding: 0.85rem 2rem; font-size: 1rem; font-weight: 600; border: none; border-radius: 10px;
+            cursor: pointer; transition: all 0.25s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+            font-family: var(--font-body);
+        }
+        .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 4px 20px var(--blue-glow); }
+        .btn-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 8px 30px var(--blue-glow); }
+        .btn-outline { background: transparent; color: var(--blue); border: 1.5px solid rgba(59,130,246,0.3); }
+        .btn-outline:hover { border-color: var(--blue); background: rgba(59,130,246,0.05); }
+        .trial-badge {
+            display: inline-block; margin-top: 1.5rem; padding: 0.4rem 1rem; border-radius: 20px;
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark)); color: #fff;
+            font-size: 0.85rem; font-weight: 600; letter-spacing: 0.3px;
+            opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards;
         }
 
-        .btn-primary {
-            background: var(--gradient);
-            color: var(--white);
-            box-shadow: 0 10px 30px rgba(59, 163, 168, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(59, 163, 168, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-        }
-
-        .btn-secondary:hover {
-            background: var(--accent);
-            color: var(--dark);
-            transform: translateY(-3px);
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Sections */
-        section {
-            padding: 5rem 5%;
+        section { padding: 6rem 5%; position: relative; z-index: 1; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-label {
+            font-family: var(--font-display); font-size: 0.8rem; font-weight: 600;
+            color: var(--blue); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem;
         }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
         .section-title {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 700; margin-bottom: 1rem; color: var(--text-1); line-height: 1.2;
         }
+        .section-desc { font-size: 1.1rem; color: var(--text-2); margin-bottom: 3rem; max-width: 600px; line-height: 1.7; }
 
-        .section-body {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        /* Trade Cards */
-        .trades {
-            background: var(--dark);
-        }
-
-        .trades-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
+        /* Trades */
+        .trades { background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%); }
+        .trades-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
         .trade-card {
-            background: rgba(59, 163, 168, 0.05);
-            border: 1px solid rgba(127, 212, 216, 0.2);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: all 0.3s ease;
+            background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px;
+            padding: 2rem 1.75rem; transition: all 0.3s;
         }
-
-        .trade-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
+        .trade-card:hover { border-color: var(--blue); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+        .trade-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem; }
+        .trade-icon {
+            width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; font-weight: 700; color: #fff;
         }
-
-        .trade-card h3 {
-            color: var(--white);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+        .trade-icon.elec { background: rgba(59,130,246,0.15); color: var(--blue); }
+        .trade-icon.hvac { background: rgba(6,182,212,0.15); color: var(--cyan); }
+        .trade-icon.const { background: rgba(245,158,11,0.15); color: var(--amber); }
+        .trade-card h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--text-1); }
+        .trade-code { font-size: 0.8rem; color: var(--text-3); margin-bottom: 1rem; font-family: var(--font-display); }
+        .trade-card ul { list-style: none; }
+        .trade-card li {
+            padding: 0.35rem 0; font-size: 0.92rem; color: var(--text-2);
+            display: flex; align-items: center; justify-content: space-between;
         }
-
-        .trade-card .trade-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+        .badge-free {
+            font-size: 0.65rem; font-weight: 700; color: var(--green); background: rgba(34,197,94,0.12);
+            padding: 0.1rem 0.5rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;
         }
-
-        .trade-card .trade-color-electrical { color: #4A90D9; }
-        .trade-card .trade-color-hvac { color: #2BBCB3; }
-        .trade-card .trade-color-construction { color: #E8913A; }
-
-        .trade-card ul {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .trade-card ul li {
-            padding: 0.4rem 0;
-            padding-left: 1.2rem;
-            position: relative;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        .trade-card ul li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-        }
-
-        .trade-card .free-label {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--accent);
-            background: rgba(127, 212, 216, 0.15);
-            padding: 0.1rem 0.5rem;
-            border-radius: 4px;
-            margin-left: 0.3rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .trade-card .pro-label {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--gold);
-            background: rgba(212, 168, 67, 0.15);
-            padding: 0.1rem 0.5rem;
-            border-radius: 4px;
-            margin-left: 0.3rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .badge-pro {
+            font-size: 0.65rem; font-weight: 700; color: #fff;
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+            padding: 0.1rem 0.5rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;
         }
 
         /* Features */
-        .features {
-            background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+        .feat-card {
+            background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 14px;
+            padding: 1.5rem; transition: all 0.3s; position: relative; overflow: hidden;
         }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
+        .feat-card:hover { border-color: rgba(59,130,246,0.3); }
+        .feat-card::before {
+            content: ''; position: absolute; inset: 0; border-radius: 14px; padding: 1px;
+            background: linear-gradient(135deg, transparent, var(--blue), transparent); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+            opacity: 0; transition: opacity 0.3s;
         }
-
-        .feature-card {
-            padding: 1.5rem;
-            background: rgba(59, 163, 168, 0.05);
-            border: 1px solid rgba(127, 212, 216, 0.15);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            border-color: var(--accent);
-        }
-
-        .feature-card h4 {
-            color: var(--white);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .feature-card p {
-            font-size: 0.95rem;
-            opacity: 0.85;
+        .feat-card:hover::before { opacity: 1; }
+        .feat-card h4 { font-family: var(--font-display); font-size: 1rem; color: var(--text-1); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; }
+        .feat-card p { font-size: 0.92rem; color: var(--text-2); line-height: 1.6; }
+        .new-badge {
+            font-size: 0.6rem; font-weight: 700; color: var(--amber); background: rgba(245,158,11,0.12);
+            padding: 0.1rem 0.4rem; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.5px;
         }
 
         /* Pricing */
-        .pricing {
-            background: var(--darker);
-            text-align: center;
+        .pricing { text-align: center; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+        .price-card {
+            background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px;
+            padding: 2.5rem 1.75rem; transition: all 0.3s; position: relative;
         }
+        .price-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-4px); }
+        .price-card.featured { border-color: var(--purple); }
+        .price-card.featured::before {
+            content: 'BEST VALUE'; position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark)); color: #fff;
+            padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700;
+            font-family: var(--font-display); letter-spacing: 1px;
+        }
+        .price-card h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-2); margin-bottom: 0.75rem; }
+        .price-amount { font-family: var(--font-display); font-size: 2.8rem; font-weight: 800; color: var(--text-1); }
+        .price-period { font-size: 0.9rem; color: var(--text-3); margin-bottom: 1rem; }
+        .price-savings { color: var(--green); font-weight: 600; font-size: 0.9rem; }
+        .price-intro { color: var(--purple); font-size: 0.85rem; margin-top: 0.3rem; }
+        .price-features { list-style: none; text-align: left; margin-top: 1.5rem; }
+        .price-features li { padding: 0.3rem 0; font-size: 0.9rem; color: var(--text-2); display: flex; align-items: center; gap: 0.5rem; }
+        .price-features li::before { content: ''; width: 6px; height: 6px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
+        .pricing-note { margin-top: 2rem; font-size: 0.85rem; color: var(--text-3); }
 
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+        /* FAQ */
+        .faq-list { max-width: 750px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border); }
+        .faq-q {
+            padding: 1.25rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            font-family: var(--font-display); font-size: 1rem; font-weight: 500; color: var(--text-1); transition: color 0.2s;
         }
-
-        .pricing-card {
-            padding: 2.5rem 2rem;
-            background: rgba(59, 163, 168, 0.05);
-            border: 1px solid rgba(127, 212, 216, 0.2);
-            border-radius: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .pricing-card.featured {
-            border-color: var(--gold);
-            position: relative;
-        }
-
-        .pricing-card.featured::before {
-            content: 'Best Value';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            color: var(--dark);
-            padding: 0.2rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-
-        .pricing-card h3 {
-            color: var(--white);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-card .price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-card .period {
-            font-size: 0.95rem;
-            opacity: 0.7;
-        }
-
-        .pricing-card .savings {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-
-        .pricing-note {
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-
-        /* Accessibility */
-        .skip-to-content {
-            position: absolute;
-            left: -9999px;
-            top: auto;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-        }
-
-        .skip-to-content:focus {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            width: auto;
-            height: auto;
-            padding: 1rem;
-            background: var(--dark);
-            color: var(--accent);
-            z-index: 9999;
-            border: 2px solid var(--accent);
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        /* FAQ Section */
-        .faq {
-            background: var(--dark);
-        }
-
-        .faq-list {
-            max-width: 800px;
-            margin: 2rem auto 0;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid rgba(127, 212, 216, 0.1);
-            padding: 1.5rem 0;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-        }
-
-        .faq-item h3 {
-            color: var(--white);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .faq-item p {
-            opacity: 0.85;
-            line-height: 1.7;
-        }
-
-        /* Cross-Links Section */
-        .cross-links {
-            background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
-            text-align: center;
-        }
-
-        .cross-links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cross-link-card {
-            padding: 2rem;
-            background: rgba(59, 163, 168, 0.05);
-            border: 1px solid rgba(127, 212, 216, 0.2);
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: var(--light);
-            display: block;
-        }
-
-        .cross-link-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .cross-link-card h3 {
-            color: var(--white);
-            margin-bottom: 0.5rem;
-        }
-
-        .cross-link-card p {
-            font-size: 0.95rem;
-            opacity: 0.8;
-        }
+        .faq-q:hover { color: var(--blue); }
+        .faq-q::after { content: '+'; font-size: 1.3rem; color: var(--text-3); transition: transform 0.3s; }
+        .faq-item.open .faq-q::after { transform: rotate(45deg); color: var(--blue); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+        .faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.25rem; }
+        .faq-a p { color: var(--text-2); line-height: 1.7; font-size: 0.95rem; }
 
         /* Footer */
         footer {
-            padding: 3rem 5% 2rem;
-            background: var(--darker);
-            border-top: 1px solid rgba(127, 212, 216, 0.1);
-            text-align: center;
+            padding: 3rem 5% 2rem; border-top: 1px solid var(--border); text-align: center;
+            position: relative; z-index: 1; background: var(--bg-primary);
         }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--light);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-            opacity: 1;
-        }
-
-        .copyright {
-            color: var(--light);
-            opacity: 0.6;
-            font-size: 0.9rem;
-        }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-3); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--blue); }
+        .copyright { color: var(--text-3); font-size: 0.8rem; }
 
         /* Responsive */
+        @media (max-width: 900px) { .trades-grid, .features-grid { grid-template-columns: 1fr; } .pricing-grid { grid-template-columns: 1fr; max-width: 380px; } }
         @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background: var(--darker);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: right 0.3s ease;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .mobile-menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .mobile-menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .mobile-menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -6px);
-            }
-
-            .trades-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-cards {
-                grid-template-columns: 1fr;
-                max-width: 350px;
-            }
+            .nav-links { position: fixed; inset: 0; background: rgba(15,23,42,0.98); flex-direction: column; justify-content: center; align-items: center; gap: 2rem; transform: translateX(100%); transition: transform 0.3s; }
+            .nav-links.active { transform: translateX(0); }
+            .mobile-toggle { display: flex; }
+            .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+            .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+            .nav-cta { padding: 0.75rem 2rem; font-size: 1.1rem; }
         }
+
+        /* Animations — respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <a href="#main" class="skip-to-content">Skip to main content</a>
 
-    <!-- Navigation -->
-    <nav id="navbar" aria-label="Main navigation">
+    <nav id="navbar">
         <div class="nav-container">
-            <a href="/" class="logo">
-                <div class="logo-icon">
-                    <img src="../logo.png" alt="Bytecove Logo" width="45" height="45">
-                </div>
-                Bytecove
+            <a href="./" class="logo">
+                <div class="logo-icon"><img src="app-icon.jpeg" alt="FieldCalc Pro" width="40" height="40"></div>
+                FieldCalc Pro
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="/">Home</a></li>
                 <li><a href="#calculators">Calculators</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="privacy/">Privacy Policy</a></li>
-                <li><a href="terms/">Terms of Service</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="support/">Support</a></li>
+                <li><a href="#" class="nav-cta">Download</a></li>
             </ul>
-            <div class="mobile-menu-toggle" id="mobileMenu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="mobile-toggle" id="mobileMenu">
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
 
-    <main id="main-content">
+    <main id="main">
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <img src="app-icon.jpeg" alt="FieldCalc Pro App Icon" class="app-icon" width="140" height="140">
-            <h1>FieldCalc Pro</h1>
-            <p class="subhead">28 code-compliant calculators for electricians, HVAC technicians, and contractors. NEC, ASHRAE, and IRC references built in. Designed for the job site.</p>
-            <div class="hero-buttons">
-                <a href="#" class="btn btn-primary">Download on the App Store</a>
-                <a href="#calculators" class="btn btn-secondary">See All Calculators</a>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <img src="app-icon.jpeg" alt="FieldCalc Pro" class="hero-icon" width="130" height="130">
+            <h1>28 <span>Code-Compliant</span> Trade Calculators</h1>
+            <p class="sub">Built for electricians, HVAC technicians, and contractors. NEC 2023, ASHRAE, IRC &amp; ACI references. Works 100% offline.</p>
+            <div class="hero-btns">
+                <a href="#" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg>
+                    Download on App Store
+                </a>
+                <a href="#calculators" class="btn btn-outline">See All Calculators</a>
             </div>
+            <div class="trial-badge">Try Pro free for 7 days</div>
         </div>
     </section>
 
-    <!-- Calculators Section -->
+    <!-- Calculators -->
     <section class="trades" id="calculators">
         <div class="container">
-            <h2 class="section-title">28 professional calculators across three trades.</h2>
-            <p class="section-body">Every calculator references the applicable code standard. Results you can trust on the job site, offline, with no account required.</p>
+            <div class="section-label">Calculators</div>
+            <h2 class="section-title">Three trades. 28 calculators. Every code referenced.</h2>
+            <p class="section-desc">Results you can trust on the job site, offline, with no account required.</p>
             <div class="trades-grid">
-                <!-- Electrical -->
-                <div class="trade-card">
-                    <div class="trade-icon trade-color-electrical">&#9889;</div>
-                    <h3>Electrical</h3>
-                    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 0.5rem;">NEC code references</p>
+                <div class="trade-card reveal">
+                    <div class="trade-header">
+                        <div class="trade-icon elec">&#x26A1;</div>
+                        <h3>Electrical</h3>
+                    </div>
+                    <div class="trade-code">NEC 2023</div>
                     <ul>
-                        <li>Ohm's Law <span class="free-label">Free</span></li>
-                        <li>Voltage Drop <span class="free-label">Free</span></li>
-                        <li>Wire Sizing <span class="free-label">Free</span></li>
-                        <li>Load Calculator <span class="pro-label">Pro</span></li>
-                        <li>Conduit Fill <span class="pro-label">Pro</span></li>
-                        <li>Motor FLA <span class="pro-label">Pro</span></li>
-                        <li>Transformer Sizing <span class="pro-label">Pro</span></li>
-                        <li>Breaker &amp; Fuse Sizing <span class="pro-label">Pro</span></li>
-                        <li>Power Factor Correction <span class="pro-label">Pro</span></li>
+                        <li>Ohm's Law <span class="badge-free">Free</span></li>
+                        <li>Voltage Drop <span class="badge-free">Free</span></li>
+                        <li>Wire Sizing <span class="badge-pro">Pro</span></li>
+                        <li>Conduit Fill <span class="badge-pro">Pro</span></li>
+                        <li>Load Calculator <span class="badge-pro">Pro</span></li>
+                        <li>Motor FLA <span class="badge-pro">Pro</span></li>
+                        <li>Transformer Sizing <span class="badge-pro">Pro</span></li>
+                        <li>Breaker &amp; Fuse Sizing <span class="badge-pro">Pro</span></li>
+                        <li>Power Factor Correction <span class="badge-pro">Pro</span></li>
                     </ul>
                 </div>
-
-                <!-- HVAC -->
-                <div class="trade-card">
-                    <div class="trade-icon trade-color-hvac">&#10052;</div>
-                    <h3>HVAC</h3>
-                    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 0.5rem;">ASHRAE code references</p>
+                <div class="trade-card reveal">
+                    <div class="trade-header">
+                        <div class="trade-icon hvac">&#x2744;</div>
+                        <h3>HVAC</h3>
+                    </div>
+                    <div class="trade-code">ASHRAE</div>
                     <ul>
-                        <li>BTU Heat Load <span class="free-label">Free</span></li>
-                        <li>Duct Sizing <span class="free-label">Free</span></li>
-                        <li>CFM Airflow <span class="free-label">Free</span></li>
-                        <li>Equipment Sizing <span class="pro-label">Pro</span></li>
-                        <li>Refrigerant Charge <span class="pro-label">Pro</span></li>
-                        <li>Ventilation Rate <span class="pro-label">Pro</span></li>
-                        <li>Psychrometric <span class="pro-label">Pro</span></li>
-                        <li>Heat Exchanger <span class="pro-label">Pro</span></li>
-                        <li>Cooling Tower <span class="pro-label">Pro</span></li>
+                        <li>BTU Heat Load <span class="badge-free">Free</span></li>
+                        <li>CFM Airflow <span class="badge-free">Free</span></li>
+                        <li>Duct Sizing <span class="badge-pro">Pro</span></li>
+                        <li>Equipment Sizing <span class="badge-pro">Pro</span></li>
+                        <li>Refrigerant Charge <span class="badge-pro">Pro</span></li>
+                        <li>Ventilation Rate <span class="badge-pro">Pro</span></li>
+                        <li>Psychrometric <span class="badge-pro">Pro</span></li>
+                        <li>Heat Exchanger <span class="badge-pro">Pro</span></li>
+                        <li>Cooling Tower <span class="badge-pro">Pro</span></li>
                     </ul>
                 </div>
-
-                <!-- Construction -->
-                <div class="trade-card">
-                    <div class="trade-icon trade-color-construction">&#9881;</div>
-                    <h3>Construction</h3>
-                    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 0.5rem;">IRC &amp; ACI code references</p>
+                <div class="trade-card reveal">
+                    <div class="trade-header">
+                        <div class="trade-icon const">&#x2692;</div>
+                        <h3>Construction</h3>
+                    </div>
+                    <div class="trade-code">IRC 2021 / ACI 318-19</div>
                     <ul>
-                        <li>Concrete Volume <span class="free-label">Free</span></li>
-                        <li>Lumber Framing <span class="free-label">Free</span></li>
-                        <li>Drywall Estimator <span class="free-label">Free</span></li>
-                        <li>Roof Pitch &amp; Area <span class="pro-label">Pro</span></li>
-                        <li>Gravel &amp; Aggregate <span class="pro-label">Pro</span></li>
-                        <li>Brick &amp; Block <span class="pro-label">Pro</span></li>
-                        <li>Rebar Spacing <span class="pro-label">Pro</span></li>
-                        <li>Staircase Calculator <span class="pro-label">Pro</span></li>
-                        <li>Tile Estimator <span class="pro-label">Pro</span></li>
-                        <li>Paint Coverage <span class="pro-label">Pro</span></li>
+                        <li>Concrete Volume <span class="badge-free">Free</span></li>
+                        <li>Paint Coverage <span class="badge-free">Free</span></li>
+                        <li>Lumber Framing <span class="badge-pro">Pro</span></li>
+                        <li>Drywall Estimator <span class="badge-pro">Pro</span></li>
+                        <li>Roof Pitch &amp; Area <span class="badge-pro">Pro</span></li>
+                        <li>Gravel &amp; Aggregate <span class="badge-pro">Pro</span></li>
+                        <li>Brick &amp; Block <span class="badge-pro">Pro</span></li>
+                        <li>Rebar Spacing <span class="badge-pro">Pro</span></li>
+                        <li>Staircase Calculator <span class="badge-pro">Pro</span></li>
+                        <li>Tile Estimator <span class="badge-pro">Pro</span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
+    <!-- Features -->
+    <section id="features">
         <div class="container">
+            <div class="section-label">Features</div>
             <h2 class="section-title">Built for the field, not the office.</h2>
-            <p class="section-body">FieldCalc Pro is designed for tradespeople who need accurate answers on site, fast.</p>
+            <p class="section-desc">Every feature designed for tradespeople who need accurate answers on site, fast.</p>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feat-card reveal">
+                    <h4>Code-Compliant</h4>
+                    <p>NEC 2023, ASHRAE 62.1, IRC 2021, ACI 318-19. Every calculator cites the applicable standard with edition year.</p>
+                </div>
+                <div class="feat-card reveal">
                     <h4>100% Offline</h4>
-                    <p>All calculations run locally on your device. No internet connection required, no account needed.</p>
+                    <p>All calculations run locally on your device. No internet, no account, no data collection. Designed for the job site.</p>
                 </div>
-                <div class="feature-card">
-                    <h4>Project Organization</h4>
-                    <p>Save calculations to projects organized by job. Track every result by client, job number, and address.</p>
+                <div class="feat-card reveal">
+                    <h4>Job-Site Photos <span class="new-badge">New</span></h4>
+                    <p>Attach up to 3 photos per calculation. Document panels, equipment, and site conditions alongside your results.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feat-card reveal">
+                    <h4>Batch Calculations <span class="new-badge">New</span></h4>
+                    <p>Compare up to 20 scenarios side-by-side. Run the same calculator across different inputs and export the comparison.</p>
+                </div>
+                <div class="feat-card reveal">
                     <h4>PDF Reports</h4>
-                    <p>Generate professional reports with your company name and license number. Share or print from the job site.</p>
+                    <p>Generate branded reports with your company logo and license number. Share or print directly from the job site.</p>
                 </div>
-                <div class="feature-card">
-                    <h4>Code References</h4>
-                    <p>Every calculator cites the applicable standard: NEC for electrical, ASHRAE for HVAC, IRC and ACI for construction.</p>
+                <div class="feat-card reveal">
+                    <h4>CSV Export <span class="new-badge">New</span></h4>
+                    <p>Export project calculations or batch results to spreadsheet-ready CSV files for estimating and documentation.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feat-card reveal">
                     <h4>Imperial &amp; Metric</h4>
-                    <p>Switch between unit systems with one tap. All inputs and outputs convert automatically.</p>
+                    <p>Toggle between unit systems on any result. All outputs convert automatically with one tap.</p>
                 </div>
-                <div class="feature-card">
-                    <h4>Job Site Ready</h4>
-                    <p>Large touch targets, haptic feedback, and dark mode. Designed for gloves and sunlight.</p>
+                <div class="feat-card reveal">
+                    <h4>Calculation History <span class="new-badge">New</span></h4>
+                    <p>Searchable log of every calculation you've run, filterable by trade and date. Your complete calculation trail.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Pricing -->
     <section class="pricing" id="pricing">
         <div class="container">
-            <h2 class="section-title">Simple pricing. No hidden fees.</h2>
-            <p class="section-body">Start free with 9 calculators. Upgrade to Pro for full access.</p>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <h3>Monthly</h3>
-                    <div class="price">$9.99</div>
-                    <div class="period">per month</div>
+            <div class="section-label">Pricing</div>
+            <h2 class="section-title">Simple pricing. Start free.</h2>
+            <p class="section-desc" style="margin-left:auto;margin-right:auto;">6 calculators free forever. Upgrade to Pro for the full toolkit.</p>
+            <div class="pricing-grid">
+                <div class="price-card reveal">
+                    <h3>Free</h3>
+                    <div class="price-amount">$0</div>
+                    <div class="price-period">forever</div>
+                    <ul class="price-features">
+                        <li>6 calculators (2 per trade)</li>
+                        <li>1 project</li>
+                        <li>Code references</li>
+                        <li>Offline access</li>
+                    </ul>
                 </div>
-                <div class="pricing-card featured">
+                <div class="price-card reveal">
+                    <h3>Monthly</h3>
+                    <div class="price-amount">$9.99</div>
+                    <div class="price-period">per month</div>
+                    <div class="price-intro">$4.99 first month</div>
+                    <ul class="price-features">
+                        <li>All 28 calculators</li>
+                        <li>Unlimited projects</li>
+                        <li>PDF reports + CSV export</li>
+                        <li>Photos, batch calc, history</li>
+                        <li>7-day free trial</li>
+                    </ul>
+                </div>
+                <div class="price-card featured reveal">
                     <h3>Yearly</h3>
-                    <div class="price">$99.99</div>
-                    <div class="period">per year</div>
-                    <div class="savings">Save 17%</div>
+                    <div class="price-amount">$79.99</div>
+                    <div class="price-period">per year</div>
+                    <div class="price-savings">Save 33%</div>
+                    <ul class="price-features">
+                        <li>Everything in Monthly</li>
+                        <li>Best value for professionals</li>
+                        <li>7-day free trial</li>
+                    </ul>
                 </div>
             </div>
             <p class="pricing-note">Subscriptions auto-renew. Cancel anytime in your Apple ID settings.</p>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
+    <!-- FAQ -->
+    <section id="faq">
         <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="section-label">FAQ</div>
+            <h2 class="section-title">Common questions</h2>
             <div class="faq-list">
                 <div class="faq-item">
-                    <h3>What is FieldCalc Pro?</h3>
-                    <p>FieldCalc Pro is a professional trade calculator app with 28 code-compliant calculators for electricians, HVAC technicians, and contractors. It references NEC, ASHRAE, and IRC standards and is designed for use on the job site.</p>
+                    <div class="faq-q">What is FieldCalc Pro?</div>
+                    <div class="faq-a"><p>A professional trade calculator app with 28 code-compliant calculators for electricians, HVAC technicians, and contractors. References NEC 2023, ASHRAE, IRC 2021, and ACI 318-19.</p></div>
                 </div>
                 <div class="faq-item">
-                    <h3>Does FieldCalc Pro work offline?</h3>
-                    <p>Yes. All calculations run locally on your device with no internet connection required and no account needed. FieldCalc Pro is designed to work reliably in the field without connectivity.</p>
+                    <div class="faq-q">Does it work without internet?</div>
+                    <div class="faq-a"><p>Yes. Every calculation runs locally on your device. No internet, no account, no data collection. Built for the job site.</p></div>
                 </div>
                 <div class="faq-item">
-                    <h3>How many calculators are included?</h3>
-                    <p>FieldCalc Pro includes 28 calculators across three trades: 9 electrical calculators (NEC references), 9 HVAC calculators (ASHRAE references), and 10 construction calculators (IRC and ACI references). 9 calculators are available free, with full access through a Pro subscription.</p>
+                    <div class="faq-q">Which calculators are free?</div>
+                    <div class="faq-a"><p>6 calculators are free: Ohm's Law, Voltage Drop (Electrical), BTU Heat Load, CFM Airflow (HVAC), Concrete Volume, Paint Coverage (Construction). Pro unlocks all 28.</p></div>
                 </div>
                 <div class="faq-item">
-                    <h3>What code standards does FieldCalc Pro reference?</h3>
-                    <p>FieldCalc Pro references the National Electrical Code (NEC) for electrical calculations, ASHRAE standards for HVAC calculations, and the International Residential Code (IRC) and ACI standards for construction calculations.</p>
+                    <div class="faq-q">What code standards are referenced?</div>
+                    <div class="faq-a"><p>NEC 2023 for electrical, ASHRAE 62.1-2022 for HVAC ventilation, ACCA Manual J/S for HVAC loads, IRC 2021 for stairs, and ACI 318-19 for concrete/rebar.</p></div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cross-Links -->
-    <section class="cross-links">
-        <div class="container">
-            <h2 class="section-title">More from Bytecove</h2>
-            <div class="cross-links-grid">
-                <a href="../operations/" class="cross-link-card">
-                    <h3>Operations Platform</h3>
-                    <p>Internal operations software for project-driven service teams.</p>
-                </a>
-                <a href="../plateflow/" class="cross-link-card">
-                    <h3>PlateFlow</h3>
-                    <p>AI-powered meal planning with personalized plans and nutrition tracking.</p>
-                </a>
+                <div class="faq-item">
+                    <div class="faq-q">How do I cancel my subscription?</div>
+                    <div class="faq-a"><p>Go to Settings &gt; Apple ID &gt; Subscriptions on your device. You can cancel anytime and retain access until the end of your billing period.</p></div>
+                </div>
             </div>
         </div>
     </section>
 
     </main>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="/">Bytecove Home</a>
-                <a href="../operations/">Operations Platform</a>
-                <a href="../plateflow/">PlateFlow</a>
-                <a href="#calculators">Calculators</a>
-                <a href="#features">Features</a>
-                <a href="#pricing">Pricing</a>
-                <a href="privacy/">Privacy Policy</a>
-                <a href="terms/">Terms of Service</a>
-            </div>
-            <p class="copyright">&copy; 2025 Bytecove Software. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/">Bytecove Home</a>
+            <a href="privacy/">Privacy Policy</a>
+            <a href="terms/">Terms of Service</a>
+            <a href="support/">Support</a>
         </div>
+        <p class="copyright">&copy; 2026 Bytecove Software. All rights reserved.</p>
     </footer>
 
     <script>
-        // Navigation scroll effect
+        // Nav scroll effect
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Mobile menu toggle
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
-
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
+        // Mobile menu
+        const toggle = document.getElementById('mobileMenu');
+        const links = document.getElementById('navLinks');
+        toggle.addEventListener('click', () => { toggle.classList.toggle('active'); links.classList.toggle('active'); });
+        document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => { toggle.classList.remove('active'); links.classList.remove('active'); }));
 
         // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
         });
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Scroll reveal
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => { if (e.isIntersecting) { e.target.style.transitionDelay = `${i * 0.07}s`; e.target.classList.add('visible'); } });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        // FAQ accordion
+        document.querySelectorAll('.faq-q').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('open'); });
+                item.classList.toggle('open');
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.trade-card, .feature-card, .pricing-card').forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-            observer.observe(card);
         });
     </script>
 </body>
