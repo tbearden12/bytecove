@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service - FieldCalc Pro | Bytecove Software</title>
     <meta name="description" content="Terms of Service for FieldCalc Pro by Bytecove Software.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,22 +16,39 @@
         }
 
         :root {
-            --primary: #3ba3a8;
-            --primary-dark: #2a7a7e;
-            --secondary: #5eb8bc;
-            --accent: #7fd4d8;
-            --dark: #0a1628;
-            --darker: #060d1a;
-            --light: #e8f4f5;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --accent: #3b82f6;
+            --accent-pro: #a855f7;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-tertiary: #64748b;
+            --border: rgba(59, 130, 246, 0.1);
             --white: #ffffff;
-            --gradient: linear-gradient(135deg, #3ba3a8 0%, #5eb8bc 50%, #7fd4d8 100%);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: var(--darker);
-            color: var(--light);
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Blueprint Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* Navigation */
@@ -37,10 +57,10 @@
             top: 0;
             width: 100%;
             padding: 1rem 5%;
-            background: rgba(6, 13, 26, 0.95);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(127, 212, 216, 0.1);
+            border-bottom: 1px solid var(--border);
         }
 
         .nav-container {
@@ -55,28 +75,25 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
-            font-size: 1.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--white);
             text-decoration: none;
         }
 
         .logo-icon {
-            width: 45px;
-            height: 45px;
-            background: rgba(59, 163, 168, 0.1);
-            border: 1px solid rgba(127, 212, 216, 0.3);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
             overflow: hidden;
+            border: 1px solid var(--border);
         }
 
         .logo-icon img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
         }
 
         .nav-links {
@@ -87,28 +104,33 @@
         }
 
         .nav-links a {
-            color: var(--light);
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--accent);
         }
 
         /* Content */
         .content {
+            position: relative;
+            z-index: 1;
             max-width: 800px;
             margin: 0 auto;
             padding: 8rem 5% 4rem;
         }
 
         .content h1 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(2rem, 4vw, 2.8rem);
             font-weight: 700;
             margin-bottom: 0.5rem;
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--accent), var(--accent-pro));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -116,21 +138,25 @@
 
         .effective-date {
             font-size: 0.95rem;
-            opacity: 0.6;
+            color: var(--text-tertiary);
             margin-bottom: 2.5rem;
         }
 
         .content h2 {
+            font-family: 'JetBrains Mono', monospace;
             color: var(--white);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-top: 2.5rem;
             margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
         }
 
         .content p {
             margin-bottom: 1rem;
-            opacity: 0.9;
-            font-size: 1.05rem;
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            line-height: 1.75;
         }
 
         .content ul {
@@ -140,14 +166,44 @@
 
         .content ul li {
             margin-bottom: 0.5rem;
-            opacity: 0.9;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .content a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .content a:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+
+        .content strong {
+            color: var(--text-primary);
+        }
+
+        .pro-badge {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.15);
+            color: var(--accent-pro);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-left: 0.25rem;
         }
 
         /* Footer */
         footer {
+            position: relative;
+            z-index: 1;
             padding: 3rem 5% 2rem;
-            background: var(--darker);
-            border-top: 1px solid rgba(127, 212, 216, 0.1);
+            border-top: 1px solid var(--border);
             text-align: center;
         }
 
@@ -155,26 +211,24 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
 
         .footer-links a {
-            color: var(--light);
+            color: var(--text-secondary);
             text-decoration: none;
-            opacity: 0.8;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
             color: var(--accent);
-            opacity: 1;
         }
 
         .copyright {
-            color: var(--light);
-            opacity: 0.6;
-            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
         }
 
         @media (max-width: 768px) {
@@ -188,22 +242,24 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="/" class="logo">
+            <a href="../" class="logo">
                 <div class="logo-icon">
-                    <img src="../../logo.png" alt="Bytecove Logo">
+                    <img src="../app-icon.jpeg" alt="FieldCalc Pro Icon">
                 </div>
-                Bytecove
+                FieldCalc Pro
             </a>
             <ul class="nav-links">
                 <li><a href="../">FieldCalc Pro</a></li>
-                <li><a href="../privacy/">Privacy Policy</a></li>
+                <li><a href="/fieldcalc/privacy/">Privacy</a></li>
+                <li><a href="/fieldcalc/terms/" class="active">Terms</a></li>
+                <li><a href="/fieldcalc/support/">Support</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="content">
         <h1>Terms of Service</h1>
-        <p class="effective-date">Effective Date: January 27, 2026</p>
+        <p class="effective-date">Effective Date: March 22, 2026</p>
 
         <p>These Terms of Service ("Terms") govern your use of FieldCalc Pro ("the App"), developed and published by Bytecove Software ("we," "our," or "us"). By downloading, installing, or using the App, you agree to be bound by these Terms.</p>
 
@@ -223,54 +279,81 @@
             <li>We are not responsible for any damages, injuries, or losses arising from reliance on the App's calculations</li>
         </ul>
 
-        <h2>4. Subscriptions</h2>
-        <p>FieldCalc Pro offers auto-renewing subscription plans:</p>
+        <h2>4. Subscriptions and Pricing</h2>
+        <p>FieldCalc Pro offers auto-renewing subscription plans to unlock Pro features:</p>
         <ul>
             <li><strong>Monthly:</strong> $9.99 per month</li>
-            <li><strong>Yearly:</strong> $99.99 per year</li>
+            <li><strong>Yearly:</strong> $79.99 per year</li>
+            <li><strong>Introductory Offer:</strong> $4.99 for the first month</li>
+            <li><strong>Free Trial:</strong> 7-day free trial available</li>
         </ul>
         <p>Subscriptions are billed through your Apple ID and are subject to Apple's subscription terms. Payment is charged to your Apple ID account at confirmation of purchase. Subscriptions automatically renew unless canceled at least 24 hours before the end of the current billing period. You can manage and cancel your subscriptions in your Apple ID account settings.</p>
 
         <h2>5. Free Tier</h2>
-        <p>The App includes a free tier that provides access to 9 calculators (3 per trade), 1 project, and basic functionality. No subscription is required to use the free tier.</p>
+        <p>The App includes a free tier that provides access to 6 calculators, 1 project, and basic functionality. No subscription is required to use the free tier. Free calculators include:</p>
+        <ul>
+            <li>Ohm's Law</li>
+            <li>Voltage Drop</li>
+            <li>BTU Heat Load</li>
+            <li>CFM Airflow</li>
+            <li>Concrete Volume</li>
+            <li>Paint Coverage</li>
+        </ul>
+        <p>The free tier does not include PDF export.</p>
 
-        <h2>6. Intellectual Property</h2>
+        <h2>6. Pro Features</h2>
+        <p>A Pro subscription unlocks the following features:</p>
+        <ul>
+            <li>All 28 professional calculators across Electrical, HVAC, and Construction trades</li>
+            <li>Unlimited projects</li>
+            <li>PDF reports with custom branding</li>
+            <li>Job-site photo attachments</li>
+            <li>Calculation history</li>
+            <li>Batch calculations</li>
+            <li>CSV export</li>
+            <li>Multi-unit toggle</li>
+            <li>iCloud sync <em>(coming soon)</em></li>
+        </ul>
+
+        <h2>7. Intellectual Property</h2>
         <p>The App and all of its content, features, and functionality, including but not limited to calculator logic, design, text, and graphics, are owned by Bytecove Software and are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works based on the App.</p>
 
-        <h2>7. User Data</h2>
-        <p>All data you create within the App, including projects, calculations, and preferences, is stored locally on your device. We do not collect, transmit, or store your data on any server. You are responsible for backing up your device to preserve your data. If you delete the App, all associated data will be permanently deleted.</p>
+        <h2>8. User Data</h2>
+        <p>All data you create within the App, including projects, calculations, photos, and preferences, is stored locally on your device. We do not collect, transmit, or store your data on any server. You are responsible for backing up your device to preserve your data. If you delete the App, all associated data will be permanently deleted.</p>
+        <p>You can delete all your data at any time from Settings > Account > Delete All Data.</p>
 
-        <h2>8. Limitation of Liability</h2>
+        <h2>9. Limitation of Liability</h2>
         <p>To the fullest extent permitted by applicable law, Bytecove Software shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, revenue, data, or use, arising out of or related to your use of the App, regardless of the cause of action or theory of liability.</p>
         <p>In no event shall our total liability exceed the amount you have paid for the App in the twelve (12) months immediately preceding the event giving rise to the claim.</p>
 
-        <h2>9. Warranty Disclaimer</h2>
+        <h2>10. Warranty Disclaimer</h2>
         <p>The App is provided "as is" and "as available" without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the App will be uninterrupted, error-free, or free of harmful components.</p>
 
-        <h2>10. Termination</h2>
+        <h2>11. Termination</h2>
         <p>We may terminate or suspend your access to the App at any time, without prior notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties. Upon termination, your license to use the App is revoked.</p>
 
-        <h2>11. Changes to Terms</h2>
+        <h2>12. Changes to Terms</h2>
         <p>We reserve the right to modify these Terms at any time. Updated Terms will be posted on this page with a revised effective date. Your continued use of the App after any changes constitutes acceptance of the new Terms.</p>
 
-        <h2>12. Governing Law</h2>
+        <h2>13. Governing Law</h2>
         <p>These Terms shall be governed by and construed in accordance with the laws of the United States, without regard to conflict of law principles.</p>
 
-        <h2>13. Contact Us</h2>
+        <h2>14. Contact Us</h2>
         <p>If you have questions about these Terms, please contact us at:</p>
         <p>Bytecove Software<br>
-        Email: <a href="mailto:support@bytecovesoftware.com" style="color: var(--accent);">support@bytecovesoftware.com</a><br>
-        Website: <a href="https://www.bytecovesoftware.com" style="color: var(--accent);">www.bytecovesoftware.com</a></p>
+        Email: <a href="mailto:support@bytecovesoftware.com">support@bytecovesoftware.com</a><br>
+        Website: <a href="https://www.bytecovesoftware.com">www.bytecovesoftware.com</a></p>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="footer-links">
-            <a href="/">Bytecove Home</a>
             <a href="../">FieldCalc Pro</a>
-            <a href="../privacy/">Privacy Policy</a>
+            <a href="/fieldcalc/privacy/">Privacy</a>
+            <a href="/fieldcalc/terms/">Terms</a>
+            <a href="/fieldcalc/support/">Support</a>
         </div>
-        <p class="copyright">&copy; 2025 Bytecove Software. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 Bytecove Software. All rights reserved.</p>
     </footer>
 </body>
 </html>

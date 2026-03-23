@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - FieldCalc Pro | Bytecove Software</title>
+    <meta name="description" content="Get help with FieldCalc Pro. FAQs, getting started guides, and contact support.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --accent: #3b82f6;
+            --accent-pro: #a855f7;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-tertiary: #64748b;
+            --border: rgba(59, 130, 246, 0.1);
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Blueprint Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 10rem 5% 4rem;
+        }
+
+        .hero h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent-pro));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        .section {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            padding: 0 5%;
+        }
+
+        .section-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .card-step {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .card h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .card .pro-badge {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.15);
+            color: var(--accent-pro);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+
+        /* Accordion */
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .accordion-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .accordion-toggle {
+            display: none;
+        }
+
+        .accordion-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+
+        .accordion-label:hover {
+            color: var(--accent);
+        }
+
+        .accordion-label::after {
+            content: '+';
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .accordion-toggle:checked + .accordion-label::after {
+            content: '-';
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+
+        .accordion-toggle:checked ~ .accordion-content {
+            max-height: 300px;
+            padding: 0 1.5rem 1.25rem;
+        }
+
+        .accordion-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Contact */
+        .contact-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .contact-box a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-box .response-time {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 1;
+            padding: 3rem 5% 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 8rem 5% 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../" class="logo">
+                <div class="logo-icon">
+                    <img src="../app-icon.jpeg" alt="FieldCalc Pro Icon">
+                </div>
+                FieldCalc Pro
+            </a>
+            <ul class="nav-links">
+                <li><a href="../">FieldCalc Pro</a></li>
+                <li><a href="/fieldcalc/privacy/">Privacy</a></li>
+                <li><a href="/fieldcalc/terms/">Terms</a></li>
+                <li><a href="/fieldcalc/support/" class="active">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>Support</h1>
+        <p>Need help with FieldCalc Pro?</p>
+    </div>
+
+    <!-- Getting Started -->
+    <div class="section">
+        <h2 class="section-title">Getting Started</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-step">Step 1</div>
+                <h3>Download from the App Store</h3>
+                <p>Search for "FieldCalc Pro" on the App Store or tap the download link on our main page. The app is free to download with optional Pro upgrades.</p>
+            </div>
+            <div class="card">
+                <div class="card-step">Step 2</div>
+                <h3>Choose Your Trade</h3>
+                <p>During onboarding, select your primary trade -- Electrical, HVAC, or Construction -- to customize your calculator dashboard.</p>
+            </div>
+            <div class="card">
+                <div class="card-step">Step 3</div>
+                <h3>Free vs Pro</h3>
+                <p>Get started with 6 free calculators across all trades. Upgrade to Pro to unlock all 22 professional calculators, PDF reports, and more.</p>
+                <span class="pro-badge">Pro: 22 Calculators</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="accordion">
+            <div class="accordion-item">
+                <input type="checkbox" id="faq1" class="accordion-toggle">
+                <label for="faq1" class="accordion-label">How do I start a free trial?</label>
+                <div class="accordion-content">
+                    <p>A 7-day free trial is available during onboarding when you first launch the app, or at any time from Settings > Subscription. You won't be charged until the trial period ends.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <input type="checkbox" id="faq2" class="accordion-toggle">
+                <label for="faq2" class="accordion-label">How do I cancel my subscription?</label>
+                <div class="accordion-content">
+                    <p>On your device, go to Settings > your Apple ID > Subscriptions. Find FieldCalc Pro and tap Cancel Subscription. Your access continues until the end of the current billing period.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <input type="checkbox" id="faq3" class="accordion-toggle">
+                <label for="faq3" class="accordion-label">How do I restore purchases?</label>
+                <div class="accordion-content">
+                    <p>In the app, go to Settings > Subscription > Restore Purchases. This will restore your active subscription on the current device.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <input type="checkbox" id="faq4" class="accordion-toggle">
+                <label for="faq4" class="accordion-label">How do I attach photos?</label>
+                <div class="accordion-content">
+                    <p>After completing a calculation, tap the camera button to attach a job-site photo. Photos are stored locally with your calculation data. This is a Pro feature.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <input type="checkbox" id="faq5" class="accordion-toggle">
+                <label for="faq5" class="accordion-label">How do I enable iCloud sync?</label>
+                <div class="accordion-content">
+                    <p>iCloud sync is coming soon in a future update. Once available, you'll be able to enable it from Settings to sync your projects and calculations across all your Apple devices.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <input type="checkbox" id="faq6" class="accordion-toggle">
+                <label for="faq6" class="accordion-label">How do I export to CSV?</label>
+                <div class="accordion-content">
+                    <p>Go to the Reports tab, select the project you want to export, then tap Export CSV. The file can be shared via email, AirDrop, or saved to Files. This is a Pro feature.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <input type="checkbox" id="faq7" class="accordion-toggle">
+                <label for="faq7" class="accordion-label">How do I use batch calculations?</label>
+                <div class="accordion-content">
+                    <p>Open any calculator and tap the batch icon in the toolbar to enter batch mode. This lets you run multiple calculations in sequence and save them all to a single project. This is a Pro feature.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <input type="checkbox" id="faq8" class="accordion-toggle">
+                <label for="faq8" class="accordion-label">How do I delete my data?</label>
+                <div class="accordion-content">
+                    <p>Go to Settings > Account > Delete All Data. This will permanently remove all your projects, calculations, photos, and preferences from the app.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <input type="checkbox" id="faq9" class="accordion-toggle">
+                <label for="faq9" class="accordion-label">Are calculations stored online?</label>
+                <div class="accordion-content">
+                    <p>No. All calculations and data are stored locally on your device. Nothing is transmitted to any server unless iCloud sync is enabled in a future update, in which case data syncs through Apple's CloudKit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="section">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-box">
+            <h3>Still need help?</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Reach out and we'll get back to you as soon as we can.</p>
+            <a href="mailto:support@bytecovesoftware.com">support@bytecovesoftware.com</a>
+            <p class="response-time">We typically respond within 24 hours.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="../">FieldCalc Pro</a>
+            <a href="/fieldcalc/privacy/">Privacy</a>
+            <a href="/fieldcalc/terms/">Terms</a>
+            <a href="/fieldcalc/support/">Support</a>
+        </div>
+        <p class="copyright">&copy; 2026 Bytecove Software. All rights reserved.</p>
+    </footer>
+</body>
+</html>
