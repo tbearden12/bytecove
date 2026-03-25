@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WOMBAT | Work Order Management &amp; Business Administration Tool</title>
-    <meta name="description" content="WOMBAT (Work Order Management &amp; Business Administration Tool) for project-driven service teams. Track work orders, projects, labor, and analytics in one powerful dark-mode platform.">
-    <meta name="keywords" content="WOMBAT, work order management, project tracking, labor management, SaaS, Bytecove Software, operations software">
+    <meta name="description" content="WOMBAT (Work Order Management &amp; Business Administration Tool) for project-driven service teams. Track work orders, projects, labor, job costing, and profitability in one powerful platform.">
+    <meta name="keywords" content="WOMBAT, work order management, project tracking, labor management, job costing, profitability tracking, SaaS, Bytecove Software, operations software">
     <link rel="canonical" href="https://www.bytecovesoftware.com/operations/">
 
     <!-- Open Graph -->
@@ -29,7 +29,7 @@
       "name": "WOMBAT",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "description": "Work Order Management platform for project-driven service teams. Multi-tenant SaaS with work order tracking, project management, Gantt charts, labor analytics, and team dashboards.",
+      "description": "Work Order Management platform for project-driven service teams. Multi-tenant SaaS with work order tracking, project management, Gantt charts, labor analytics, job costing, and profitability tracking.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -76,7 +76,12 @@
         {
           "@type": "Question",
           "name": "Does WOMBAT replace ERP or accounting software?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. WOMBAT focuses on operational visibility — work tracking, labor management, and project performance. It fills the gap between spreadsheets and enterprise systems without the overhead of ERP." }
+          "acceptedAnswer": { "@type": "Answer", "text": "No. WOMBAT focuses on operational visibility — work tracking, labor management, job costing, and project performance. It complements your accounting system by giving you real-time profitability data per job, without the overhead of ERP." }
+        },
+        {
+          "@type": "Question",
+          "name": "How does job costing work?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Set bill rates per task or work order, and cost rates per employee. WOMBAT automatically calculates revenue, labor cost, profit, and margin as time entries are logged. Financial data is only visible to users with admin or accounting roles." }
         }
       ]
     }
@@ -481,7 +486,7 @@
             <div class="hero-badge"><span class="pulse"></span> Now Live</div>
             <h1><span class="accent">WOMBAT</span></h1>
             <p class="tagline">Work Order Management &amp; Business Administration Tool</p>
-            <p class="subhead">Track work orders, projects, labor, and analytics in one powerful platform. Built for teams that manage real work.</p>
+            <p class="subhead">Track work orders, projects, labor, job costing, and profitability in one powerful platform. Built for teams that manage real work.</p>
             <div class="cta-row">
                 <a href="../#contact" class="btn btn-primary">Request a Demo &rarr;</a>
                 <a href="#gallery" class="btn btn-ghost">See It in Action</a>
@@ -504,7 +509,8 @@
                         <li>Work orders tracked in email and Excel</li>
                         <li>Time entered in separate systems</li>
                         <li>No way to tie labor to job numbers</li>
-                        <li>Limited visibility into work in progress</li>
+                        <li>No visibility into job profitability</li>
+                        <li>Cost overruns discovered after the fact</li>
                         <li>Reporting that requires manual cleanup</li>
                     </ul>
                 </div>
@@ -512,9 +518,10 @@
                     <h4>With WOMBAT</h4>
                     <ul>
                         <li>All work orders in one live dashboard</li>
-                        <li>Time entries linked directly to jobs</li>
+                        <li>Time entries linked directly to jobs and tasks</li>
                         <li>Labor hours tied to every work order</li>
-                        <li>Real-time project and task tracking</li>
+                        <li>Real-time revenue, cost, and margin per job</li>
+                        <li>Job costing reports across your entire operation</li>
                         <li>Instant analytics and exportable reports</li>
                     </ul>
                 </div>
@@ -554,6 +561,11 @@
                     <p>Hours by engineer, classification breakdowns, weekly trends, and work order performance at a glance.</p>
                 </div>
                 <div class="feature-card reveal">
+                    <div class="feature-icon">&#36;</div>
+                    <h3>Job Costing &amp; Profitability</h3>
+                    <p>Track revenue, labor cost, profit, and margin per work order and task. Bill rates per task, cost rates per employee, with role-gated financial visibility.</p>
+                </div>
+                <div class="feature-card reveal">
                     <div class="feature-icon">&#9881;</div>
                     <h3>Multi-Tenant SaaS</h3>
                     <p>Each organization gets an isolated environment with its own users, data, settings, and branding.</p>
@@ -561,7 +573,7 @@
                 <div class="feature-card reveal">
                     <div class="feature-icon">&#128274;</div>
                     <h3>Role-Based Access</h3>
-                    <p>Admin and user roles with tenant-scoped permissions. API key management for external integrations.</p>
+                    <p>Admin, accounting, and user roles with tenant-scoped permissions. Financial data visible only to authorized roles. API key management for integrations.</p>
                 </div>
                 <div class="feature-card reveal">
                     <div class="feature-icon">&#9790;</div>
@@ -718,7 +730,11 @@
                 </div>
                 <div class="faq-item reveal">
                     <h3>Does WOMBAT replace accounting or ERP software?</h3>
-                    <p>No. WOMBAT focuses on operational visibility — work tracking, labor management, and project performance. It fills the gap between spreadsheets and enterprise systems without the overhead of ERP.</p>
+                    <p>No. WOMBAT focuses on operational visibility — work tracking, labor management, job costing, and project performance. It complements your accounting system by giving you real-time profitability data per job, without the overhead of ERP.</p>
+                </div>
+                <div class="faq-item reveal">
+                    <h3>How does job costing work?</h3>
+                    <p>Set bill rates per task or work order, and cost rates per employee. WOMBAT automatically calculates revenue, labor cost, profit, and margin as time entries are logged. Financial data is only visible to users with admin or accounting roles — field workers never see rates or margins.</p>
                 </div>
                 <div class="faq-item reveal">
                     <h3>Can I try it before committing?</h3>
