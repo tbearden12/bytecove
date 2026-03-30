@@ -37,30 +37,6 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.bytecovesoftware.com/plateflow/</loc>
-    <lastmod>2026-03-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.bytecovesoftware.com/plateflow/privacy.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.bytecovesoftware.com/plateflow/terms.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.bytecovesoftware.com/plateflow/support.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
     <loc>https://www.bytecovesoftware.com/captionai/privacy.html</loc>
     <lastmod>2026-03-03</lastmod>
     <changefreq>yearly</changefreq>

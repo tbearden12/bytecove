@@ -60,28 +60,6 @@
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "iOS"
           }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "SoftwareApplication",
-            "name": "PlateFlow",
-            "description": "AI-powered meal planning with personalized meal plans, smart grocery lists, and nutrition tracking.",
-            "url": "https://www.bytecovesoftware.com/plateflow/",
-            "applicationCategory": "HealthApplication",
-            "operatingSystem": "iOS"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "SoftwareApplication",
-            "name": "Blox Breaker",
-            "description": "A fast-paced block-breaking arcade game with 400+ levels across 8 themed worlds, power-ups, daily challenges, and competitive weekly leaderboards.",
-            "url": "https://www.bytecovesoftware.com/bloxbreaker/",
-            "applicationCategory": "GameApplication",
-            "operatingSystem": "iOS"
-          }
         }
       ]
     }
@@ -124,7 +102,7 @@
           "name": "What does Bytecove Software do?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Bytecove Software designs and deploys purpose-built internal systems that streamline operations, automate workflows, and improve decision-making for service-based organizations. We also build mobile apps for professionals in the field."
+            "text": "Bytecove Software designs and deploys purpose-built internal systems that streamline operations, automate workflows, and improve decision-making for service-based organizations."
           }
         },
         {
@@ -145,10 +123,10 @@
         },
         {
           "@type": "Question",
-          "name": "What apps does Bytecove offer?",
+          "name": "How much does a project cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Bytecove offers FieldCalc Pro, a professional trade calculator app with 28 code-compliant calculators for electricians, HVAC technicians, and contractors; PlateFlow, an AI-powered meal planning app with personalized plans and nutrition tracking; and Blox Breaker, a block-breaking arcade game with 400+ levels, power-ups, and competitive leaderboards."
+            "text": "Projects typically start at $2,500. Final pricing depends on scope and complexity. Most projects for small to mid-size teams fall in the $5,000-$25,000 range."
           }
         },
         {
@@ -156,7 +134,7 @@
           "name": "How do I get started with Bytecove?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Contact us through our website to schedule a workflow review. We'll review how you currently track work, design a system around your actual process, deploy and configure your platform, then train your team and support adoption."
+            "text": "Schedule a free 15-minute workflow review. We'll discuss how you currently track work, identify areas for improvement, and outline what a purpose-built system could look like for your team. No commitment required."
           }
         }
       ]
@@ -978,48 +956,140 @@
             line-height: 1.7;
         }
 
-        /* Cross-Links Section */
-        .cross-links {
-            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
-            text-align: center;
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--dark);
         }
 
-        .cross-links-grid {
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .testimonial-card {
+            padding: 2rem 2rem 1.75rem;
+            border-left: 3px solid var(--primary);
+            background: rgba(59, 163, 168, 0.03);
+            border-radius: 0 8px 8px 0;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-quote {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            opacity: 0.88;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-attribution {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .testimonial-attribution::before {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .testimonial-attribution .attribution-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .testimonial-attribution .role {
+            color: var(--white);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .testimonial-attribution .org {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* About Founder Section */
+        .about-founder {
+            background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+        }
+
+        .founder-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .founder-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Contact Options */
+        .contact-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
             margin-top: 2rem;
-            max-width: 900px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .cross-link-card {
-            flex: 0 1 calc(33.333% - 1rem);
-            min-width: 250px;
-            padding: 2rem;
+        .contact-option {
             background: rgba(59, 163, 168, 0.05);
             border: 1px solid rgba(127, 212, 216, 0.2);
             border-radius: 15px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: var(--light);
+            padding: 2rem;
+            text-align: center;
         }
 
-        .cross-link-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .cross-link-card h3 {
+        .contact-option h3 {
             color: var(--white);
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
         }
 
-        .cross-link-card p {
-            font-size: 0.95rem;
+        .contact-option p {
             opacity: 0.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Pricing Note */
+        .pricing-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .contact-options {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Loading Animation */
@@ -1098,7 +1168,6 @@
                     <div class="dropdown-menu">
                         <a href="operations/">WOMBAT</a>
                         <a href="fieldcalc/">FieldCalc Pro</a>
-                        <a href="bloxbreaker/">Blox Breaker</a>
                     </div>
                 </li>
                 <li><a href="#audience">Industries</a></li>
@@ -1260,20 +1329,87 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Real Results from Real Teams</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Bytecove Software saved us tens of thousands of dollars in labor by overhauling our spreadsheet-based billing system to a full Business Administration Software.</div>
+                    <div class="testimonial-attribution">
+                        <div class="attribution-text">
+                            <span class="role">Founder & CEO</span>
+                            <span class="org">Local Systems Integrator</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Working with Bytecove has been a pleasure. The owner is very responsive and open to iterative improvement on our automated messaging software to ensure that it works just the way we want.</div>
+                    <div class="testimonial-attribution">
+                        <div class="attribution-text">
+                            <span class="role">Founder</span>
+                            <span class="org">Personal Development Consultancy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Bytecove Software went back and forth with us for months to get our custom excel macro exactly where we wanted it. He goes above and beyond with his service and has saved us tons of time recording meeting notes with our clients.</div>
+                    <div class="testimonial-attribution">
+                        <div class="attribution-text">
+                            <span class="role">Financial Advisor</span>
+                            <span class="org">Local Financial Advisory Firm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About the Founder -->
+    <section class="about-founder" id="about">
+        <div class="container">
+            <h2 class="section-title">Built by Someone Who's Lived the Problem</h2>
+            <div class="founder-content">
+                <p>Bytecove was founded by a VP of Engineering at a systems integration firm who spent years watching his own team struggle with disconnected spreadsheets, manual data entry, and tools that never quite fit the work.</p>
+                <p>After building internal systems to solve those problems firsthand—and seeing the dramatic impact on efficiency and accountability—he started Bytecove to help other service-based teams do the same.</p>
+                <p>We're not a big consultancy. We're a small, focused team that understands operational work because we've done it. Every system we build comes from real experience managing real projects.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-content">
             <h2 class="section-title">Let's simplify how your team tracks work.</h2>
             <p class="section-body">If your operation still relies on spreadsheets or disconnected tools, we can help centralize your workflow into a single, purpose-built system.</p>
-            <a href="#contact" class="btn btn-primary">Schedule a Workflow Review</a>
+            <a href="#contact" class="btn btn-primary">Schedule a Free Workflow Review</a>
+            <p class="pricing-note">Projects typically start at $2,500.</p>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-content">
-            <h2 class="section-title">Get in Touch</h2>
-            <p class="section-body">Tell us about your current workflow and challenges.</p>
+            <h2 class="section-title">Get Started</h2>
+            <p class="section-body">Choose what works best for you.</p>
+            <div class="contact-options">
+                <div class="contact-option">
+                    <h3>Schedule a Call</h3>
+                    <p>Book a free 15-minute workflow review. No commitment, no sales pitch—just a quick conversation about how your team tracks work.</p>
+                    <a href="https://calendly.com/tbearden-bytecovesoftware" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="calendly-link">Book a Time</a>
+                </div>
+                <div class="contact-option">
+                    <h3>Send a Message</h3>
+                    <p>Prefer to write? Drop us a note and we'll get back to you within one business day.</p>
+                    <a href="#contact-form" class="btn btn-secondary">Send a Message</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact" id="contact-form" style="padding-top: 2rem;">
+        <div class="contact-content">
             <form class="contact-form" id="contactForm" action="https://formspree.io/f/xdkdwwnb" method="POST">
                 <div class="form-group">
                     <label for="contact-name" class="sr-only">Your Name</label>
@@ -1289,7 +1425,7 @@
                 </div>
                 <div class="form-group">
                     <label for="contact-message" class="sr-only">Message</label>
-                    <textarea id="contact-message" name="message" placeholder="Tell us about how you currently track work and what challenges you're facing..." required></textarea>
+                    <textarea id="contact-message" name="message" placeholder="Tell us a bit about your team and how you currently manage work..." required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Send Message</button>
             </form>
@@ -1303,7 +1439,7 @@
             <div class="faq-list">
                 <div class="faq-item">
                     <h3>What does Bytecove Software do?</h3>
-                    <p>Bytecove Software designs and deploys purpose-built internal systems that streamline operations, automate workflows, and improve decision-making for service-based organizations. We also build mobile apps for professionals in the field.</p>
+                    <p>Bytecove Software designs and deploys purpose-built internal systems that streamline operations, automate workflows, and improve decision-making for service-based organizations.</p>
                 </div>
                 <div class="faq-item">
                     <h3>What industries does Bytecove serve?</h3>
@@ -1314,43 +1450,13 @@
                     <p>Unlike generic SaaS or ERP platforms, Bytecove builds lightweight, purpose-built systems configured to your terminology and workflows. Each system is deployed privately for your organization and designed for long-term use.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>What apps does Bytecove offer?</h3>
-                    <p>Bytecove offers FieldCalc Pro, a professional trade calculator app with 28 code-compliant calculators for electricians, HVAC technicians, and contractors; PlateFlow, an AI-powered meal planning app with personalized plans and nutrition tracking; and Blox Breaker, a block-breaking arcade game with 400+ levels, power-ups, and competitive leaderboards.</p>
+                    <h3>How much does a project cost?</h3>
+                    <p>Projects typically start at $2,500. Final pricing depends on scope and complexity, which we'll work through together during the initial workflow review. Most projects for small to mid-size teams fall in the $5,000–$25,000 range.</p>
                 </div>
                 <div class="faq-item">
                     <h3>How do I get started with Bytecove?</h3>
-                    <p>Contact us through our website to schedule a workflow review. We'll review how you currently track work, design a system around your actual process, deploy and configure your platform, then train your team and support adoption.</p>
+                    <p>Schedule a free 15-minute workflow review. We'll discuss how you currently track work, identify areas for improvement, and outline what a purpose-built system could look like for your team. No commitment required.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Apps Cross-Links -->
-    <section class="cross-links">
-        <div class="container">
-            <h2 class="section-title">Our Apps</h2>
-            <p class="section-body" style="text-align: center;">Purpose-built tools for professionals in the field and at home.</p>
-            <div class="cross-links-grid">
-                <a href="fieldcalc/" class="cross-link-card">
-                    <h3>FieldCalc Pro</h3>
-                    <p>28 code-compliant calculators for electricians, HVAC technicians, and contractors. NEC, ASHRAE, and IRC references built in.</p>
-                </a>
-                <a href="plateflow/" class="cross-link-card">
-                    <h3>PlateFlow</h3>
-                    <p>AI-powered meal planning with personalized meal plans, smart grocery lists, and nutrition tracking.</p>
-                </a>
-                <a href="operations/" class="cross-link-card">
-                    <h3>WOMBAT</h3>
-                    <p>Work order management platform for project-driven service teams. Track work orders, projects, labor, and analytics in one system.</p>
-                </a>
-                <a href="bloxbreaker/" class="cross-link-card">
-                    <h3>Blox Breaker</h3>
-                    <p>A fast-paced block-breaking arcade game with 400+ levels, 8 worlds, power-ups, daily challenges, and competitive leaderboards.</p>
-                </a>
-                <a href="wordbrew/" class="cross-link-card">
-                    <h3>WordBrew</h3>
-                    <p>A cozy tea-themed word puzzle game with 250 levels, collectible tea cups, customizable themes, and ambient soundscapes.</p>
-                </a>
             </div>
         </div>
     </section>
@@ -1365,8 +1471,6 @@
                 <a href="#solutions">Solutions</a>
                 <a href="operations/">WOMBAT</a>
                 <a href="fieldcalc/">FieldCalc Pro</a>
-                <a href="bloxbreaker/">Blox Breaker</a>
-                <a href="wordbrew/">WordBrew</a>
                 <a href="#audience">Industries</a>
                 <a href="#process">How It Works</a>
                 <a href="#contact">Contact</a>
@@ -1451,7 +1555,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.build-card, .diff-card, .process-step').forEach((card, index) => {
+        document.querySelectorAll('.build-card, .diff-card, .process-step, .contact-option').forEach((card, index) => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px)';
             card.style.transition = `all 0.6s ease ${index * 0.1}s`;
