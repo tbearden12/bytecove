@@ -90,29 +90,31 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --cobalt: #3b82f6;
-            --cobalt-dim: rgba(59, 130, 246, 0.15);
-            --cobalt-glow: rgba(59, 130, 246, 0.4);
-            --cyan: #22d3ee;
-            --cyan-dim: rgba(34, 211, 238, 0.12);
+            /* Bytecove teal as primary — cobalt var kept for back-compat with downstream rules */
+            --cobalt: #3ba3a8;
+            --cobalt-dim: rgba(59, 163, 168, 0.15);
+            --cobalt-glow: rgba(59, 163, 168, 0.4);
+            --cyan: #7fd4d8;
+            --cyan-dim: rgba(127, 212, 216, 0.14);
             --emerald: #34d399;
             --amber: #fbbf24;
-            --surface-0: #030712;
+            --surface-0: #060d1a;
             --surface-1: #0a1628;
-            --surface-2: #111d35;
-            --surface-3: #192a4a;
-            --text-1: #f1f5f9;
-            --text-2: #94a3b8;
-            --text-3: #64748b;
-            --border: rgba(59, 130, 246, 0.12);
-            --font-display: 'Space Mono', monospace;
-            --font-body: 'DM Sans', sans-serif;
+            --surface-2: #10203a;
+            --surface-3: #152a4a;
+            --text-1: #e8f4f5;
+            --text-2: #8ba4b0;
+            --text-3: #627581;
+            --border: rgba(127, 212, 216, 0.14);
+            --font-serif: 'Fraunces', 'Georgia', serif;
+            --font-display: 'IBM Plex Mono', ui-monospace, monospace;
+            --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         html { scroll-behavior: smooth; }
@@ -135,11 +137,20 @@
             backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--border);
         }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-1); font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; transition: opacity 0.3s; }
-        .logo:hover { opacity: 0.8; }
-        .logo-icon { width: 42px; height: 42px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
-        .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+        .logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--text-1); font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; letter-spacing: -0.015em; transition: opacity 0.3s; }
+        .logo:hover { opacity: 0.85; }
+        .logo-icon { width: 38px; height: 38px; border-radius: 9px; overflow: hidden; border: 1px solid var(--border); background: rgba(59, 163, 168, 0.06); flex-shrink: 0; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .logo-text { display: flex; flex-direction: column; line-height: 1; }
+        .logo-text span:first-child { line-height: 1.1; }
+        .logo-text small {
+            display: block; margin-left: 0.1rem;
+            font-family: var(--font-display); font-size: 0.65rem;
+            color: var(--text-2); letter-spacing: 0.15em;
+            text-transform: uppercase; line-height: 1;
+            margin-top: 0.2rem; font-weight: 500;
+        }
         .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
         .nav-links a { color: var(--text-2); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; }
         .nav-links a:hover { color: var(--cobalt); }
@@ -178,14 +189,18 @@
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.4); } }
 
         .hero h1 {
-            font-family: var(--font-display); font-size: clamp(2.2rem, 5.5vw, 4rem);
-            font-weight: 700; line-height: 1.15; margin-bottom: 0.5rem;
-            color: var(--text-1); letter-spacing: -0.02em;
+            font-family: var(--font-serif); font-size: clamp(2.6rem, 6.5vw, 5rem);
+            font-weight: 400; line-height: 1.05; margin-bottom: 0.6rem;
+            color: var(--text-1); letter-spacing: -0.025em;
             animation: fadeDown 0.8s ease 0.1s both;
+            font-variation-settings: "opsz" 144, "SOFT" 25;
         }
         .hero h1 .accent {
-            background: linear-gradient(135deg, var(--cobalt), var(--cyan));
+            font-style: italic; font-weight: 400;
+            background: linear-gradient(100deg, var(--cobalt) 10%, var(--cyan) 50%, var(--cobalt) 90%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            font-variation-settings: "opsz" 144, "SOFT" 100;
+            padding-right: 0.05em;
         }
         .hero .tagline {
             font-family: var(--font-display); font-size: clamp(0.85rem, 1.5vw, 1rem);
@@ -243,8 +258,14 @@
             margin-bottom: 0.75rem;
         }
         .section-title {
-            font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-            font-weight: 700; color: var(--text-1); line-height: 1.3; margin-bottom: 1rem;
+            font-family: var(--font-serif); font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+            font-weight: 400; color: var(--text-1); line-height: 1.15; margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            font-variation-settings: "opsz" 72;
+        }
+        .section-title em {
+            font-style: italic; color: var(--cyan);
+            font-variation-settings: "opsz" 72;
         }
         .section-body { font-size: 1.1rem; line-height: 1.8; max-width: 700px; margin-bottom: 2.5rem; }
 
@@ -267,11 +288,15 @@
         }
         .feature-card:hover::before { opacity: 1; }
         .feature-icon {
-            width: 44px; height: 44px; border-radius: 10px; display: flex;
-            align-items: center; justify-content: center; font-size: 1.2rem;
+            width: 42px; height: 42px; border-radius: 9px; display: flex;
+            align-items: center; justify-content: center;
+            font-family: var(--font-serif); font-style: italic; font-weight: 400;
+            font-size: 1.2rem; line-height: 1;
             margin-bottom: 1rem; background: var(--cobalt-dim); color: var(--cobalt);
+            border: 1px solid rgba(59, 163, 168, 0.25);
+            font-variation-settings: "opsz" 36;
         }
-        .feature-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-1); margin-bottom: 0.5rem; }
+        .feature-card h3 { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 500; color: var(--text-1); margin-bottom: 0.5rem; letter-spacing: -0.01em; font-variation-settings: "opsz" 36; }
         .feature-card p { font-size: 0.92rem; line-height: 1.65; color: var(--text-2); }
 
         /* ========= SCREENSHOT GALLERY — horizontal scroll carousel ========= */
@@ -369,7 +394,7 @@
             font-family: var(--font-display); font-weight: 700; font-size: 1rem;
             background: var(--cobalt-dim); color: var(--cobalt); border: 1px solid rgba(59,130,246,0.2);
         }
-        .process-step h4 { font-size: 0.95rem; color: var(--text-1); font-weight: 600; margin-bottom: 0.35rem; }
+        .process-step h4 { font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-1); font-weight: 500; margin-bottom: 0.35rem; letter-spacing: -0.01em; font-variation-settings: "opsz" 36; }
         .process-step p { font-size: 0.82rem; color: var(--text-3); line-height: 1.5; }
 
         /* ========= CTA ========= */
@@ -391,7 +416,7 @@
         .faq-list { max-width: 800px; margin-top: 2rem; }
         .faq-item { border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
         .faq-item:last-child { border-bottom: none; }
-        .faq-item h3 { font-size: 1rem; font-weight: 700; color: var(--text-1); margin-bottom: 0.5rem; }
+        .faq-item h3 { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; color: var(--text-1); margin-bottom: 0.5rem; letter-spacing: -0.01em; line-height: 1.3; font-variation-settings: "opsz" 36; }
         .faq-item p { font-size: 0.95rem; line-height: 1.7; color: var(--text-2); }
 
         /* ========= CROSS-LINKS ========= */
@@ -460,11 +485,14 @@
     <!-- Navigation -->
     <nav aria-label="Main navigation">
         <div class="nav-container">
-            <a href="../" class="logo">
+            <a href="../" class="logo" aria-label="Bytecove Software — back to home">
                 <div class="logo-icon">
-                    <img src="../logo.png" alt="Bytecove Logo" width="42" height="42">
+                    <img src="../logo.png" alt="" width="38" height="38">
                 </div>
-                Bytecove
+                <span class="logo-text">
+                    <span>Bytecove</span>
+                    <small>Software</small>
+                </span>
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="../">Home</a></li>
@@ -502,7 +530,7 @@
     <section class="pain">
         <div class="container">
             <span class="section-label reveal">The Problem</span>
-            <h2 class="section-title reveal">Most teams outgrow spreadsheets long before they replace them.</h2>
+            <h2 class="section-title reveal">Most teams outgrow spreadsheets <em>long before</em> they replace them.</h2>
             <div class="pain-grid reveal">
                 <div class="pain-col problems">
                     <h4>Without WOMBAT</h4>
@@ -534,55 +562,55 @@
     <section class="features" id="features">
         <div class="container">
             <span class="section-label reveal">Capabilities</span>
-            <h2 class="section-title reveal">Everything your operation needs. Nothing it doesn't.</h2>
+            <h2 class="section-title reveal">Everything your operation needs. <em>Nothing it doesn't.</em></h2>
             <div class="features-grid">
                 <div class="feature-card reveal">
-                    <div class="feature-icon">&#9776;</div>
+                    <div class="feature-icon" aria-hidden="true">i</div>
                     <h3>Work Order Management</h3>
                     <p>Create, assign, and track work orders with status, priority, owner, estimated hours, and approval workflows.</p>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">&#9202;</div>
+                    <div class="feature-icon" aria-hidden="true">ii</div>
                     <h3>Time &amp; Labor Tracking</h3>
                     <p>Log time entries against work orders with in/out timestamps, engineer names, and descriptions tied to every job.</p>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">&#9878;</div>
+                    <div class="feature-icon" aria-hidden="true">iii</div>
                     <h3>Project Management</h3>
                     <p>Break work orders into projects with tasks, progress tracking, dependencies, and team assignments.</p>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">&#9655;</div>
+                    <div class="feature-icon" aria-hidden="true">iv</div>
                     <h3>Gantt Charts</h3>
                     <p>Visualize project timelines, task dependencies, and progress with interactive Gantt chart views.</p>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">&#9673;</div>
+                    <div class="feature-icon" aria-hidden="true">v</div>
                     <h3>Analytics Dashboard</h3>
                     <p>Hours by engineer, classification breakdowns, weekly trends, and work order performance at a glance.</p>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">&#36;</div>
+                    <div class="feature-icon" aria-hidden="true">vi</div>
                     <h3>Job Costing &amp; Profitability</h3>
                     <p>Track revenue, labor cost, profit, and margin per work order and task. Bill rates per task, cost rates per employee, with role-gated financial visibility.</p>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">&#9881;</div>
+                    <div class="feature-icon" aria-hidden="true">vii</div>
                     <h3>Multi-Tenant SaaS</h3>
                     <p>Each organization gets an isolated environment with its own users, data, settings, and branding.</p>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">&#128274;</div>
+                    <div class="feature-icon" aria-hidden="true">viii</div>
                     <h3>Role-Based Access</h3>
                     <p>Admin, accounting, and user roles with tenant-scoped permissions. Financial data visible only to authorized roles. API key management for integrations.</p>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">&#9790;</div>
+                    <div class="feature-icon" aria-hidden="true">ix</div>
                     <h3>Dark Mode</h3>
                     <p>A refined dark interface designed for extended use. Low-light optimized with full WCAG contrast compliance.</p>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">&#128241;</div>
+                    <div class="feature-icon" aria-hidden="true">x</div>
                     <h3>Mobile-Ready PWA</h3>
                     <p>Progressive Web App with offline support. Install on any device — no app store required.</p>
                 </div>
@@ -594,7 +622,7 @@
     <section class="gallery" id="gallery">
         <div class="container">
             <span class="section-label reveal">See It In Action</span>
-            <h2 class="section-title reveal">Every screen built for clarity.</h2>
+            <h2 class="section-title reveal">Every screen built for <em>clarity.</em></h2>
             <p class="section-body reveal">WOMBAT's dark interface keeps your team focused on the work, not the tool. Scroll through to explore.</p>
         </div>
 
@@ -657,7 +685,7 @@
     <section class="audience">
         <div class="container">
             <span class="section-label reveal">Who It's For</span>
-            <h2 class="section-title reveal">Built for teams that manage real work.</h2>
+            <h2 class="section-title reveal">Built for teams that manage <em>real work.</em></h2>
             <div class="audience-grid">
                 <div class="audience-item reveal"><span>&rsaquo;</span> Systems integrators &amp; automation firms</div>
                 <div class="audience-item reveal"><span>&rsaquo;</span> Electrical &amp; specialty contractors</div>
@@ -673,7 +701,7 @@
     <section class="process">
         <div class="container">
             <span class="section-label reveal">Getting Started</span>
-            <h2 class="section-title reveal">Live in days, not months.</h2>
+            <h2 class="section-title reveal">Live in days, <em>not months.</em></h2>
             <p class="section-body reveal">WOMBAT is a hosted SaaS — no servers to manage, no installation required.</p>
             <div class="process-steps">
                 <div class="process-step reveal">
@@ -703,7 +731,7 @@
     <!-- CTA -->
     <section class="cta-section">
         <div class="container" style="position:relative;">
-            <h2 class="section-title reveal">Ready to see WOMBAT in action?</h2>
+            <h2 class="section-title reveal">Ready to see <em>WOMBAT</em> in action?</h2>
             <p class="section-body reveal" style="max-width:500px;margin:0 auto 2rem;">If your team is still tracking work in spreadsheets, let us show you a better way.</p>
             <div class="reveal">
                 <a href="../#contact" class="btn btn-primary">Book a Demo &rarr;</a>
@@ -751,11 +779,11 @@
     <footer>
         <div class="footer-links">
             <a href="../">Home</a>
-            <a href="../#solutions">Solutions</a>
+            <a href="../ai/">AI Services</a>
             <a href="../fieldcalc/">FieldCalc Pro</a>
             <a href="../#contact">Contact</a>
         </div>
-        <p class="copyright">&copy; 2025 Bytecove Software. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 Bytecove Software. All rights reserved. · Chattanooga, TN</p>
     </footer>
 
     <script>
