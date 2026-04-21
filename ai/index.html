@@ -258,15 +258,49 @@
             align-items: end;
         }
         .hero-eyebrow {
-            display: flex; align-items: center; gap: 0.7rem;
-            font-family: var(--mono); font-size: 0.75rem;
-            letter-spacing: 0.18em; text-transform: uppercase;
-            color: var(--teal-glow); font-weight: 500;
-            margin-bottom: 1.8rem;
+            display: inline-flex; align-items: center; gap: 0.7rem;
+            font-family: var(--mono); font-size: 0.88rem;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--teal-glow); font-weight: 600;
+            margin-bottom: 1.6rem;
+            padding: 0.45rem 0.9rem;
+            background: rgba(59, 163, 168, 0.08);
+            border: 1px solid rgba(127, 212, 216, 0.25);
+            border-radius: 100px;
         }
         .hero-eyebrow::before {
-            content: ""; width: 28px; height: 1px; background: var(--teal-glow);
+            content: ""; width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--teal-glow);
+            box-shadow: 0 0 10px rgba(127, 212, 216, 0.6);
             display: inline-block;
+            flex-shrink: 0;
+        }
+
+        /* Explicit service chips — tells cold viewers exactly what we offer */
+        .service-chips {
+            display: flex; flex-wrap: wrap; gap: 0.6rem;
+            margin-top: 0.5rem;
+            margin-bottom: 2.2rem;
+        }
+        .chip {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            font-family: var(--mono); font-size: 0.78rem;
+            color: var(--light); font-weight: 500;
+            letter-spacing: 0.01em;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+        .chip:hover { border-color: var(--teal); background: var(--surface-hi); }
+        .chip::before {
+            content: "";
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--teal-glow);
+            flex-shrink: 0;
         }
         .hero h1 {
             font-family: var(--serif);
@@ -936,13 +970,19 @@
         </div>
         <div class="hero-inner">
             <div>
-                <div class="hero-eyebrow">AI for small business · Chattanooga, TN</div>
+                <div class="hero-eyebrow">AI Services · Chattanooga, TN</div>
                 <h1>
                     The parts of your business that still run on <em>memory</em> and a shared spreadsheet.
                 </h1>
                 <p class="hero-sub">
                     Bytecove builds practical AI integrations, dashboards, and workflow automation for small businesses around Chattanooga. Not demos. Not decks. Working tools that plug into the systems your team already uses.
                 </p>
+                <div class="service-chips" aria-label="Services offered">
+                    <span class="chip">AI Integrations</span>
+                    <span class="chip">AI Dashboards</span>
+                    <span class="chip">Company Analytics</span>
+                    <span class="chip">Workflow Automation</span>
+                </div>
                 <div class="hero-actions">
                     <a href="#contact" class="btn btn-primary">
                         Book a local walkthrough <span class="arrow" aria-hidden="true">→</span>
