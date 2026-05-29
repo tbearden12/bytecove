@@ -345,6 +345,9 @@
             display: block;
         }
 
+        /* Items surfaced only in the mobile menu */
+        .nav-links li.mobile-only { display: none; }
+
         /* ================= Shared Buttons ================= */
         .btn {
             display: inline-flex; align-items: center; gap: 0.55rem;
@@ -1006,9 +1009,14 @@
             border-top: 1px solid var(--rule-soft);
             font-family: var(--mono); font-size: 0.72rem;
             color: var(--muted-soft);
-            display: flex; justify-content: space-between; gap: 1rem;
-            flex-wrap: wrap;
+            display: flex; justify-content: space-between; gap: 1rem 1.5rem;
+            flex-wrap: wrap; align-items: center;
         }
+        .foot-legal {
+            display: flex; gap: 1.2rem; list-style: none; flex-wrap: wrap;
+        }
+        .foot-legal a { color: var(--muted-soft); text-decoration: none; letter-spacing: 0.03em; }
+        .foot-legal a:hover { color: var(--teal-glow); }
 
         /* ================= Reveal ================= */
         .reveal {
@@ -1046,15 +1054,28 @@
                 backdrop-filter: blur(20px);
                 -webkit-backdrop-filter: blur(20px);
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: center;
-                gap: 2rem;
+                gap: 1.4rem;
                 transform: translateX(100%);
                 transition: transform 0.3s ease;
-                padding: 2rem;
+                padding: 6rem 1.5rem 3rem;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
             .nav-links.open { transform: translateX(0); }
-            .nav-links a { font-size: 1.3rem; font-family: var(--serif); }
+            .nav-links a { font-size: 1.25rem; font-family: var(--serif); }
+            .nav-links li.mobile-only { display: block; }
+            .nav-links li.nav-legal {
+                display: flex; flex-wrap: wrap; justify-content: center;
+                gap: 1.1rem; width: 100%; max-width: 340px;
+                margin-top: 0.4rem; padding-top: 1.4rem;
+                border-top: 1px solid var(--rule-soft);
+            }
+            .nav-links li.nav-legal a {
+                font-family: var(--mono); font-size: 0.8rem; color: var(--muted-soft);
+            }
+            .nav-links li.nav-legal a:hover { color: var(--teal-glow); }
             .nav-links .nav-cta { padding: 0.8rem 1.6rem !important; font-size: 1rem; }
             .nav-links .dropdown-menu {
                 position: static; opacity: 1; visibility: visible;
@@ -1115,7 +1136,15 @@
                 </li>
                 <li><a href="#industries">Industries</a></li>
                 <li><a href="#process">Process</a></li>
+                <li class="mobile-only"><a href="#about">About</a></li>
+                <li class="mobile-only"><a href="#faq">FAQ</a></li>
                 <li><a href="#contact" class="nav-cta">Start a conversation <span aria-hidden="true" style="font-family:var(--mono);">→</span></a></li>
+                <li class="mobile-only nav-legal">
+                    <a href="privacy/">Privacy</a>
+                    <a href="terms/">Terms</a>
+                    <a href="accessibility/">Accessibility</a>
+                    <a href="cookies/">Cookies</a>
+                </li>
             </ul>
             <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -1660,7 +1689,12 @@
             </ul>
             <div class="copyright">
                 <span>&copy; 2026 Bytecove Software. All rights reserved.</span>
-                <span>Chattanooga, TN</span>
+                <ul class="foot-legal">
+                    <li><a href="privacy/">Privacy</a></li>
+                    <li><a href="terms/">Terms</a></li>
+                    <li><a href="accessibility/">Accessibility</a></li>
+                    <li><a href="cookies/">Cookies</a></li>
+                </ul>
             </div>
         </div>
     </footer>

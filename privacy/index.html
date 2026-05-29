@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <title>Privacy Policy | Bytecove Software</title>
+    <meta name="description" content="How Bytecove Software handles information on bytecovesoftware.com. We collect only what you send us through our contact form. No analytics, no advertising trackers.">
+    <link rel="canonical" href="https://www.bytecovesoftware.com/privacy/">
+    <meta name="robots" content="index, follow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --ink:#060d1a; --deep:#0a1628; --surface:#10203a; --surface-hi:#152a4a;
+            --teal:#3ba3a8; --teal-soft:#5eb8bc; --teal-glow:#7fd4d8;
+            --light:#e8f4f5; --muted:#8ba4b0; --muted-soft:#627581;
+            --rule:rgba(127,212,216,0.14); --rule-soft:rgba(127,212,216,0.07);
+            --serif:'Fraunces','Georgia',serif;
+            --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+            --mono:'IBM Plex Mono',ui-monospace,monospace;
+            --page-max:1200px;
+        }
+
+        html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+        body {
+            font-family:var(--sans); font-weight:400; background:var(--ink);
+            color:var(--light); line-height:1.7; overflow-x:hidden;
+            font-feature-settings:"ss01","ss02","kern";
+            -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+        }
+        ::selection { background:rgba(127,212,216,0.3); color:var(--light); }
+        a { color:var(--teal-glow); text-decoration:none; }
+
+        .skip-to-content {
+            position:absolute; left:1rem; top:-100px;
+            background:var(--teal); color:var(--ink);
+            padding:0.6rem 1rem; border-radius:4px;
+            font-family:var(--mono); font-size:0.8rem;
+            z-index:10000; font-weight:600;
+        }
+        .skip-to-content:focus { top:1rem; }
+
+        /* ===== Nav ===== */
+        nav.site-nav {
+            position:fixed; top:0; left:0; right:0; z-index:500;
+            padding:1.1rem 2rem;
+            background:rgba(6,13,26,0.78);
+            backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+            border-bottom:1px solid var(--rule-soft);
+        }
+        .nav-inner {
+            max-width:var(--page-max); margin:0 auto;
+            display:flex; justify-content:space-between; align-items:center; gap:1rem;
+        }
+        .brand {
+            display:flex; align-items:center; gap:0.7rem;
+            text-decoration:none; color:var(--light);
+            font-family:var(--serif); font-size:1.35rem; font-weight:600;
+            letter-spacing:-0.015em; transition:opacity 0.25s ease;
+        }
+        .brand:hover { opacity:0.85; }
+        .brand-mark {
+            width:38px; height:38px; border:1px solid var(--rule);
+            border-radius:9px; overflow:hidden; flex-shrink:0;
+            background:rgba(59,163,168,0.06);
+        }
+        .brand-mark img { width:100%; height:100%; object-fit:contain; display:block; }
+        .brand-text { display:flex; flex-direction:column; line-height:1; }
+        .brand-text span:first-child { line-height:1.1; }
+        .brand small {
+            display:block; margin-left:0.1rem;
+            font-family:var(--mono); font-size:0.65rem;
+            color:var(--muted); letter-spacing:0.15em;
+            text-transform:uppercase; line-height:1;
+            margin-top:0.2rem; font-weight:500;
+        }
+        .nav-links { display:flex; gap:1.9rem; list-style:none; align-items:center; }
+        .nav-links a {
+            color:var(--muted); text-decoration:none;
+            font-family:var(--sans); font-size:0.92rem; font-weight:500;
+            transition:color 0.25s ease;
+        }
+        .nav-links a:hover { color:var(--light); }
+        .nav-links a.active { color:var(--teal-glow); }
+        .nav-cta {
+            display:inline-flex !important; align-items:center; gap:0.4rem;
+            padding:0.55rem 1.1rem !important;
+            border:1px solid var(--rule); border-radius:100px;
+            color:var(--light) !important;
+        }
+        .nav-cta:hover { border-color:var(--teal); background:rgba(59,163,168,0.08); }
+        .menu-btn {
+            display:none; flex-direction:column; gap:4px;
+            background:none; border:0; cursor:pointer; padding:0.5rem;
+        }
+        .menu-btn span {
+            width:22px; height:1.5px; background:var(--light);
+            transition:transform 0.3s ease, opacity 0.3s ease; display:block;
+        }
+
+        /* ===== Legal layout ===== */
+        main { max-width:820px; margin:0 auto; padding:9rem 2rem 2rem; }
+        .legal-head { border-bottom:1px solid var(--rule); padding-bottom:2.4rem; margin-bottom:2.6rem; }
+        .legal-eyebrow {
+            font-family:var(--mono); font-size:0.72rem; color:var(--teal);
+            letter-spacing:0.18em; text-transform:uppercase; font-weight:500;
+            display:flex; align-items:center; gap:0.7rem; margin-bottom:1.4rem;
+        }
+        .legal-eyebrow::before { content:""; width:28px; height:1px; background:var(--teal); display:inline-block; }
+        .legal-eyebrow a { color:var(--muted-soft); }
+        .legal-eyebrow a:hover { color:var(--teal-glow); }
+        h1.legal-title {
+            font-family:var(--serif); font-size:clamp(2.1rem,5vw,3.1rem);
+            font-weight:400; line-height:1.08; letter-spacing:-0.02em;
+            color:var(--light); margin-bottom:1.1rem;
+            font-variation-settings:"opsz" 96;
+        }
+        h1.legal-title em { font-style:italic; color:var(--teal-glow); }
+        .legal-meta { font-family:var(--mono); font-size:0.78rem; color:var(--muted-soft); letter-spacing:0.04em; }
+        .legal-intro { margin-top:1.6rem; font-size:1.08rem; line-height:1.75; color:var(--muted); max-width:66ch; }
+
+        .legal-body h2 {
+            font-family:var(--serif); font-size:1.5rem; font-weight:400;
+            color:var(--light); letter-spacing:-0.015em;
+            margin:2.8rem 0 1rem; line-height:1.2;
+            font-variation-settings:"opsz" 48; scroll-margin-top:6rem;
+        }
+        .legal-body h3 { font-family:var(--sans); font-size:1.02rem; font-weight:600; color:var(--light); margin:1.8rem 0 0.6rem; }
+        .legal-body p { font-size:1rem; line-height:1.8; color:var(--muted); margin-bottom:1.1rem; max-width:70ch; }
+        .legal-body ul { list-style:none; margin:0 0 1.4rem; padding:0; max-width:70ch; }
+        .legal-body li { position:relative; padding-left:1.5rem; margin-bottom:0.7rem; color:var(--muted); line-height:1.7; }
+        .legal-body li::before { content:"—"; position:absolute; left:0; color:var(--teal); }
+        .legal-body strong { color:var(--light); font-weight:600; }
+        .legal-body a { color:var(--teal-glow); border-bottom:1px solid rgba(127,212,216,0.35); padding-bottom:1px; transition:color .2s, border-color .2s; }
+        .legal-body a:hover { color:var(--light); border-color:var(--teal-glow); }
+
+        .legal-note { margin-top:2.4rem; padding:1.7rem 1.9rem; background:var(--surface); border:1px solid var(--rule); border-radius:12px; }
+        .legal-note h2 { margin-top:0; }
+        .legal-note p:last-child { margin-bottom:0; }
+
+        .legal-more { margin-top:3.5rem; padding-top:2rem; border-top:1px solid var(--rule); display:flex; flex-wrap:wrap; gap:1.4rem; font-family:var(--mono); font-size:0.82rem; }
+        .legal-more a { color:var(--muted); }
+        .legal-more a:hover { color:var(--teal-glow); }
+
+        /* ===== Footer ===== */
+        footer { background:var(--ink); padding:3rem 2rem 2.5rem; border-top:1px solid var(--rule); }
+        .foot-inner { max-width:var(--page-max); margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:2rem; align-items:center; }
+        .foot-brand { font-family:var(--serif); font-size:1rem; color:var(--light); }
+        .foot-brand em { font-style:italic; color:var(--teal-glow); }
+        .foot-sub { display:block; margin-top:0.35rem; font-family:var(--mono); font-size:0.72rem; color:var(--muted-soft); letter-spacing:0.06em; }
+        .foot-links { display:flex; gap:1.5rem; list-style:none; font-family:var(--mono); font-size:0.78rem; flex-wrap:wrap; }
+        .foot-links a { color:var(--muted); text-decoration:none; letter-spacing:0.03em; }
+        .foot-links a:hover { color:var(--teal-glow); }
+        .copyright { grid-column:1 / -1; margin-top:1.8rem; padding-top:1.5rem; border-top:1px solid var(--rule-soft); font-family:var(--mono); font-size:0.72rem; color:var(--muted-soft); display:flex; justify-content:space-between; gap:1rem 1.5rem; flex-wrap:wrap; align-items:center; }
+        .foot-legal { display:flex; gap:1.2rem; list-style:none; flex-wrap:wrap; }
+        .foot-legal a { color:var(--muted-soft); }
+        .foot-legal a:hover { color:var(--teal-glow); }
+
+        /* ===== Responsive ===== */
+        @media (max-width:720px) {
+            nav.site-nav { padding:0.95rem 1.2rem; }
+            .nav-links {
+                position:fixed; inset:0;
+                background:rgba(6,13,26,0.97);
+                backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+                flex-direction:column; justify-content:flex-start; align-items:center;
+                gap:1.4rem; transform:translateX(100%);
+                transition:transform 0.3s ease;
+                padding:6rem 1.5rem 3rem;
+                overflow-y:auto; -webkit-overflow-scrolling:touch;
+            }
+            .nav-links.open { transform:translateX(0); }
+            .nav-links a { font-size:1.25rem; font-family:var(--serif); }
+            .nav-links .nav-cta { padding:0.8rem 1.6rem !important; font-size:1rem; }
+            .menu-btn { display:flex; z-index:600; position:relative; }
+            .menu-btn.open span:nth-child(1) { transform:translateY(5.5px) rotate(45deg); }
+            .menu-btn.open span:nth-child(2) { opacity:0; }
+            .menu-btn.open span:nth-child(3) { transform:translateY(-5.5px) rotate(-45deg); }
+            main { padding:7rem 1.3rem 1rem; }
+            .foot-inner { grid-template-columns:1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior:auto; }
+            * { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-to-content">Skip to content</a>
+
+    <nav class="site-nav" aria-label="Primary">
+        <div class="nav-inner">
+            <a href="/" class="brand" aria-label="Bytecove Software — home">
+                <span class="brand-mark"><img src="/logo.png" alt="" width="38" height="38"></span>
+                <span class="brand-text"><span>Bytecove</span><small>Software</small></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Home</a></li>
+                <li><a href="/privacy/" class="active" aria-current="page">Privacy</a></li>
+                <li><a href="/terms/">Terms</a></li>
+                <li><a href="/accessibility/">Accessibility</a></li>
+                <li><a href="/cookies/">Cookies</a></li>
+                <li><a href="/#contact" class="nav-cta">Contact <span aria-hidden="true" style="font-family:var(--mono);">→</span></a></li>
+            </ul>
+            <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main">
+        <header class="legal-head">
+            <div class="legal-eyebrow"><a href="/">Bytecove Software</a> · Legal</div>
+            <h1 class="legal-title">Privacy <em>Policy</em></h1>
+            <p class="legal-meta">Last updated: May 29, 2026</p>
+            <p class="legal-intro">
+                This policy explains what information we collect when you visit
+                <strong>bytecovesoftware.com</strong>, how we use it, and the choices you have.
+                The short version: we collect only what you choose to send us through our contact
+                form, and we run no analytics or advertising trackers on this site.
+            </p>
+        </header>
+
+        <div class="legal-body">
+            <h2 id="who-we-are">Who we are</h2>
+            <p>
+                "Bytecove Software" ("we," "us," or "our") is a software studio based in Chattanooga,
+                Tennessee. This policy applies to the marketing website at
+                <strong>www.bytecovesoftware.com</strong>. Our individual applications — such as
+                FieldCalc Pro, PlateFlow, WordBrew, and Blox Breaker — have their own privacy policies
+                that govern those apps; this policy does not cover them.
+            </p>
+
+            <h2 id="information-we-collect">Information we collect</h2>
+
+            <h3>Information you give us</h3>
+            <p>
+                We only receive personal information from you when you choose to send it. Specifically:
+            </p>
+            <ul>
+                <li><strong>Contact form.</strong> When you submit the form on our site, we collect your name and email address (required), and, if you choose to provide them, your company, phone number, and the message you write. We use this solely to read and respond to your inquiry.</li>
+                <li><strong>Scheduling a call.</strong> If you choose to book a call, you are taken to our scheduling provider, Calendly, where any details you enter (such as your name, email, and meeting notes) are handled under Calendly's own privacy policy.</li>
+                <li><strong>Direct email.</strong> If you email us, we receive whatever information is contained in your message.</li>
+            </ul>
+
+            <h3>Information collected automatically</h3>
+            <ul>
+                <li><strong>Server logs.</strong> Our site is served through a third-party static hosting provider, which may automatically log standard technical information such as your IP address, browser type, referring page, and the files requested. This is used for security, troubleshooting, and keeping the site online — not to identify you.</li>
+                <li><strong>No analytics or advertising.</strong> We do not use Google Analytics, advertising pixels, behavioral trackers, or similar tools on this website. We do not build profiles of visitors.</li>
+            </ul>
+
+            <h3>Cookies</h3>
+            <p>
+                This website does not set cookies of its own for tracking, analytics, or advertising.
+                See our <a href="/cookies/">Cookie &amp; Tracking Notice</a> for the full detail on the
+                limited third-party services involved.
+            </p>
+
+            <h2 id="how-we-use">How we use information</h2>
+            <p>We use the information described above to:</p>
+            <ul>
+                <li>Respond to your message, question, or request for a quote;</li>
+                <li>Discuss, scope, and provide services you ask us about;</li>
+                <li>Keep our own records of who we have communicated with; and</li>
+                <li>Operate, secure, and maintain the website.</li>
+            </ul>
+            <p>
+                We do not use your information for automated marketing sequences, and we do not send
+                unsolicited promotional email. Where the law requires a legal basis to process personal
+                information, we rely on your consent (when you submit a form), our legitimate interest in
+                responding to and managing inquiries, and, where applicable, taking steps at your request
+                before entering into a contract.
+            </p>
+
+            <h2 id="how-we-share">How we share information</h2>
+            <p>
+                <strong>We do not sell or rent your personal information, and we never have.</strong> We
+                share information only in these limited situations:
+            </p>
+            <ul>
+                <li><strong>Service providers.</strong> We use a small number of vendors to operate the site (see below). They process information only to provide their service to us.</li>
+                <li><strong>Legal reasons.</strong> We may disclose information if required by law, regulation, legal process, or to protect the rights, safety, or property of Bytecove Software or others.</li>
+                <li><strong>Business transfer.</strong> If the business is ever sold or reorganized, information may be transferred as part of that transaction, subject to this policy.</li>
+            </ul>
+
+            <h2 id="third-parties">Third-party services we rely on</h2>
+            <ul>
+                <li><strong>Formspree</strong> — delivers our contact-form submissions to our inbox and filters spam. See <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Formspree's Privacy Policy</a>.</li>
+                <li><strong>Calendly</strong> — handles call scheduling if you choose to book a time. See <a href="https://calendly.com/privacy" target="_blank" rel="noopener noreferrer">Calendly's Privacy Notice</a>.</li>
+                <li><strong>Google Fonts</strong> — we load typefaces from Google's font servers, which means Google may receive your IP address when a page loads. Google Fonts does not set cookies. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</li>
+                <li><strong>Static web hosting</strong> — serves the site's pages and may keep standard server logs as described above.</li>
+            </ul>
+
+            <h2 id="retention">How long we keep information</h2>
+            <p>
+                We keep contact-form messages and related correspondence for as long as needed to respond
+                to you and to maintain a reasonable record of our communications, after which we delete them.
+                You can ask us to delete your information at any time using the contact details below, and we
+                will do so unless we are required to keep it.
+            </p>
+
+            <h2 id="security">How we protect information</h2>
+            <p>
+                Information is transmitted to our site and to our providers over encrypted (HTTPS) connections,
+                and we limit access to the inbox that receives form submissions. No method of transmission or
+                storage is completely secure, so while we take reasonable steps to protect your information, we
+                cannot guarantee absolute security.
+            </p>
+
+            <h2 id="your-rights">Your choices and rights</h2>
+            <p>
+                You can choose not to provide information through the contact form; if you do, we simply will
+                not be able to respond to that inquiry. You may also ask us to:
+            </p>
+            <ul>
+                <li>Tell you what personal information we hold about you;</li>
+                <li>Correct information that is inaccurate; or</li>
+                <li>Delete information we hold about you.</li>
+            </ul>
+            <p>
+                Depending on where you live, you may have additional rights under laws such as the California
+                Consumer Privacy Act (CCPA/CPRA) or the EU/UK GDPR. We honor these requests regardless of where
+                you are located. We do not sell or share personal information for cross-context behavioral
+                advertising, and we do not discriminate against anyone for exercising their rights. To make a
+                request, email us at the address below.
+            </p>
+
+            <h2 id="children">Children's privacy</h2>
+            <p>
+                This website is intended for businesses and is not directed to children under 13. We do not
+                knowingly collect personal information from children. If you believe a child has provided us
+                with personal information, please contact us and we will delete it.
+            </p>
+
+            <h2 id="international">Visitors outside the United States</h2>
+            <p>
+                We operate in the United States. If you contact us from another country, the information you
+                provide will be transferred to and processed in the United States, where data-protection laws
+                may differ from those in your location.
+            </p>
+
+            <h2 id="other-sites">Links to other sites</h2>
+            <p>
+                Our site may link to third-party websites and to our own product pages and apps, which have
+                their own privacy practices. We are not responsible for the content or privacy practices of
+                sites we do not operate.
+            </p>
+
+            <h2 id="changes">Changes to this policy</h2>
+            <p>
+                We may update this policy from time to time. When we do, we will revise the "Last updated"
+                date at the top of this page. Material changes will be reflected here; please check back
+                periodically.
+            </p>
+
+            <div class="legal-note">
+                <h2 id="contact" style="font-size:1.3rem;">Contact us</h2>
+                <p>
+                    If you have any questions about this Privacy Policy or want to make a request about your
+                    information, contact us at <a href="mailto:support@bytecovesoftware.com">support@bytecovesoftware.com</a>
+                    or <a href="mailto:tbearden@bytecovesoftware.com">tbearden@bytecovesoftware.com</a>.
+                </p>
+                <p style="margin-top:0.6rem;">Bytecove Software · Chattanooga, Tennessee</p>
+            </div>
+
+            <nav class="legal-more" aria-label="More legal pages">
+                <a href="/terms/">Terms of Use →</a>
+                <a href="/accessibility/">Accessibility →</a>
+                <a href="/cookies/">Cookie &amp; Tracking Notice →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer>
+        <div class="foot-inner">
+            <div class="foot-brand">
+                <span>Bytecove <em>Software</em></span>
+                <span class="foot-sub">Chattanooga, TN · Built here, accountable here.</span>
+            </div>
+            <ul class="foot-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/ai/">AI Services</a></li>
+                <li><a href="/operations/">WOMBAT</a></li>
+                <li><a href="/fieldcalc/">FieldCalc Pro</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <div class="copyright">
+                <span>&copy; 2026 Bytecove Software. All rights reserved.</span>
+                <ul class="foot-legal">
+                    <li><a href="/privacy/">Privacy</a></li>
+                    <li><a href="/terms/">Terms</a></li>
+                    <li><a href="/accessibility/">Accessibility</a></li>
+                    <li><a href="/cookies/">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        menuBtn.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('open');
+            menuBtn.classList.toggle('open', open);
+            menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            menuBtn.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        });
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                menuBtn.classList.remove('open');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+</html>
