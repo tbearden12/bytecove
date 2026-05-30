@@ -228,13 +228,15 @@
         .feature h3 { font-family: var(--round); font-size: 1.22rem; font-weight: 800; margin-bottom: 0.5rem; }
         .feature p { color: var(--muted); font-size: 0.97rem; }
 
-        /* ===== Tile ladder ===== */
+        /* ===== Tiles (real in-game textures) ===== */
         .ladder-wrap { background: var(--card); border: 1px solid var(--stroke); border-radius: 26px; padding: 2.5rem 2rem; text-align: center; }
-        .ladder { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; align-items: center; margin-bottom: 1.2rem; }
-        .tile { width: 62px; height: 62px; border-radius: 14px; display: grid; place-items: center; font-family: var(--round); font-weight: 800; font-size: 1.05rem; color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.14), 0 8px 18px rgba(0,0,0,0.35); }
-        .tile small { font-size: 0.7rem; opacity: 0.85; }
-        .arrow { color: var(--muted); font-size: 1.2rem; }
-        .ladder-cap { color: var(--muted); font-size: 1rem; max-width: 52em; margin: 0 auto; }
+        .ladder { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; align-items: center; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--stroke); }
+        .tile-img { width: 62px; height: 62px; border-radius: 13px; box-shadow: 0 8px 18px rgba(0,0,0,0.4); display: block; }
+        .specials { display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: center; }
+        .specials figure { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
+        .specials img { width: 78px; height: 78px; border-radius: 16px; box-shadow: 0 10px 22px rgba(0,0,0,0.5); }
+        .specials figcaption { color: var(--muted); font-size: 0.92rem; }
+        .specials figcaption strong { color: var(--text); font-weight: 700; }
 
         /* ===== Daily spotlight ===== */
         .spotlight { background: linear-gradient(135deg, rgba(124,92,255,0.14), rgba(54,224,200,0.08)); border: 1px solid var(--stroke); border-radius: 28px; padding: 3.2rem 2.4rem; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: center; }
@@ -339,8 +341,8 @@
                 <p class="hero-tagline">2048, rebuilt on a cube.</p>
                 <p class="hero-desc">Spin the cube to any angle, tap a face, and every tile slides inward — matching numbers merge and double. A fresh daily puzzle, cubes from 3³ to a brain-bending 10³, wild &amp; spawner tiles, and worldwide leaderboards.</p>
                 <div class="hero-cta">
-                    <a href="https://cascube.app" class="btn btn-primary" rel="noopener">▶&nbsp; Play free in your browser</a>
-                    <span class="soon-badge"><span class="dot"></span>Coming soon to the&nbsp;<strong>App&nbsp;Store</strong></span>
+                    <a href="https://cascube.app" class="btn btn-primary" rel="noopener">Play free in your browser</a>
+                    <span class="soon-badge">Coming soon to the&nbsp;<strong>App&nbsp;Store</strong></span>
                 </div>
                 <p class="hero-note"><b>Free</b> · plays in any browser · no sign-up · <b>iPhone app on the way</b></p>
             </div>
@@ -388,32 +390,26 @@
             </div>
             <div class="features">
                 <div class="feature">
-                    <span class="ic">🎲</span>
                     <h3>A new cube every day</h3>
                     <p>One deterministic daily puzzle — the same seed for every player on Earth. Resets at your local midnight, anchored to server time so a tweaked clock can't skip ahead.</p>
                 </div>
                 <div class="feature">
-                    <span class="ic">🧊</span>
                     <h3>From 3³ to 10³</h3>
                     <p>Warm up on a gentle 3×3×3, or take on a 1,000-cell 10³ monster. Free practice on any size, any time, with progressive levels to unlock.</p>
                 </div>
                 <div class="feature">
-                    <span class="ic">🟪</span>
                     <h3>Wild &amp; spawner tiles</h3>
                     <p>Wild tiles merge with anything to rescue a stuck board. Spawner tiles (5³ and up) merge normally but drop an extra block — equal parts gift and gamble.</p>
                 </div>
                 <div class="feature">
-                    <span class="ic">🏆</span>
                     <h3>Worldwide leaderboards</h3>
                     <p>Weekly and all-time boards, per cube size or overall, with globally-unique names. Live polling and pull-to-refresh keep the race honest.</p>
                 </div>
                 <div class="feature">
-                    <span class="ic">🔥</span>
                     <h3>Streaks that pay off</h3>
                     <p>Clear the daily challenge seven days in a row and earn seven days completely ad-free — no purchase, just consistency.</p>
                 </div>
                 <div class="feature">
-                    <span class="ic">📴</span>
                     <h3>Plays fully offline</h3>
                     <p>No account, no connection needed. Every size runs offline with your best scores saved on-device — go online only for the leaderboard.</p>
                 </div>
@@ -421,24 +417,38 @@
         </div>
     </section>
 
-    <!-- Tile ladder -->
+    <!-- Tiles (real in-game textures) -->
     <section class="band">
         <div class="container">
+            <div class="section-head">
+                <p class="kicker">The tiles</p>
+                <h2>Every block, <span class="accent">straight from the game</span></h2>
+                <p class="section-sub">From a humble slate 2 to a glowing brand-teal 2,048 — you'll learn the ramp by heart.</p>
+            </div>
             <div class="ladder-wrap">
                 <div class="ladder">
-                    <div class="tile" style="background:#3A3F63">2</div>
-                    <div class="tile" style="background:#4A4F8A">4</div>
-                    <div class="tile" style="background:#7C5CFF">8</div>
-                    <div class="tile" style="background:#9B6CFF">16</div>
-                    <div class="tile" style="background:#B14BFF">32</div>
-                    <div class="tile" style="background:#FF5CAE">64</div>
-                    <div class="tile" style="background:#FF7A59">128</div>
-                    <div class="tile" style="background:#FFB13B">256</div>
-                    <div class="tile" style="background:#FFE14B;color:#3a2e00">512</div>
-                    <div class="tile" style="background:#6CFFB1;color:#053524"><small>1024</small></div>
-                    <div class="tile" style="background:#36E0C8;color:#04201c"><small>2048</small></div>
+                    <img class="tile-img" src="tiles/tile-2.png" alt="ByteCube 2 tile" width="160" height="160" loading="lazy">
+                    <img class="tile-img" src="tiles/tile-4.png" alt="ByteCube 4 tile" width="160" height="160" loading="lazy">
+                    <img class="tile-img" src="tiles/tile-8.png" alt="ByteCube 8 tile" width="160" height="160" loading="lazy">
+                    <img class="tile-img" src="tiles/tile-16.png" alt="ByteCube 16 tile" width="160" height="160" loading="lazy">
+                    <img class="tile-img" src="tiles/tile-32.png" alt="ByteCube 32 tile" width="160" height="160" loading="lazy">
+                    <img class="tile-img" src="tiles/tile-64.png" alt="ByteCube 64 tile" width="160" height="160" loading="lazy">
+                    <img class="tile-img" src="tiles/tile-128.png" alt="ByteCube 128 tile" width="160" height="160" loading="lazy">
+                    <img class="tile-img" src="tiles/tile-256.png" alt="ByteCube 256 tile" width="160" height="160" loading="lazy">
+                    <img class="tile-img" src="tiles/tile-512.png" alt="ByteCube 512 tile" width="160" height="160" loading="lazy">
+                    <img class="tile-img" src="tiles/tile-1024.png" alt="ByteCube 1024 tile" width="160" height="160" loading="lazy">
+                    <img class="tile-img" src="tiles/tile-2048.png" alt="ByteCube 2048 tile" width="160" height="160" loading="lazy">
                 </div>
-                <p class="ladder-cap">Every rung on the climb gets its own glowing color — from a humble slate <strong>2</strong> through hot-pink <strong>64</strong>, amber <strong>256</strong>, all the way to the brand-teal <strong>2,048</strong>. You'll learn the ramp by heart.</p>
+                <div class="specials">
+                    <figure>
+                        <img src="tiles/tile-wild.png" alt="ByteCube wild tile — a question mark on a pink-to-blue gradient" width="160" height="160" loading="lazy">
+                        <figcaption><strong>Wild</strong> — merges with any number</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="tiles/tile-spawner.png" alt="ByteCube spawner tile — a plus badge above a number" width="160" height="160" loading="lazy">
+                        <figcaption><strong>Spawner</strong> — drops one extra block</figcaption>
+                    </figure>
+                </div>
             </div>
         </div>
     </section>
@@ -453,10 +463,10 @@
                     <p>Each day, ByteCube hands the entire world the exact same cube — identical size, identical seed. No two days play alike, and there's no luck to hide behind: it's you versus the same puzzle as everyone else.</p>
                     <p>Build a streak, climb the daily board, and watch your best. Seven days straight unlocks a week ad-free.</p>
                     <div class="pillrow">
-                        <span class="pill">⏱️ Local-midnight reset</span>
-                        <span class="pill">🌍 Same seed worldwide</span>
-                        <span class="pill">🔒 Server-anchored time</span>
-                        <span class="pill">📅 14-day calendar</span>
+                        <span class="pill">Local-midnight reset</span>
+                        <span class="pill">Same seed worldwide</span>
+                        <span class="pill">Server-anchored time</span>
+                        <span class="pill">14-day calendar</span>
                     </div>
                 </div>
                 <div class="shot">
@@ -511,8 +521,8 @@
                 <h2>Spin up your first <span class="accent">cube</span></h2>
                 <p class="section-sub" style="margin-bottom:2rem;">No download, no sign-up. Play the full game in your browser right now — the iPhone app lands on the App Store soon.</p>
                 <div class="hero-cta">
-                    <a href="https://cascube.app" class="btn btn-primary" rel="noopener">▶&nbsp; Play ByteCube free</a>
-                    <span class="soon-badge"><span class="dot"></span>iPhone app&nbsp;<strong>coming soon</strong></span>
+                    <a href="https://cascube.app" class="btn btn-primary" rel="noopener">Play ByteCube free</a>
+                    <span class="soon-badge">iPhone app&nbsp;<strong>coming soon</strong></span>
                 </div>
             </div>
         </div>
