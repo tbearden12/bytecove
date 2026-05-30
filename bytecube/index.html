@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteCube — 3D 2048 Cube Puzzle | Play Free Online &amp; on iPhone</title>
+    <meta name="description" content="ByteCube is 2048 rebuilt on a cube. Spin it, tap a face, and every tile slides inward to merge. A fresh daily puzzle, cubes from 3³ to 10³, wild &amp; spawner tiles, and worldwide leaderboards. Play free in your browser.">
+    <meta name="keywords" content="ByteCube, 3D 2048, 2048 cube, 3D 2048 game, cube merge puzzle, 2048 3D, daily 2048, number merge game, brain puzzle, online 2048, iOS puzzle game">
+    <meta name="author" content="Bytecove Software">
+    <meta name="theme-color" content="#05050C">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="canonical" href="https://www.bytecovesoftware.com/bytecube/">
+    <link rel="preconnect" href="https://cascube.app">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.bytecovesoftware.com/bytecube/">
+    <meta property="og:title" content="ByteCube — 3D 2048 Cube Puzzle">
+    <meta property="og:description" content="2048, rebuilt on a cube. Spin it, tap a face, merge to 2,048. A new daily puzzle, cubes 3³–10³, and worldwide leaderboards. Play free in your browser.">
+    <meta property="og:image" content="https://www.bytecovesoftware.com/bytecube/og-cover.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Bytecove Software">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ByteCube — 3D 2048 Cube Puzzle">
+    <meta name="twitter:description" content="2048, rebuilt on a cube. Spin it, tap a face, merge to 2,048. A new daily puzzle and worldwide leaderboards. Play free in your browser.">
+    <meta name="twitter:image" content="https://www.bytecovesoftware.com/bytecube/og-cover.jpg">
+
+    <!-- Structured Data — SoftwareApplication (game) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ByteCube",
+      "alternateName": "ByteCube — 3D 2048",
+      "description": "ByteCube is a three-dimensional take on 2048. Rotate an N×N×N cube, tap a face to push every tile inward, and merge matching numbers up to 2,048 — with a deterministic daily puzzle, cubes from 3³ to 10³, wild and spawner tiles, and worldwide leaderboards.",
+      "url": "https://www.bytecovesoftware.com/bytecube/",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "iOS, Web",
+      "inLanguage": "en",
+      "offers": [
+        { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free to play in the browser and on iPhone" },
+        { "@type": "Offer", "price": "0.99", "priceCurrency": "USD", "description": "Remove Ads — optional monthly subscription" }
+      ],
+      "author": { "@type": "Organization", "name": "Bytecove Software", "url": "https://www.bytecovesoftware.com" },
+      "screenshot": [
+        "https://www.bytecovesoftware.com/bytecube/shots/gameplay.jpg",
+        "https://www.bytecovesoftware.com/bytecube/shots/daily.jpg",
+        "https://www.bytecovesoftware.com/bytecube/shots/leaderboard.jpg"
+      ]
+    }
+    </script>
+
+    <!-- Structured Data — BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.bytecovesoftware.com/" },
+        { "@type": "ListItem", "position": 2, "name": "ByteCube", "item": "https://www.bytecovesoftware.com/bytecube/" }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data — FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is ByteCube?", "acceptedAnswer": { "@type": "Answer", "text": "ByteCube is a 3D version of the merge puzzle 2048. Instead of a flat grid, the numbers live on a rotating cube. You spin the cube to any angle, tap a face, and every tile slides inward — matching numbers double. It's simple to start and hard to put down, with a new daily puzzle and cube sizes from 3³ up to 10³." } },
+        { "@type": "Question", "name": "Is ByteCube free to play?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. ByteCube is free to play right now in any web browser at cascube.app, and the iPhone app (coming soon) is free as well. The iPhone app is supported by ads, with an optional Remove Ads subscription for $0.99/month — and completing the daily challenge seven days in a row unlocks seven days ad-free for free." } },
+        { "@type": "Question", "name": "How do you play ByteCube?", "acceptedAnswer": { "@type": "Answer", "text": "Drag to rotate the cube, then tap one of its faces. Every tile on the cube slides toward that face, and any two equal numbers that collide merge into their double. Keep merging to reach 2,048 and beyond. The board fills as you play, so the game ends when no moves are left — the challenge is choosing which face to push next." } },
+        { "@type": "Question", "name": "What are wild and spawner tiles?", "acceptedAnswer": { "@type": "Answer", "text": "Wild tiles merge with any number, giving you a way out of a stuck board. Spawner tiles, which appear on 5³ cubes and larger, merge normally but drop one extra block onto the cube — they help and hurt at the same time, raising the density and the risk." } },
+        { "@type": "Question", "name": "How does the daily challenge work?", "acceptedAnswer": { "@type": "Answer", "text": "Every day ByteCube generates one deterministic cube — the same size and the same seed for every player in the world — so you're all solving the identical puzzle. It resets at your local midnight, anchored to server time so changing your device clock won't unlock the next one early. Chase your best and climb the daily leaderboard." } },
+        { "@type": "Question", "name": "Do I need an account or an internet connection?", "acceptedAnswer": { "@type": "Answer", "text": "No account is required and every cube size is fully playable offline. Your best scores are stored on your device. The only time ByteCube goes online is to show the optional worldwide leaderboard, where you can post a self-chosen display name with your score." } },
+        { "@type": "Question", "name": "When is the iPhone app coming out?", "acceptedAnswer": { "@type": "Answer", "text": "The native iPhone version of ByteCube is on the way to the App Store. In the meantime you can play the full game free in your browser at cascube.app. Check back here for the App Store link the moment it's live." } }
+      ]
+    }
+    </script>
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --teal: #36E0C8;
+            --teal-deep: #27b6a3;
+            --purple: #7C5CFF;
+            --pink: #FF5CAE;
+            --coral: #FF7A59;
+            --amber: #FFB13B;
+            --bg: #05050C;
+            --bg-2: #0a0913;
+            --card: rgba(255, 255, 255, 0.045);
+            --card-solid: #0E0C1A;
+            --stroke: rgba(255, 255, 255, 0.10);
+            --stroke-bright: rgba(54, 224, 200, 0.45);
+            --text: #F4F5FF;
+            --muted: rgba(244, 245, 255, 0.62);
+            --grad: linear-gradient(118deg, #36E0C8 0%, #7C5CFF 52%, #FF5CAE 100%);
+            --grad-soft: linear-gradient(118deg, #36E0C8 0%, #7C5CFF 100%);
+            --wide: 1120px;
+            --narrow: 820px;
+            --round: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Starfield + aurora glow backdrop */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                radial-gradient(1100px 620px at 78% -8%, rgba(124, 92, 255, 0.20), transparent 60%),
+                radial-gradient(900px 560px at 12% 8%, rgba(54, 224, 200, 0.14), transparent 58%),
+                radial-gradient(900px 700px at 50% 108%, rgba(255, 92, 174, 0.12), transparent 60%),
+                var(--bg);
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.5;
+            background-image:
+                radial-gradient(1.4px 1.4px at 20% 30%, rgba(255,255,255,0.9), transparent),
+                radial-gradient(1.4px 1.4px at 75% 18%, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1.2px 1.2px at 40% 70%, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1.6px 1.6px at 88% 64%, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1.2px 1.2px at 60% 42%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1.3px 1.3px at 10% 84%, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1.2px 1.2px at 32% 14%, rgba(255,255,255,0.5), transparent);
+            background-repeat: repeat;
+            background-size: 620px 620px;
+        }
+
+        .container { max-width: var(--wide); margin: 0 auto; width: 100%; padding: 0 24px; }
+
+        a { color: inherit; }
+
+        /* ===== Navigation ===== */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 0.85rem 0;
+            background: rgba(5, 5, 12, 0.72);
+            backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--stroke);
+        }
+        .nav-row { max-width: var(--wide); margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+        .brand { display: flex; align-items: center; gap: 0.65rem; font-family: var(--round); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; text-decoration: none; }
+        .brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 0 16px rgba(54,224,200,0.45); }
+        .brand .b { color: #fff; } .brand .c { color: var(--teal); }
+        .nav-links { display: flex; gap: 1.9rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color .2s; }
+        .nav-links a:hover { color: var(--teal); }
+        .nav-cta { padding: 0.5rem 1rem; border-radius: 999px; background: var(--grad-soft); color: #06231f; font-weight: 800; }
+
+        /* ===== Buttons ===== */
+        .btn { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--round); font-weight: 800; font-size: 1.06rem; padding: 1rem 1.8rem; border-radius: 16px; text-decoration: none; border: 1px solid transparent; transition: transform .2s, box-shadow .2s, background .2s; cursor: pointer; }
+        .btn-primary { background: var(--grad-soft); color: #052b27; box-shadow: 0 10px 32px rgba(54, 224, 200, 0.28); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 44px rgba(54, 224, 200, 0.42); }
+        .btn-ghost { background: rgba(255,255,255,0.05); color: var(--text); border-color: var(--stroke); }
+        .btn-ghost:hover { border-color: var(--stroke-bright); transform: translateY(-2px); }
+        .btn .badge-apple { width: 18px; height: 18px; }
+
+        .soon-badge { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.78rem 1.15rem; border-radius: 14px; border: 1px solid var(--stroke); background: rgba(255,255,255,0.03); color: var(--muted); font-weight: 600; font-size: 0.92rem; }
+        .soon-badge strong { color: var(--text); font-weight: 700; }
+        .soon-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 10px var(--amber); }
+
+        /* ===== Hero ===== */
+        .hero { padding: 9.5rem 0 4.5rem; }
+        .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3rem; align-items: center; }
+        .eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--round); font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; font-size: 0.78rem; color: var(--teal); margin-bottom: 1.1rem; }
+        .eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--teal); border-radius: 2px; }
+        h1.wordmark { font-family: var(--round); font-weight: 800; font-size: clamp(3rem, 7vw, 4.7rem); line-height: 0.98; letter-spacing: -0.035em; margin-bottom: 0.5rem; }
+        h1.wordmark .b { color: #fff; } h1.wordmark .c { color: var(--teal); text-shadow: 0 0 34px rgba(54, 224, 200, 0.5); }
+        h1.wordmark .sub { display: block; font-size: clamp(0.95rem, 1.6vw, 1.15rem); font-weight: 700; letter-spacing: 0.42em; color: var(--muted); margin-top: 0.7rem; }
+        .hero-tagline { font-family: var(--round); font-weight: 700; font-size: clamp(1.25rem, 2.3vw, 1.6rem); margin: 1.5rem 0 0.7rem; }
+        .hero-desc { color: var(--muted); font-size: 1.08rem; max-width: 33em; margin-bottom: 2rem; }
+        .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: center; }
+        .hero-note { margin-top: 1.2rem; color: var(--muted); font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+        .hero-note b { color: var(--teal); font-weight: 700; }
+
+        /* Phone frame */
+        .phone { position: relative; justify-self: center; width: min(330px, 78vw); }
+        .phone::before { content: ""; position: absolute; inset: -14% -22%; background: radial-gradient(closest-side, rgba(124,92,255,0.35), transparent 70%); z-index: -1; filter: blur(8px); }
+        .phone img { width: 100%; height: auto; border-radius: 38px; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 7px rgba(255,255,255,0.02); display: block; }
+
+        /* ===== Section scaffolding ===== */
+        section { position: relative; }
+        .band { padding: 5.5rem 0; }
+        .section-head { text-align: center; max-width: 720px; margin: 0 auto 3rem; }
+        .kicker { font-family: var(--round); font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; font-size: 0.76rem; color: var(--purple); margin-bottom: 0.8rem; }
+        h2 { font-family: var(--round); font-weight: 800; font-size: clamp(1.9rem, 3.6vw, 2.75rem); letter-spacing: -0.02em; line-height: 1.1; }
+        h2 .accent { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-sub { color: var(--muted); font-size: 1.08rem; margin-top: 0.9rem; }
+
+        /* ===== How to play ===== */
+        .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+        .step { background: var(--card); border: 1px solid var(--stroke); border-radius: 22px; padding: 2rem 1.7rem; position: relative; overflow: hidden; }
+        .step:hover { border-color: var(--stroke-bright); }
+        .step .num { font-family: var(--round); font-weight: 800; font-size: 1rem; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; background: rgba(54,224,200,0.12); color: var(--teal); margin-bottom: 1.1rem; }
+        .step h3 { font-family: var(--round); font-size: 1.28rem; font-weight: 800; margin-bottom: 0.45rem; }
+        .step p { color: var(--muted); font-size: 0.98rem; }
+
+        /* ===== Features ===== */
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+        .feature { background: var(--card); border: 1px solid var(--stroke); border-radius: 22px; padding: 1.9rem 1.7rem; transition: transform .25s, border-color .25s, box-shadow .25s; }
+        .feature:hover { transform: translateY(-7px); border-color: var(--stroke-bright); box-shadow: 0 22px 46px rgba(54,224,200,0.10); }
+        .feature .ic { font-size: 1.9rem; margin-bottom: 0.9rem; display: block; }
+        .feature h3 { font-family: var(--round); font-size: 1.22rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .feature p { color: var(--muted); font-size: 0.97rem; }
+
+        /* ===== Tile ladder ===== */
+        .ladder-wrap { background: var(--card); border: 1px solid var(--stroke); border-radius: 26px; padding: 2.5rem 2rem; text-align: center; }
+        .ladder { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; align-items: center; margin-bottom: 1.2rem; }
+        .tile { width: 62px; height: 62px; border-radius: 14px; display: grid; place-items: center; font-family: var(--round); font-weight: 800; font-size: 1.05rem; color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.14), 0 8px 18px rgba(0,0,0,0.35); }
+        .tile small { font-size: 0.7rem; opacity: 0.85; }
+        .arrow { color: var(--muted); font-size: 1.2rem; }
+        .ladder-cap { color: var(--muted); font-size: 1rem; max-width: 52em; margin: 0 auto; }
+
+        /* ===== Daily spotlight ===== */
+        .spotlight { background: linear-gradient(135deg, rgba(124,92,255,0.14), rgba(54,224,200,0.08)); border: 1px solid var(--stroke); border-radius: 28px; padding: 3.2rem 2.4rem; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: center; }
+        .spotlight h2 { margin-bottom: 1rem; }
+        .spotlight p { color: var(--muted); margin-bottom: 1rem; }
+        .spotlight .pillrow { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.3rem; }
+        .pill { padding: 0.5rem 0.95rem; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid var(--stroke); font-size: 0.88rem; font-weight: 600; color: var(--text); }
+        .spotlight .shot img { width: 100%; height: auto; border-radius: 26px; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+
+        /* ===== Screens gallery ===== */
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+        .shot-card { text-align: center; }
+        .shot-card img { width: 100%; height: auto; border-radius: 26px; border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 18px 44px rgba(0,0,0,0.5); transition: transform .25s, box-shadow .25s; display: block; background: #07060f; }
+        .shot-card:hover img { transform: translateY(-6px); box-shadow: 0 26px 56px rgba(124,92,255,0.22); }
+        .shot-card span { display: block; margin-top: 0.9rem; color: var(--muted); font-size: 0.92rem; font-weight: 600; }
+
+        /* ===== FAQ ===== */
+        .faq-list { max-width: var(--narrow); margin: 0 auto; }
+        details.faq-item { border: 1px solid var(--stroke); background: var(--card); border-radius: 16px; padding: 0 1.4rem; margin-bottom: 0.85rem; transition: border-color .2s; }
+        details.faq-item[open] { border-color: var(--stroke-bright); }
+        details.faq-item summary { cursor: pointer; list-style: none; padding: 1.25rem 0; font-family: var(--round); font-weight: 700; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+        details.faq-item summary::-webkit-details-marker { display: none; }
+        details.faq-item summary::after { content: "+"; color: var(--teal); font-size: 1.5rem; font-weight: 700; transition: transform .2s; }
+        details.faq-item[open] summary::after { transform: rotate(45deg); }
+        details.faq-item p { color: var(--muted); padding: 0 0 1.4rem; font-size: 1rem; }
+
+        /* ===== CTA strip ===== */
+        .cta-strip { text-align: center; background: linear-gradient(135deg, rgba(54,224,200,0.12), rgba(255,92,174,0.10)); border: 1px solid var(--stroke); border-radius: 28px; padding: 3.6rem 2rem; }
+        .cta-strip h2 { margin-bottom: 1.4rem; }
+        .cta-strip .hero-cta { justify-content: center; }
+
+        /* ===== Cross-links ===== */
+        .cross { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+        .cross a { display: block; padding: 1.7rem; border-radius: 18px; background: var(--card); border: 1px solid var(--stroke); text-decoration: none; transition: transform .2s, border-color .2s; }
+        .cross a:hover { transform: translateY(-5px); border-color: var(--stroke-bright); }
+        .cross h3 { font-family: var(--round); font-weight: 800; font-size: 1.12rem; margin-bottom: 0.35rem; }
+        .cross p { color: var(--muted); font-size: 0.93rem; }
+
+        /* ===== Footer ===== */
+        footer { border-top: 1px solid var(--stroke); padding: 3rem 0; text-align: center; margin-top: 2rem; }
+        .foot-brand { font-family: var(--round); font-weight: 800; font-size: 1.2rem; margin-bottom: 1.1rem; }
+        .foot-brand .c { color: var(--teal); }
+        .foot-links { display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 1.3rem; }
+        .foot-links a { color: var(--muted); text-decoration: none; font-size: 0.94rem; transition: color .2s; }
+        .foot-links a:hover { color: var(--teal); }
+        .copyright { color: rgba(244,245,255,0.4); font-size: 0.86rem; }
+
+        /* ===== Accessibility ===== */
+        .skip { position: absolute; left: -9999px; }
+        .skip:focus { position: fixed; top: 12px; left: 12px; z-index: 2000; padding: 0.9rem 1.1rem; background: var(--card-solid); color: var(--teal); border: 1px solid var(--teal); border-radius: 10px; }
+        :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 4px; }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 940px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+            .eyebrow, .hero-cta, .hero-note { justify-content: center; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero { padding-top: 8rem; }
+            .spotlight { grid-template-columns: 1fr; text-align: center; }
+            .spotlight .pillrow { justify-content: center; }
+            .features, .steps, .cross { grid-template-columns: repeat(2, 1fr); }
+            .gallery { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 620px) {
+            .nav-links { display: none; }
+            .features, .steps, .cross, .gallery { grid-template-columns: 1fr; }
+            .tile { width: 52px; height: 52px; font-size: 0.95rem; }
+            .band { padding: 4rem 0; }
+            .btn { width: 100%; justify-content: center; }
+            .soon-badge { width: 100%; justify-content: center; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { scroll-behavior: auto !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav aria-label="Main navigation">
+        <div class="nav-row">
+            <a href="#main" class="brand"><img src="app-icon.png" alt="ByteCube app icon"><span><span class="b">Byte</span><span class="c">Cube</span></span></a>
+            <ul class="nav-links">
+                <li><a href="#how">How to play</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#screens">Screens</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="https://cascube.app" class="nav-cta" rel="noopener">Play free</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main">
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="container hero-grid">
+            <div class="hero-copy">
+                <span class="eyebrow">3D · 2048</span>
+                <h1 class="wordmark"><span class="b">Byte</span><span class="c">Cube</span><span class="sub">3D&nbsp;·&nbsp;2048&nbsp;·&nbsp;CUBE&nbsp;PUZZLE</span></h1>
+                <p class="hero-tagline">2048, rebuilt on a cube.</p>
+                <p class="hero-desc">Spin the cube to any angle, tap a face, and every tile slides inward — matching numbers merge and double. A fresh daily puzzle, cubes from 3³ to a brain-bending 10³, wild &amp; spawner tiles, and worldwide leaderboards.</p>
+                <div class="hero-cta">
+                    <a href="https://cascube.app" class="btn btn-primary" rel="noopener">▶&nbsp; Play free in your browser</a>
+                    <span class="soon-badge"><span class="dot"></span>Coming soon to the&nbsp;<strong>App&nbsp;Store</strong></span>
+                </div>
+                <p class="hero-note"><b>Free</b> · plays in any browser · no sign-up · <b>iPhone app on the way</b></p>
+            </div>
+            <div class="phone">
+                <img src="shots/hero-menu.jpg" alt="ByteCube main menu showing the 3D cube, the daily challenge, and the Play button" width="1206" height="2622" fetchpriority="high">
+            </div>
+        </div>
+    </header>
+
+    <!-- How to play -->
+    <section class="band" id="how">
+        <div class="container">
+            <div class="section-head">
+                <p class="kicker">How it works</p>
+                <h2>Three taps from <span class="accent">simple to obsessed</span></h2>
+                <p class="section-sub">If you've played 2048, you already know the rules. The third dimension is the twist.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="num">1</div>
+                    <h3>Rotate the cube</h3>
+                    <p>Drag anywhere to spin the cube in 3D and line up the angle you want to play. Every side is in reach.</p>
+                </div>
+                <div class="step">
+                    <div class="num">2</div>
+                    <h3>Tap a face</h3>
+                    <p>Tap any face and all the tiles on the cube slide inward toward it — your whole board moves at once.</p>
+                </div>
+                <div class="step">
+                    <div class="num">3</div>
+                    <h3>Merge to 2,048</h3>
+                    <p>Equal numbers collide and double. Keep the cube from filling up, and chase 2,048 — then keep going.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="band" id="features">
+        <div class="container">
+            <div class="section-head">
+                <p class="kicker">What's inside</p>
+                <h2>A whole new dimension <span class="accent">for a classic</span></h2>
+                <p class="section-sub">Everything you love about merge puzzles, wrapped around a cube and tuned for replay.</p>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <span class="ic">🎲</span>
+                    <h3>A new cube every day</h3>
+                    <p>One deterministic daily puzzle — the same seed for every player on Earth. Resets at your local midnight, anchored to server time so a tweaked clock can't skip ahead.</p>
+                </div>
+                <div class="feature">
+                    <span class="ic">🧊</span>
+                    <h3>From 3³ to 10³</h3>
+                    <p>Warm up on a gentle 3×3×3, or take on a 1,000-cell 10³ monster. Free practice on any size, any time, with progressive levels to unlock.</p>
+                </div>
+                <div class="feature">
+                    <span class="ic">🟪</span>
+                    <h3>Wild &amp; spawner tiles</h3>
+                    <p>Wild tiles merge with anything to rescue a stuck board. Spawner tiles (5³ and up) merge normally but drop an extra block — equal parts gift and gamble.</p>
+                </div>
+                <div class="feature">
+                    <span class="ic">🏆</span>
+                    <h3>Worldwide leaderboards</h3>
+                    <p>Weekly and all-time boards, per cube size or overall, with globally-unique names. Live polling and pull-to-refresh keep the race honest.</p>
+                </div>
+                <div class="feature">
+                    <span class="ic">🔥</span>
+                    <h3>Streaks that pay off</h3>
+                    <p>Clear the daily challenge seven days in a row and earn seven days completely ad-free — no purchase, just consistency.</p>
+                </div>
+                <div class="feature">
+                    <span class="ic">📴</span>
+                    <h3>Plays fully offline</h3>
+                    <p>No account, no connection needed. Every size runs offline with your best scores saved on-device — go online only for the leaderboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tile ladder -->
+    <section class="band">
+        <div class="container">
+            <div class="ladder-wrap">
+                <div class="ladder">
+                    <div class="tile" style="background:#3A3F63">2</div>
+                    <div class="tile" style="background:#4A4F8A">4</div>
+                    <div class="tile" style="background:#7C5CFF">8</div>
+                    <div class="tile" style="background:#9B6CFF">16</div>
+                    <div class="tile" style="background:#B14BFF">32</div>
+                    <div class="tile" style="background:#FF5CAE">64</div>
+                    <div class="tile" style="background:#FF7A59">128</div>
+                    <div class="tile" style="background:#FFB13B">256</div>
+                    <div class="tile" style="background:#FFE14B;color:#3a2e00">512</div>
+                    <div class="tile" style="background:#6CFFB1;color:#053524"><small>1024</small></div>
+                    <div class="tile" style="background:#36E0C8;color:#04201c"><small>2048</small></div>
+                </div>
+                <p class="ladder-cap">Every rung on the climb gets its own glowing color — from a humble slate <strong>2</strong> through hot-pink <strong>64</strong>, amber <strong>256</strong>, all the way to the brand-teal <strong>2,048</strong>. You'll learn the ramp by heart.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily spotlight -->
+    <section class="band">
+        <div class="container">
+            <div class="spotlight">
+                <div>
+                    <p class="kicker">The daily challenge</p>
+                    <h2>One cube. <span class="accent">Everyone. Every day.</span></h2>
+                    <p>Each day, ByteCube hands the entire world the exact same cube — identical size, identical seed. No two days play alike, and there's no luck to hide behind: it's you versus the same puzzle as everyone else.</p>
+                    <p>Build a streak, climb the daily board, and watch your best. Seven days straight unlocks a week ad-free.</p>
+                    <div class="pillrow">
+                        <span class="pill">⏱️ Local-midnight reset</span>
+                        <span class="pill">🌍 Same seed worldwide</span>
+                        <span class="pill">🔒 Server-anchored time</span>
+                        <span class="pill">📅 14-day calendar</span>
+                    </div>
+                </div>
+                <div class="shot">
+                    <img src="shots/daily.jpg" alt="ByteCube daily challenge screen with a completion calendar, streak, and a countdown to the next reset" width="1206" height="2622" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screens gallery -->
+    <section class="band" id="screens">
+        <div class="container">
+            <div class="section-head">
+                <p class="kicker">In the game</p>
+                <h2>See it <span class="accent">in motion</span></h2>
+                <p class="section-sub">Glowing tiles, a drifting starfield, and a cube that only moves when you do.</p>
+            </div>
+            <div class="gallery">
+                <figure class="shot-card">
+                    <img src="shots/gameplay.jpg" alt="ByteCube mid-push: a tapped face glows teal and streamlines show the slide direction as tiles merge" width="1206" height="2622" loading="lazy">
+                    <span>Tap a face — tiles slide &amp; merge</span>
+                </figure>
+                <figure class="shot-card">
+                    <img src="shots/highvalue.jpg" alt="A dense ByteCube board climbing the color ramp through 8, 16 and beyond" width="1206" height="2622" loading="lazy">
+                    <span>Climb the color ramp</span>
+                </figure>
+                <figure class="shot-card">
+                    <img src="shots/leaderboard.jpg" alt="ByteCube worldwide leaderboard with weekly and all-time filters" width="1206" height="2622" loading="lazy">
+                    <span>Worldwide leaderboards</span>
+                </figure>
+                <figure class="shot-card">
+                    <img src="shots/cube10.jpg" alt="A giant 10-cubed ByteCube with a thousand cells" width="1206" height="2622" loading="lazy">
+                    <span>Go big: the 10³ cube</span>
+                </figure>
+                <figure class="shot-card">
+                    <img src="shots/modeselect.jpg" alt="ByteCube level select showing cube sizes from 3³ Starter up to 10³ Master" width="1206" height="2622" loading="lazy">
+                    <span>Sizes 3³ → 10³</span>
+                </figure>
+                <figure class="shot-card">
+                    <img src="shots/gameover.jpg" alt="ByteCube game-over card reading Cube full with the final score and best" width="1206" height="2622" loading="lazy">
+                    <span>Beat your best</span>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA strip -->
+    <section class="band">
+        <div class="container">
+            <div class="cta-strip">
+                <p class="kicker">Ready when you are</p>
+                <h2>Spin up your first <span class="accent">cube</span></h2>
+                <p class="section-sub" style="margin-bottom:2rem;">No download, no sign-up. Play the full game in your browser right now — the iPhone app lands on the App Store soon.</p>
+                <div class="hero-cta">
+                    <a href="https://cascube.app" class="btn btn-primary" rel="noopener">▶&nbsp; Play ByteCube free</a>
+                    <span class="soon-badge"><span class="dot"></span>iPhone app&nbsp;<strong>coming soon</strong></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="band" id="faq">
+        <div class="container">
+            <div class="section-head">
+                <p class="kicker">Good to know</p>
+                <h2>Frequently asked <span class="accent">questions</span></h2>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item" open>
+                    <summary>What is ByteCube?</summary>
+                    <p>ByteCube is a 3D version of the merge puzzle 2048. Instead of a flat grid, the numbers live on a rotating cube. You spin the cube to any angle, tap a face, and every tile slides inward — matching numbers double. It's simple to start and hard to put down, with a new daily puzzle and cube sizes from 3³ up to 10³.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Is ByteCube free to play?</summary>
+                    <p>Yes. ByteCube is free to play right now in any web browser at <a href="https://cascube.app" rel="noopener">cascube.app</a>, and the iPhone app (coming soon) is free as well. The iPhone app is supported by ads, with an optional Remove Ads subscription for $0.99/month — and completing the daily challenge seven days in a row unlocks seven days ad-free for free.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How do you play ByteCube?</summary>
+                    <p>Drag to rotate the cube, then tap one of its faces. Every tile on the cube slides toward that face, and any two equal numbers that collide merge into their double. Keep merging to reach 2,048 and beyond. The board fills as you play, so the game ends when no moves are left — the real challenge is choosing which face to push next.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>What are wild and spawner tiles?</summary>
+                    <p>Wild tiles merge with any number, giving you a way out of a stuck board. Spawner tiles, which appear on 5³ cubes and larger, merge normally but drop one extra block onto the cube — they help and hurt at the same time, raising the density and the risk.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How does the daily challenge work?</summary>
+                    <p>Every day ByteCube generates one deterministic cube — the same size and the same seed for every player in the world — so you're all solving the identical puzzle. It resets at your local midnight, anchored to server time so changing your device clock won't unlock the next one early. Chase your best and climb the daily leaderboard.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Do I need an account or an internet connection?</summary>
+                    <p>No account is required and every cube size is fully playable offline. Your best scores are stored on your device. The only time ByteCube goes online is to show the optional worldwide leaderboard, where you can post a self-chosen display name with your score.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>When is the iPhone app coming out?</summary>
+                    <p>The native iPhone version of ByteCube is on the way to the App Store. In the meantime you can play the full game free in your browser at <a href="https://cascube.app" rel="noopener">cascube.app</a>. Check back here for the App Store link the moment it's live.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cross-links -->
+    <section class="band">
+        <div class="container">
+            <div class="section-head">
+                <p class="kicker">More from Bytecove</p>
+                <h2>Other apps we've <span class="accent">built</span></h2>
+            </div>
+            <div class="cross">
+                <a href="../bloxbreaker/">
+                    <h3>Blox Breaker</h3>
+                    <p>A neon block-breaking arcade with 400+ levels across 8 worlds, power-ups, and endless mode.</p>
+                </a>
+                <a href="../wordbrew/">
+                    <h3>WordBrew</h3>
+                    <p>A cozy, tea-themed word puzzle with 250 levels, collectible cups, and ambient soundscapes.</p>
+                </a>
+                <a href="../fieldcalc/">
+                    <h3>FieldCalc Pro</h3>
+                    <p>28 code-compliant calculators for electricians, HVAC techs, and contractors.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="foot-brand"><span class="b">Byte</span><span class="c">Cube</span></p>
+            <div class="foot-links">
+                <a href="https://www.bytecovesoftware.com">Bytecove Home</a>
+                <a href="https://cascube.app" rel="noopener">Play in browser</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="support.html">Support</a>
+            </div>
+            <p class="copyright">© 2026 Bytecove Software. ByteCube — 3D 2048. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
