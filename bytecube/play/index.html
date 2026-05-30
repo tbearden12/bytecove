@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Play ByteCube — Free 3³ Demo</title>
+<meta name="description" content="Play ByteCube free in your browser. Spin the cube, tap a face, and merge tiles to 2,048 on a 3×3×3 grid — a quick demo of the full game.">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://www.bytecovesoftware.com/bytecube/play/">
+<link rel="icon" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#07060f">
+<meta property="og:title" content="Play ByteCube — Free 3³ Demo">
+<meta property="og:description" content="Spin the cube, tap a face, merge to 2,048. A free in-browser demo of ByteCube.">
+<meta property="og:image" content="https://www.bytecovesoftware.com/bytecube/og-cover.jpg">
+<style>
+  :root{
+    --bg:#07060f; --bg2:#0d0b1c; --ink:#eef0ff; --muted:#9aa0c5;
+    --teal:#36E0C8; --cyan:#4FE9FF; --coral:#FF7A59; --stroke:rgba(255,255,255,.10);
+    --round:"SF Pro Rounded",ui-rounded,"Nunito",-apple-system,system-ui,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
+    font-family:var(--round);overscroll-behavior:none;}
+  #scene{position:fixed;inset:0;display:block;touch-action:none;}
+  /* radial glow + vignette over the canvas, matching the app's screen scrim */
+  #scrim{position:fixed;inset:0;pointer-events:none;
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(124,92,255,.30), transparent 60%),
+      radial-gradient(100% 100% at 50% 120%, rgba(0,0,0,.55), transparent 55%);}
+  .hud{position:fixed;left:0;right:0;pointer-events:none;z-index:5;}
+  .top{top:0;padding:max(14px,env(safe-area-inset-top)) 16px 0;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.05rem;letter-spacing:-.01em;
+    text-decoration:none;color:var(--ink);pointer-events:auto;}
+  .brand b{color:var(--teal)}
+  .brand img{width:26px;height:26px;border-radius:7px}
+  .chips{display:flex;gap:10px;align-items:center}
+  .chip{background:rgba(255,255,255,.05);border:1px solid var(--stroke);border-radius:14px;
+    padding:.46rem .8rem;min-width:74px;text-align:center;backdrop-filter:blur(8px);}
+  .chip .lab{font-size:.58rem;font-weight:800;letter-spacing:.12em;color:var(--muted)}
+  .chip .val{font-size:1.12rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
+  .iconbtn{pointer-events:auto;width:40px;height:40px;border-radius:50%;
+    background:rgba(255,255,255,.05);border:1px solid var(--stroke);color:var(--ink);
+    display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(8px);font-size:1.05rem;}
+  .iconbtn:active{transform:scale(.94)}
+  .hint{bottom:max(16px,env(safe-area-inset-bottom));text-align:center;color:var(--muted);
+    font-size:.86rem;font-weight:600;padding:0 20px;}
+  .hint b{color:var(--cyan);font-weight:800}
+  /* overlays */
+  .overlay{position:fixed;inset:0;z-index:10;display:none;place-items:center;padding:24px;
+    background:rgba(4,3,12,.62);backdrop-filter:blur(3px);}
+  .overlay.show{display:grid;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .card{width:min(360px,92vw);background:linear-gradient(180deg,rgba(26,22,48,.92),rgba(14,12,28,.95));
+    border:1px solid var(--stroke);border-radius:24px;padding:26px;text-align:center;
+    box-shadow:0 30px 80px rgba(0,0,0,.5);}
+  .card .emoji{font-size:42px;line-height:1}
+  .card h2{margin:.4rem 0 .2rem;font-size:1.7rem;font-weight:800}
+  .card.win h2{color:var(--teal)} .card.over h2{color:var(--coral)}
+  .card p{margin:.2rem 0 1.1rem;color:var(--muted);font-size:.96rem;line-height:1.45}
+  .stats{display:flex;justify-content:center;gap:26px;margin:.2rem 0 1.2rem}
+  .stats .lab{font-size:.6rem;font-weight:800;letter-spacing:.12em;color:var(--muted)}
+  .stats .v{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums}
+  .btns{display:flex;flex-direction:column;gap:10px}
+  .btn{font-family:var(--round);font-weight:800;font-size:1.02rem;padding:.92rem 1rem;border-radius:15px;
+    border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+    text-decoration:none;}
+  .btn:active{transform:scale(.98)}
+  .btn-primary{background:linear-gradient(180deg,var(--teal),#1fcfb4);color:#04221c;
+    box-shadow:0 10px 24px rgba(54,224,200,.28)}
+  .btn-ghost{background:rgba(255,255,255,.05);border-color:var(--stroke);color:var(--ink)}
+  #loading{position:fixed;inset:0;z-index:20;display:grid;place-items:center;background:var(--bg);color:var(--muted);
+    font-weight:700;letter-spacing:.04em;}
+  #loading .ring{width:34px;height:34px;border-radius:50%;border:3px solid rgba(255,255,255,.12);
+    border-top-color:var(--teal);animation:spin 1s linear infinite;margin:0 auto 14px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .pop{animation:pop .5s ease}@keyframes pop{0%{transform:scale(.8)}60%{transform:scale(1.08)}100%{transform:scale(1)}}
+</style>
+</head>
+<body>
+<div id="loading"><div><div class="ring"></div>Loading ByteCube…</div></div>
+<canvas id="scene"></canvas>
+<div id="scrim"></div>
+
+<div class="hud top">
+  <a class="brand" href="../"><img src="../app-icon.png" alt="ByteCube"><span>Byte<b>Cube</b></span></a>
+  <div class="chips">
+    <div class="chip"><div class="lab">SCORE</div><div class="val" id="score">0</div></div>
+    <div class="chip"><div class="lab">BEST</div><div class="val" id="best">0</div></div>
+    <button class="iconbtn" id="restart" title="Restart" aria-label="Restart">↻</button>
+  </div>
+</div>
+<div class="hud hint">Drag to rotate · <b>tap a face</b> to push the tiles</div>
+
+<div class="overlay" id="winOverlay">
+  <div class="card win">
+    <div class="emoji">🎉</div><h2>2048!</h2>
+    <p>You built the 2,048 tile on the cube. Keep merging for a higher score, or start fresh.</p>
+    <div class="stats"><div><div class="lab">SCORE</div><div class="v" id="winScore">0</div></div></div>
+    <div class="btns">
+      <button class="btn btn-primary" id="keepPlaying">Keep Playing</button>
+      <button class="btn btn-ghost" id="winRestart">New Cube</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overOverlay">
+  <div class="card over">
+    <div class="emoji">🧊</div><h2>Cube Full</h2>
+    <p>Every cell is packed with no merges left. Want the full game — bigger cubes, a daily challenge, and worldwide leaderboards?</p>
+    <div class="stats">
+      <div><div class="lab">SCORE</div><div class="v" id="overScore">0</div></div>
+      <div><div class="lab">BEST</div><div class="v" id="overBest">0</div></div>
+    </div>
+    <div class="btns">
+      <button class="btn btn-primary" id="overRestart">Play Again</button>
+      <a class="btn btn-ghost" href="../">Back to ByteCube</a>
+    </div>
+  </div>
+</div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+/* ───────────────────────── Engine (port of the iOS CubeGame, 3³) ─────────────────────────
+   Pure logic: a 3×3×3 "3D 2048". Tiles slide toward a face and merge. Wild "?" tiles merge
+   with anything. No high-score tracking beyond this browser session (a local "best" only). */
+const N = 3;
+const WILD_CHANCE = 0.05;
+class Game {
+  constructor(){ this.grid=new Map(); this.nextId=1; this.score=0; this.won=false; this.over=false; this.start(); }
+  idx(x,y,z){ return (x*N+y)*N+z; }
+  cells(){ const r=[]; for(let x=0;x<N;x++)for(let y=0;y<N;y++)for(let z=0;z<N;z++) r.push([x,y,z]); return r; }
+  empties(){ return this.cells().filter(([x,y,z])=>!this.grid.has(this.idx(x,y,z))); }
+  spawn(){
+    const e=this.empties(); if(!e.length) return null;
+    const [x,y,z]=e[(Math.random()*e.length)|0];
+    const roll=Math.random(); const base=Math.random()<0.9?2:4;
+    let kind='normal', value=base;
+    if(roll<WILD_CHANCE){ kind='wild'; value=0; }
+    const t={id:this.nextId++,value,x,y,z,kind};
+    this.grid.set(this.idx(x,y,z),t); return t;
+  }
+  start(){ const s=[]; for(let i=0;i<3;i++){const t=this.spawn(); if(t)s.push(t);} return s; }
+  mergeable(a,b){ return a.kind==='wild'||b.kind==='wild'||a.value===b.value; }
+  canMove(){
+    if(this.grid.size<N*N*N) return true;
+    for(let x=0;x<N;x++)for(let y=0;y<N;y++)for(let z=0;z<N;z++){
+      const t=this.grid.get(this.idx(x,y,z)); if(!t)continue;
+      if(x+1<N){const r=this.grid.get(this.idx(x+1,y,z)); if(r&&this.mergeable(t,r))return true;}
+      if(y+1<N){const r=this.grid.get(this.idx(x,y+1,z)); if(r&&this.mergeable(t,r))return true;}
+      if(z+1<N){const r=this.grid.get(this.idx(x,y,z+1)); if(r&&this.mergeable(t,r))return true;}
+    }
+    return false;
+  }
+  lines(axis,dir){
+    const others=[0,1,2].filter(a=>a!==axis); const res=[];
+    for(let s=0;s<N;s++)for(let a=0;a<N;a++){
+      const line=[];
+      for(let l=0;l<N;l++){ const coord=dir>0?N-1-l:l; const h=[0,0,0];
+        h[axis]=coord; h[others[0]]=s; h[others[1]]=a; line.push(h); }
+      res.push(line);
+    }
+    return res;
+  }
+  push(axis,dir){
+    if(this.over) return {moved:false};
+    const slides=[], merges=[]; let gained=0, moved=false;
+    for(const line of this.lines(axis,dir)){
+      const present=[];
+      for(const c of line){ const t=this.grid.get(this.idx(c[0],c[1],c[2])); if(t)present.push(t); }
+      for(const c of line) this.grid.delete(this.idx(c[0],c[1],c[2]));
+      let ti=0, ri=0;
+      while(ri<present.length){
+        const target=line[ti]; let head=present[ri]; const next=ri+1<present.length?present[ri+1]:null;
+        if(next && this.mergeable(head,next)){
+          let nv;
+          if(head.kind==='wild'||next.kind==='wild'){
+            nv=(head.kind==='wild'&&next.kind==='wild')?4:(head.kind==='wild'?next.value:head.value)*2;
+          } else nv=head.value*2;
+          head.value=nv; head.kind='normal'; head.x=target[0]; head.y=target[1]; head.z=target[2];
+          this.grid.set(this.idx(target[0],target[1],target[2]),head);
+          gained+=nv; merges.push({fromId:next.id,intoId:head.id,value:nv,to:target.slice()});
+          moved=true; ri+=2;
+        } else {
+          if(head.x!==target[0]||head.y!==target[1]||head.z!==target[2]) moved=true;
+          head.x=target[0]; head.y=target[1]; head.z=target[2];
+          this.grid.set(this.idx(target[0],target[1],target[2]),head);
+          slides.push({id:head.id,to:target.slice()}); ri+=1;
+        }
+        ti+=1;
+      }
+    }
+    if(!moved) return {moved:false};
+    this.score+=gained;
+    const spawn=this.spawn();
+    if(!this.won && merges.some(m=>m.value>=2048)) this.won=true;
+    if(!this.canMove()) this.over=true;
+    return {moved:true,slides,merges,spawn,gained};
+  }
+}
+
+/* ───────────────────────── Scene ───────────────────────── */
+const canvas=document.getElementById('scene');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(48,1,0.1,100);
+scene.add(new THREE.AmbientLight(0xffffff,0.85));
+const dir=new THREE.DirectionalLight(0xffffff,0.7); dir.position.set(3,5,4); scene.add(dir);
+const dir2=new THREE.DirectionalLight(0x6a78ff,0.35); dir2.position.set(-4,-2,-3); scene.add(dir2);
+
+const extent=N/2;                 // 1.5
+const board=new THREE.Group(); scene.add(board);
+
+// camera orbit (isometric default, matching the app's ISO view). DIST is fit to
+// the viewport in resize() so the whole cube stays framed on any aspect ratio.
+let azim=0.62, elev=0.42; let DIST=11;
+function applyCam(){
+  // Fit the cube every frame from the live aspect (robust against init/resize races).
+  const aspect=innerWidth/innerHeight, vfov=camera.fov*Math.PI/180;
+  const hfov=2*Math.atan(Math.tan(vfov/2)*aspect);
+  DIST=2.5/Math.sin(Math.min(vfov,hfov)/2);
+  const ce=Math.cos(elev);
+  camera.position.set(DIST*ce*Math.sin(azim), DIST*Math.sin(elev), DIST*ce*Math.cos(azim));
+  camera.lookAt(0,0,0);
+}
+
+// starfield
+(function stars(){
+  const g=new THREE.BufferGeometry(); const n=320; const p=new Float32Array(n*3);
+  for(let i=0;i<n;i++){ const r=22+Math.random()*22, th=Math.random()*Math.PI*2, ph=Math.acos(2*Math.random()-1);
+    p[i*3]=r*Math.sin(ph)*Math.cos(th); p[i*3+1]=r*Math.cos(ph); p[i*3+2]=r*Math.sin(ph)*Math.sin(th); }
+  g.setAttribute('position',new THREE.BufferAttribute(p,3));
+  scene.add(new THREE.Points(g,new THREE.PointsMaterial({color:0xbfc6ff,size:0.06,transparent:true,opacity:0.65})));
+})();
+
+/* ── Cage: bright outer frame + the invisible inner lattice that carries the tap "streamline"
+      flow (a faithful port of the app's shader — only lines parallel to the tapped axis light
+      up, with a cyan band scrolling along them). ── */
+function outerFrame(){
+  const e=extent; const c=[[-e,-e,-e],[e,-e,-e],[e,e,-e],[-e,e,-e],[-e,-e,e],[e,-e,e],[e,e,e],[-e,e,e]];
+  const E=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+  const v=[]; for(const [a,b] of E){ v.push(...c[a],...c[b]); }
+  const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));
+  const m=new THREE.LineBasicMaterial({color:0x6E6EB0,transparent:true,opacity:0.95});
+  const line=new THREE.LineSegments(g,m); line.renderOrder=3; return line;
+}
+const flowUniforms={
+  uActive:{value:0}, uAxis:{value:-1}, uDir:{value:1}, uTime:{value:0}, uExtent:{value:extent}
+};
+function flowLattice(){
+  const v=[], ax=[]; const e=extent;
+  for(let axis=0;axis<3;axis++)for(let o=0;o<=N;o++)for(let l=0;l<=N;l++){
+    const cc=o-N/2, h=l-N/2;
+    if(axis===0){ v.push(-e,cc,h, e,cc,h); }
+    else if(axis===1){ v.push(cc,-e,h, cc,e,h); }
+    else { v.push(cc,h,-e, cc,h,e); }
+    ax.push(axis,axis);
+  }
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));
+  g.setAttribute('aAxis',new THREE.Float32BufferAttribute(ax,1));
+  const mat=new THREE.ShaderMaterial({
+    transparent:true, depthWrite:false, uniforms:flowUniforms,
+    vertexShader:`
+      attribute float aAxis; varying float vAxis; varying float vT; uniform float uExtent;
+      void main(){
+        vAxis=aAxis;
+        float comp = aAxis<0.5 ? position.x : (aAxis<1.5 ? position.y : position.z);
+        vT = comp/uExtent*0.5+0.5;
+        gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0);
+      }`,
+    fragmentShader:`
+      precision highp float;
+      uniform float uActive,uAxis,uDir,uTime; varying float vAxis; varying float vT;
+      void main(){
+        vec3 baseCol=vec3(0.1647,0.1647,0.2902);   // #2A2A4A
+        vec3 hiCol=vec3(0.4235,0.9412,1.0);        // #6CF0FF
+        vec3 col=baseCol; float op=0.0;            // invisible at rest
+        if(uActive>0.001 && abs(vAxis-uAxis)<0.5){
+          float phase=vT*1.25 - uDir*uTime*0.5;            // ~80% peak-to-peak
+          float band=pow(0.5+0.5*sin(phase*6.2831853),3.0); // broad, tall swells
+          float a=clamp(uActive,0.0,1.4);
+          col=mix(baseCol,hiCol,min(1.0,a*(0.4+0.6*band)));
+          op=a*(0.5*band+0.2);
+        }
+        gl_FragColor=vec4(col,op);
+      }`
+  });
+  return new THREE.LineSegments(g,mat);
+}
+board.add(outerFrame()); board.add(flowLattice());
+
+// face planes for tap raycasting (invisible) + a teal flash on tap
+const FACES=[{axis:0,sign:1,n:[1,0,0]},{axis:0,sign:-1,n:[-1,0,0]},
+             {axis:1,sign:1,n:[0,1,0]},{axis:1,sign:-1,n:[0,-1,0]},
+             {axis:2,sign:1,n:[0,0,1]},{axis:2,sign:-1,n:[0,0,-1]}];
+const facePlanes=[];
+for(const f of FACES){
+  const geo=new THREE.PlaneGeometry(N,N);
+  const mat=new THREE.MeshBasicMaterial({color:0x36E0C8,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false});
+  const m=new THREE.Mesh(geo,mat);
+  const nv=new THREE.Vector3(...f.n);
+  m.position.copy(nv).multiplyScalar(extent);
+  m.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1),nv);
+  m.userData={axis:f.axis,sign:f.sign,mat};
+  board.add(m); facePlanes.push(m);
+}
+function flashFace(mesh){
+  const m=mesh.userData.mat; m.opacity=0.10;
+  const t0=performance.now();
+  (function fade(){ const k=(performance.now()-t0)/360; m.opacity=Math.max(0,0.10*(1-k));
+    if(k<1) requestAnimationFrame(fade); })();
+}
+
+/* ── Tiles (use the site's own tile art so they match the app exactly) ── */
+const loader=new THREE.TextureLoader();
+const texCache=new Map();
+function tileTex(value,kind){
+  const key = kind==='wild' ? 'wild' : String(value);
+  if(texCache.has(key)) return texCache.get(key);
+  let url = kind==='wild' ? '../tiles/tile-wild.png'
+          : (value<=2048 ? `../tiles/tile-${value}.png` : '../tiles/tile-2048.png');
+  const t=loader.load(url); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=4;
+  texCache.set(key,t); return t;
+}
+const TILE=0.86;
+const tileGeo=new THREE.BoxGeometry(TILE,TILE,TILE);
+const tileNodes=new Map();
+function cellPos(x,y,z){ return new THREE.Vector3(x-(N-1)/2,y-(N-1)/2,z-(N-1)/2); }
+function makeTile(t){
+  const tex=tileTex(t.value,t.kind);
+  const mat=new THREE.MeshStandardMaterial({map:tex,emissiveMap:tex,emissive:0xffffff,
+    emissiveIntensity:t.kind==='wild'?0.34:0.2,roughness:0.5,metalness:0.18});
+  const m=new THREE.Mesh(tileGeo,mat);
+  m.position.copy(cellPos(t.x,t.y,t.z));
+  m.userData={value:t.value,kind:t.kind};
+  board.add(m); tileNodes.set(t.id,m); return m;
+}
+function retex(node,value,kind){
+  const tex=tileTex(value,kind);
+  node.material.map=tex; node.material.emissiveMap=tex;
+  node.material.emissiveIntensity=kind==='wild'?0.34:0.2; node.material.needsUpdate=true;
+  node.userData.value=value; node.userData.kind=kind;
+}
+
+/* ── Animation system ── */
+const anims=[];
+function tween(dur,onUpdate,onDone,ease=(t)=>1-Math.pow(1-t,3),delay=0){
+  anims.push({t:0,dur,onUpdate,onDone,ease,delay});
+}
+function spawnPop(node){ node.scale.setScalar(0.01);
+  tween(0.24,(k)=>node.scale.setScalar(k),()=>node.scale.setScalar(1)); }
+
+/* ── Tap-driven streamline flow pulse ── */
+function triggerFlow(axis,dir){
+  flowUniforms.uAxis.value=axis; flowUniforms.uDir.value=dir;
+  const t0=performance.now();
+  (function pulse(){
+    const e=(performance.now()-t0)/1000;
+    flowUniforms.uActive.value=Math.max(0,1.3-e*1.9);
+    flowUniforms.uTime.value=e*2.2;
+    if(e<0.75) requestAnimationFrame(pulse); else flowUniforms.uActive.value=0;
+  })();
+}
+
+/* ── Game flow ── */
+let game, best=Number(localStorage.getItem('bytecube.demo.best')||0);
+const $=(id)=>document.getElementById(id);
+$('best').textContent=best;
+let busy=false, queued=[];
+
+function newGame(){
+  for(const m of tileNodes.values()){ board.remove(m); m.material.dispose(); }
+  tileNodes.clear(); anims.length=0; queued.length=0; busy=false;
+  game=new Game();
+  for(const t of game.grid.values()){ const node=makeTile(t); spawnPop(node); }
+  $('score').textContent=0;
+  $('winOverlay').classList.remove('show'); $('overOverlay').classList.remove('show');
+}
+function setBest(){ if(game.score>best){ best=game.score; localStorage.setItem('bytecube.demo.best',best); $('best').textContent=best; } }
+
+function applyMove(res,axis,dir){
+  busy=true;
+  triggerFlow(axis,dir);
+  const DUR=0.2;
+  // slides
+  for(const s of res.slides){ const node=tileNodes.get(s.id); if(!node)continue;
+    const from=node.position.clone(), to=cellPos(s.to[0],s.to[1],s.to[2]);
+    tween(DUR,(k)=>node.position.lerpVectors(from,to,k)); }
+  // merges: slide the consumed tile in, then remove + bump the survivor
+  for(const m of res.merges){ const fromNode=tileNodes.get(m.fromId), intoNode=tileNodes.get(m.intoId);
+    const to=cellPos(m.to[0],m.to[1],m.to[2]);
+    if(intoNode){ const f0=intoNode.position.clone(); tween(DUR,(k)=>intoNode.position.lerpVectors(f0,to,k)); }
+    if(fromNode){ const f0=fromNode.position.clone();
+      tween(DUR,(k)=>fromNode.position.lerpVectors(f0,to,k),()=>{ board.remove(fromNode); tileNodes.delete(m.fromId); }); }
+  }
+  // after the slide, update merged textures + spawn + resolve
+  setTimeout(()=>{
+    for(const m of res.merges){ const node=tileNodes.get(m.intoId);
+      if(node){ retex(node,m.value,'normal'); node.scale.setScalar(1);
+        tween(0.22,(k)=>node.scale.setScalar(1+0.18*Math.sin(k*Math.PI)),()=>node.scale.setScalar(1)); } }
+    if(res.spawn){ const node=makeTile(res.spawn); spawnPop(node); }
+    $('score').textContent=game.score; setBest();
+    busy=false;
+    if(game.won && !winShown){ winShown=true; showWin(); }
+    else if(game.over){ showOver(); }
+    else if(queued.length){ const q=queued.shift(); doMove(q.axis,q.dir); }
+  }, DUR*1000+30);
+}
+let winShown=false;
+function doMove(axis,dir){
+  if(game.over) return;
+  if(busy){ if(queued.length<2) queued.push({axis,dir}); return; }
+  const res=game.push(axis,dir);
+  if(!res.moved) return;
+  applyMove(res,axis,dir);
+}
+function showWin(){ $('winScore').textContent=game.score; $('winOverlay').classList.add('show'); }
+function showOver(){ $('overScore').textContent=game.score; $('overBest').textContent=best; $('overOverlay').classList.add('show'); }
+
+/* ── Input: drag to rotate, tap a face to push ── */
+const ray=new THREE.Raycaster(); const ptr=new THREE.Vector2();
+let down=null, dragging=false;
+function pos(e){ const t=e.touches?e.touches[0]:e; return {x:t.clientX,y:t.clientY}; }
+canvas.addEventListener('pointerdown',(e)=>{ down={...pos(e),t:performance.now(),az:azim,el:elev}; dragging=false; canvas.setPointerCapture?.(e.pointerId); });
+canvas.addEventListener('pointermove',(e)=>{ if(!down)return; const p=pos(e);
+  const dx=p.x-down.x, dy=p.y-down.y;
+  if(!dragging && Math.hypot(dx,dy)>6) dragging=true;
+  if(dragging){ azim=down.az - dx*0.008; elev=Math.max(-1.2,Math.min(1.2,down.el + dy*0.008)); }
+});
+canvas.addEventListener('pointerup',(e)=>{
+  if(!down) return; const p=pos(e); const moved=Math.hypot(p.x-down.x,p.y-down.y);
+  const quick=performance.now()-down.t<500;
+  if(!dragging && moved<8 && quick){
+    const r=canvas.getBoundingClientRect();
+    ptr.x=((p.x-r.left)/r.width)*2-1; ptr.y=-((p.y-r.top)/r.height)*2+1;
+    ray.setFromCamera(ptr,camera);
+    const hits=ray.intersectObjects(facePlanes,false);
+    if(hits.length){ const f=hits[0].object.userData; flashFace(hits[0].object); doMove(f.axis,-f.sign); }
+  }
+  down=null; dragging=false;
+});
+canvas.addEventListener('pointercancel',()=>{down=null;dragging=false;});
+
+$('restart').onclick=()=>{ winShown=false; newGame(); };
+$('overRestart').onclick=()=>{ winShown=false; newGame(); };
+$('winRestart').onclick=()=>{ winShown=false; newGame(); };
+$('keepPlaying').onclick=()=>{ $('winOverlay').classList.remove('show'); };
+
+/* ── Resize + render loop ── */
+function resize(){ const w=innerWidth,h=innerHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); }
+addEventListener('resize',resize); resize();
+
+let last=performance.now();
+function frame(now){
+  const dt=Math.min(0.05,(now-last)/1000); last=now;
+  // advance tweens
+  for(let i=anims.length-1;i>=0;i--){ const a=anims[i];
+    if(a.delay>0){ a.delay-=dt; continue; }
+    a.t+=dt; const k=Math.min(1,a.t/a.dur); a.onUpdate(a.ease(k));
+    if(k>=1){ a.onDone&&a.onDone(); anims.splice(i,1); } }
+  applyCam();
+  renderer.render(scene,camera);
+  requestAnimationFrame(frame);
+}
+
+// Optional self-play for visual QA: ?auto plays a few moves automatically.
+function autoPlay(){ const seq=[[1,-1],[0,1],[2,-1],[1,-1],[0,-1],[2,1],[1,1],[0,1],[2,-1],[1,-1]]; let i=0;
+  const step=()=>{ if(i<seq.length){ doMove(seq[i][0],seq[i][1]); i++; setTimeout(step,520); } };
+  setTimeout(step,500); }
+function boot(){ newGame(); $('loading').style.display='none'; requestAnimationFrame(frame);
+  if(location.search.includes('auto')) autoPlay(); }
+// kick off once the core tile textures are warm
+Promise.all([2,4,8].map(v=>new Promise(r=>loader.load(`../tiles/tile-${v}.png`,r,undefined,r))))
+  .then(boot).catch(boot);
+</script>
+</body>
+</html>
