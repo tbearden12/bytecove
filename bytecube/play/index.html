@@ -20,9 +20,14 @@
     --round:"SF Pro Rounded",ui-rounded,"Nunito",-apple-system,system-ui,"Segoe UI",sans-serif;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
-    font-family:var(--round);overscroll-behavior:none;}
-  #scene{position:fixed;inset:0;display:block;touch-action:none;}
+  /* Lock the page to the viewport: fixed + 100% kills iOS rubber-band scrolling and
+     stops a drag on the cube from panning the whole page sideways. */
+  html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
+    font-family:var(--round);overscroll-behavior:none;position:fixed;inset:0;touch-action:none;}
+  /* A <canvas> is a REPLACED element, so position:fixed;inset:0 alone does NOT stretch it
+     (it falls back to its intrinsic drawing-buffer size — which rendered at 2× the screen).
+     Explicit width/height:100% forces it to fill the viewport. */
+  #scene{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;}
   /* radial glow + vignette over the canvas, matching the app's screen scrim */
   #scrim{position:fixed;inset:0;pointer-events:none;
     background:
@@ -225,7 +230,9 @@ function applyCam(){
   // Fit the cube every frame from the live aspect (robust against init/resize races).
   const aspect=innerWidth/innerHeight, vfov=camera.fov*Math.PI/180;
   const hfov=2*Math.atan(Math.tan(vfov/2)*aspect);
-  DIST=2.5/Math.sin(Math.min(vfov,hfov)/2);
+  // Fit radius must exceed the cube's bounding sphere (extent·√3 ≈ 2.6); 3.0 leaves a
+  // comfortable margin so the cube + frame never touch the screen edges on any aspect.
+  DIST=3.0/Math.sin(Math.min(vfov,hfov)/2);
   const ce=Math.cos(elev);
   camera.position.set(DIST*ce*Math.sin(azim), DIST*Math.sin(elev), DIST*ce*Math.cos(azim));
   camera.lookAt(0,0,0);
@@ -429,7 +436,7 @@ function showOver(){ $('overScore').textContent=game.score; $('overBest').textCo
 const ray=new THREE.Raycaster(); const ptr=new THREE.Vector2();
 let down=null, dragging=false;
 function pos(e){ const t=e.touches?e.touches[0]:e; return {x:t.clientX,y:t.clientY}; }
-canvas.addEventListener('pointerdown',(e)=>{ down={...pos(e),t:performance.now(),az:azim,el:elev}; dragging=false; canvas.setPointerCapture?.(e.pointerId); });
+canvas.addEventListener('pointerdown',(e)=>{ e.preventDefault(); down={...pos(e),t:performance.now(),az:azim,el:elev}; dragging=false; canvas.setPointerCapture?.(e.pointerId); });
 canvas.addEventListener('pointermove',(e)=>{ if(!down)return; const p=pos(e);
   const dx=p.x-down.x, dy=p.y-down.y;
   if(!dragging && Math.hypot(dx,dy)>6) dragging=true;
@@ -455,7 +462,7 @@ $('winRestart').onclick=()=>{ winShown=false; newGame(); };
 $('keepPlaying').onclick=()=>{ $('winOverlay').classList.remove('show'); };
 
 /* ── Resize + render loop ── */
-function resize(){ const w=innerWidth,h=innerHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); }
+function resize(){ const w=innerWidth,h=innerHeight; renderer.setSize(w,h,true); camera.aspect=w/h; camera.updateProjectionMatrix(); }
 addEventListener('resize',resize); resize();
 
 let last=performance.now();
