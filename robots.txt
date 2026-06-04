@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 
-Disallow: /for-you/
+# /for-you/ is intentionally kept out of the index via its own
+# <meta name="robots" content="noindex, nofollow"> tag. It is NOT
+# disallowed here, so Google can crawl the page and honor that noindex
+# (a Disallow would block the crawl and could leave a URL-only listing).
 
 Sitemap: https://www.bytecovesoftware.com/sitemap.xml
