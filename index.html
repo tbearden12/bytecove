@@ -1073,6 +1073,15 @@
             color: var(--light);
             font-variation-settings: "opsz" 24;
         }
+        .foot-mark {
+            display: block; width: 44px; height: 44px;
+            margin-bottom: 0.9rem;
+            border: 1px solid var(--rule);
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(59, 163, 168, 0.06);
+        }
+        .foot-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
         .foot-brand em {
             font-style: italic; color: var(--teal-glow);
             font-variation-settings: "opsz" 24;
@@ -1788,6 +1797,9 @@
     <footer>
         <div class="foot-inner">
             <div class="foot-brand">
+                <span class="foot-mark">
+                    <img src="logo.png" alt="" width="44" height="44" loading="lazy" decoding="async">
+                </span>
                 <span>Bytecove <em>Software</em></span>
                 <span class="foot-sub">Chattanooga, TN · Built here, accountable here.</span>
                 <span class="foot-sub"><a href="tel:+14233649316">(423) 364-9316</a> · <a href="mailto:support@bytecovesoftware.com">support@bytecovesoftware.com</a></span>
