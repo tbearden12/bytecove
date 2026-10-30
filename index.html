@@ -149,7 +149,7 @@
     }
     </script>
 
-    <!-- Structured Data - WebSite (enables sitelinks search) -->
+    <!-- Structured Data - WebSite -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -1113,12 +1113,15 @@
         .foot-legal a { color: var(--muted-soft); text-decoration: none; letter-spacing: 0.03em; }
         .foot-legal a:hover { color: var(--teal-glow); }
 
-        /* ================= Reveal ================= */
+        /* Keep service content visible without JavaScript or scrolling. */
         .reveal {
-            opacity: 0; transform: translateY(24px);
-            transition: opacity 0.85s cubic-bezier(.2,.7,.3,1), transform 0.85s cubic-bezier(.2,.7,.3,1);
+            opacity: 1; transform: none;
         }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .hero-services {
+            display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem;
+            margin-top: 1.25rem; font-size: 0.95rem; color: var(--teal-glow);
+        }
 
         /* ================= Responsive ================= */
         @media (max-width: 900px) {
@@ -1217,20 +1220,18 @@
                 </span>
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
+                <li><a href="chattanooga-software-development/">Custom Software</a></li>
+                <li><a href="ai/">AI Consulting</a></li>
                 <li class="dropdown">
                     <span class="dropdown-toggle">
                         <a href="#build">Solutions</a>
                         <span class="dropdown-arrow">▾</span>
                     </span>
                     <div class="dropdown-menu">
-                        <a href="chattanooga-software-development/"><span>Custom Software</span><span class="kind">Chattanooga</span></a>
-                        <a href="ai/"><span>AI Services</span><span class="kind">Chattanooga</span></a>
                         <a href="operations/"><span>WOMBAT</span><span class="kind">Work Orders</span></a>
                         <a href="fieldcalc/"><span>FieldCalc Pro</span><span class="kind">iOS App</span></a>
                     </div>
                 </li>
-                <li><a href="#industries">Industries</a></li>
                 <li><a href="#process">Process</a></li>
                 <li class="mobile-only"><a href="#about">About</a></li>
                 <li class="mobile-only"><a href="#faq">FAQ</a></li>
@@ -1283,6 +1284,10 @@
                     <a href="#build" class="btn btn-ghost">
                         See what we build
                     </a>
+                </div>
+                <div class="hero-services" aria-label="Explore our Chattanooga services">
+                    <a href="chattanooga-software-development/">Custom software development in Chattanooga</a>
+                    <a href="ai/">AI consulting in Chattanooga</a>
                 </div>
             </div>
 
@@ -1351,7 +1356,7 @@
                         <div class="build-kicker">Custom Internal Systems</div>
                         <h3 class="build-name">Work order, job, and project platforms.</h3>
                         <p class="build-body">
-                            Lightweight operational systems configured to your terminology and deployed privately for your organization. Not ERP. Not generic SaaS. The platform we build for you is the one your team will actually open. See also: <a href="operations/">WOMBAT</a>, our work order product with built-in job costing.
+                            Lightweight operational systems configured to your terminology and deployed privately for your organization. The platform we build for you is the one your team will actually open. Explore our <a href="chattanooga-software-development/">custom software development services</a>, or see <a href="operations/">WOMBAT</a>, our work order product with built-in job costing.
                         </p>
                     </div>
                     <div class="build-meta">
@@ -1371,7 +1376,7 @@
                         <div class="build-kicker">AI Integrations</div>
                         <h3 class="build-name">Language models, wired into the systems you already use.</h3>
                         <p class="build-body">
-                            Classify incoming tickets. Draft customer replies. Extract line items from vendor PDFs. Summarize long voicemails. We use AI where it fits and regular software engineering for everything else. More on our <a href="ai/">AI services page</a>.
+                            Classify incoming tickets. Draft customer replies. Extract line items from vendor PDFs. Summarize long voicemails. We use AI where it fits and regular software engineering for everything else. Explore our <a href="ai/">AI consulting and integration services</a>.
                         </p>
                     </div>
                     <div class="build-meta">
@@ -1807,7 +1812,7 @@
             <ul class="foot-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="chattanooga-software-development/">Custom Software</a></li>
-                <li><a href="ai/">AI Services</a></li>
+                <li><a href="ai/">AI Consulting</a></li>
                 <li><a href="operations/">WOMBAT</a></li>
                 <li><a href="fieldcalc/">FieldCalc Pro</a></li>
                 <li><a href="#about">About</a></li>
@@ -1842,17 +1847,6 @@
                 menuBtn.setAttribute('aria-expanded', 'false');
             });
         });
-
-        // Reveal on scroll
-        const io = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    io.unobserve(e.target);
-                }
-            });
-        }, { rootMargin: '0px 0px -60px 0px', threshold: 0.08 });
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
         // Smooth anchor scroll with nav offset
         document.querySelectorAll('a[href^="#"]').forEach(a => {

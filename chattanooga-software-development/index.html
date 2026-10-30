@@ -918,12 +918,10 @@
         .foot-legal a { color: var(--muted-soft); text-decoration: none; letter-spacing: 0.03em; }
         .foot-legal a:hover { color: var(--teal-glow); }
 
-        /* ================= Reveal ================= */
+        /* Keep service content visible without JavaScript or scrolling. */
         .reveal {
-            opacity: 0; transform: translateY(24px);
-            transition: opacity 0.85s cubic-bezier(.2,.7,.3,1), transform 0.85s cubic-bezier(.2,.7,.3,1);
+            opacity: 1; transform: none;
         }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
 
         /* ================= Responsive ================= */
         @media (max-width: 900px) {
@@ -1026,7 +1024,7 @@
                 <li><a href="#build">What We Build</a></li>
                 <li><a href="#process">Process</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a href="../ai/">AI Consulting</a></li>
                 <li><a href="#contact" class="nav-cta">Start a conversation <span aria-hidden="true" style="font-family:var(--mono);">&rarr;</span></a></li>
                 <li class="mobile-only nav-legal">
                     <a href="../privacy/">Privacy</a>
@@ -1367,7 +1365,7 @@
             <ul class="foot-links">
                 <li><a href="../">Home</a></li>
                 <li><a href="../chattanooga-software-development/">Custom Software</a></li>
-                <li><a href="../ai/">AI Services</a></li>
+                <li><a href="../ai/">AI Consulting</a></li>
                 <li><a href="../operations/">WOMBAT</a></li>
                 <li><a href="../fieldcalc/">FieldCalc Pro</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -1401,17 +1399,6 @@
                 menuBtn.setAttribute('aria-expanded', 'false');
             });
         });
-
-        // Reveal on scroll
-        const io = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    io.unobserve(e.target);
-                }
-            });
-        }, { rootMargin: '0px 0px -60px 0px', threshold: 0.08 });
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
         // Smooth anchor scroll with nav offset
         document.querySelectorAll('a[href^="#"]').forEach(a => {

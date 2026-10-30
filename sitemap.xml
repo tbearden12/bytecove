@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.bytecovesoftware.com/</loc>
-    <lastmod>2026-06-04</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.bytecovesoftware.com/chattanooga-software-development/</loc>
-    <lastmod>2026-06-04</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -37,12 +37,6 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.bytecovesoftware.com/404.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
-  </url>
-  <url>
     <loc>https://www.bytecovesoftware.com/operations/</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -50,7 +44,7 @@
   </url>
   <url>
     <loc>https://www.bytecovesoftware.com/ai/</loc>
-    <lastmod>2026-06-04</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -85,18 +79,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.bytecovesoftware.com/bloxbreaker/privacy.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.bytecovesoftware.com/bloxbreaker/terms.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
     <loc>https://www.bytecovesoftware.com/bloxbreaker/support.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>yearly</changefreq>
@@ -109,38 +91,8 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.bytecovesoftware.com/wordbrew/privacy.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.bytecovesoftware.com/wordbrew/terms.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
     <loc>https://www.bytecovesoftware.com/wordbrew/support.html</loc>
     <lastmod>2026-04-27</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.bytecovesoftware.com/captionai/privacy.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.bytecovesoftware.com/captionai/terms.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.bytecovesoftware.com/captionai/support.html</loc>
-    <lastmod>2026-03-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
